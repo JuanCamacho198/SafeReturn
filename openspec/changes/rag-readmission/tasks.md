@@ -12,12 +12,12 @@
 
 ## Phase 2: ML Pipeline & Backend (Embeddings script, FAISS index, llama.cpp bindings, RAG orchestration)
 
-- [ ] 2.1 Create embeddings generation script `backend/ml/embedder.ts` using a local embedding model.
-- [ ] 2.2 Implement FAISS index management in `backend/ml/vector_store.ts` for storing and retrieving patient embeddings.
-- [ ] 2.3 Create `backend/ml/llm.ts` to interface with the local `llama.cpp` instance (e.g., node-llama-cpp) for inference.
-- [ ] 2.4 Implement RAG orchestrator in `backend/rag/orchestrator.ts` that takes a query, searches FAISS, and formats the prompt for the LLM.
-- [ ] 2.5 Expose IPC commands in `backend/index.ts` for triggering risk assessments and fetching patient data.
-- [ ] 2.6 Implement readmission risk calculation logic in `backend/services/risk_calculator.ts` utilizing the RAG orchestrator.
+- [x] 2.1 Create embeddings generation script `backend/ml/embedder.ts` using a local embedding model.
+- [x] 2.2 Implement FAISS index management in `backend/ml/vector_store.ts` for storing and retrieving patient embeddings.
+- [x] 2.3 Create `backend/ml/llm.ts` to interface with the local `llama.cpp` instance (e.g., node-llama-cpp) for inference.
+- [x] 2.4 Implement RAG orchestrator in `backend/rag/orchestrator.ts` that takes a query, searches FAISS, and formats the prompt for the LLM.
+- [x] 2.5 Expose IPC commands in `backend/index.ts` for triggering risk assessments and fetching patient data.
+- [x] 2.6 Implement readmission risk calculation logic in `backend/services/risk_calculator.ts` utilizing the RAG orchestrator.
 
 ## Phase 3: UI & Integration (Svelte dashboard, IPC wiring, risk display, retrieval view)
 
