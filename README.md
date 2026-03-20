@@ -35,3 +35,27 @@ Built for privacy and compliance, all data and models run **100% offline** on th
 
 ## Architecture
 See the SDD documentation in `openspec/` for full proposals, design documents, and architecture decisions.
+
+## Production Build & Packaging
+
+To package SafeReturn into a standalone desktop executable (.exe, .app, .deb):
+
+1. **Build the Frontend**:
+   ```bash
+   cd frontend
+   npm run build
+   ```
+
+2. **Bundle the Backend Sidecar (Bun)**:
+   ```bash
+   cd backend
+   bun build ./index.ts --compile --outfile ../frontend/src-tauri/bin/backend-sidecar
+   ```
+
+3. **Package with Tauri**:
+   ```bash
+   cd frontend
+   npm run tauri build
+   ```
+
+This will generate the final installer in `frontend/src-tauri/target/release/bundle/`. Ensure you have the corresponding local ML models placed in the correct resource directory as specified in your `tauri.conf.json`.

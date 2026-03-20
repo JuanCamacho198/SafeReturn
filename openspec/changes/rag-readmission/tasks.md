@@ -21,13 +21,13 @@
 
 ## Phase 3: UI & Integration (Svelte dashboard, IPC wiring, risk display, retrieval view)
 
-- [ ] 3.1 Create shared IPC types/interfaces in `frontend/src/lib/types/ipc.ts`.
-- [ ] 3.2 Implement IPC client wrapper in `frontend/src/lib/api/client.ts` using `@tauri-apps/api/invoke`.
-- [ ] 3.3 Build the main layout and navigation in `frontend/src/routes/+layout.svelte`.
-- [ ] 3.4 Create the patient list/dashboard view in `frontend/src/routes/dashboard/+page.svelte` fetching data via IPC.
-- [ ] 3.5 Implement the detailed patient view in `frontend/src/routes/patients/[id]/+page.svelte` showing demographics and history.
-- [ ] 3.6 Create the Risk Assessment component in `frontend/src/components/RiskCard.svelte` to display the RAG-generated risk score and explanation.
-- [ ] 3.7 Build the Retrieval Evidence view in `frontend/src/components/EvidencePanel.svelte` showing the referenced encounters from FAISS.
+- [x] 3.1 Create shared IPC types/interfaces in `frontend/src/lib/types/ipc.ts`.
+- [x] 3.2 Implement IPC client wrapper in `frontend/src/lib/api/client.ts` using `@tauri-apps/api/invoke`.
+- [x] 3.3 Build the main layout and navigation in `frontend/src/routes/+layout.svelte`.
+- [x] 3.4 Create the patient list/dashboard view in `frontend/src/routes/dashboard/+page.svelte` fetching data via IPC.
+- [x] 3.5 Implement the detailed patient view in `frontend/src/routes/patients/[id]/+page.svelte` showing demographics and history.
+- [x] 3.6 Create the Risk Assessment component in `frontend/src/components/RiskCard.svelte` to display the RAG-generated risk score and explanation.
+- [x] 3.7 Build the Retrieval Evidence view in `frontend/src/components/EvidencePanel.svelte` showing the referenced encounters from FAISS.
 
 ## Phase 4: Polish & Export (CSV/JSON export, encryption, packaging setup)
 
