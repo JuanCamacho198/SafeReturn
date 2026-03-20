@@ -31,9 +31,9 @@
 
 ## Phase 4: Polish & Export (CSV/JSON export, encryption, packaging setup)
 
-- [ ] 4.1 Implement export functionality in `backend/services/export.ts` to generate CSV/JSON reports of patient risks.
-- [ ] 4.2 Add export buttons and UI hooks in `frontend/src/routes/dashboard/+page.svelte` calling the export IPC commands.
-- [ ] 4.3 Implement AES-256 database encryption at rest in `backend/db/encryption.ts` or configure SQLCipher.
-- [ ] 4.4 Add automated tests for the RAG orchestrator in `backend/tests/rag.test.ts`.
-- [ ] 4.5 Configure production build scripts for Tauri, SvelteKit, and packaging the Bun sidecar binary.
-- [ ] 4.6 Document setup and build instructions in `README.md`.
+- [x] 4.1 Implement export functionality in `backend/services/export.ts` to generate CSV/JSON reports of patient risks.
+- [x] 4.2 Add export buttons and UI hooks in `frontend/src/routes/dashboard/+page.svelte` calling the export IPC commands.
+- [x] 4.3 Implement AES-256 database encryption at rest in `backend/db/encryption.ts` or configure SQLCipher.
+- [x] 4.4 Add automated tests for the RAG orchestrator in `backend/tests/rag.test.ts`.
+- [x] 4.5 Configure production build scripts for Tauri, SvelteKit, and packaging the Bun sidecar binary.
+- [x] 4.6 Document setup and build instructions in `README.md`.
