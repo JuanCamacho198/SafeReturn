@@ -1,0 +1,11 @@
+version: "1.0"
+artifact_store:
+  mode: openspec
+rules:
+  proposal:
+    require_rollback: true
+    require_success_criteria: true
+  spec:
+    require_scenarios: true
+  design:
+    require_affected_areas: true
