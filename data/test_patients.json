@@ -1,0 +1,1430 @@
+[
+  {
+    "patient_id": "6d18deec-773c-4a6d-aa52-2857edd7df5f",
+    "demographics": {
+      "age": 90,
+      "gender": "F",
+      "ethnicity": "White",
+      "insurance": "Medicare"
+    },
+    "diagnoses": [
+      {
+        "icd10": "I50.9",
+        "description": "Congestive Heart Failure (CHF)",
+        "primary": true
+      },
+      {
+        "icd10": "E11.9",
+        "description": "Type 2 Diabetes Mellitus",
+        "primary": false
+      }
+    ],
+    "medications": [
+      {
+        "name": "Furosemide",
+        "dosage": "20mg",
+        "frequency": "Once daily",
+        "route": "IN"
+      },
+      {
+        "name": "Lisinopril",
+        "dosage": "20mg",
+        "frequency": "Twice daily",
+        "route": "IV"
+      },
+      {
+        "name": "Carvedilol",
+        "dosage": "6.25mg",
+        "frequency": "Every 12 hours",
+        "route": "PO"
+      },
+      {
+        "name": "Spironolactone",
+        "dosage": "25mg",
+        "frequency": "Every 8 hours",
+        "route": "SC"
+      },
+      {
+        "name": "Metformin",
+        "dosage": "500mg",
+        "frequency": "Once daily",
+        "route": "PO"
+      },
+      {
+        "name": "Glipizide",
+        "dosage": "5mg",
+        "frequency": "Twice daily",
+        "route": "TOP"
+      },
+      {
+        "name": "Liraglutide",
+        "dosage": "0.6mg",
+        "frequency": "Every 8 hours",
+        "route": "IV"
+      },
+      {
+        "name": "Insulin",
+        "dosage": "100 units",
+        "frequency": "Twice daily",
+        "route": "SC"
+      }
+    ],
+    "lab_results": [
+      {
+        "name": "Glucose",
+        "value": 72.75,
+        "unit": "mg/dL",
+        "reference_range": [
+          70,
+          140
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Creatinine",
+        "value": 0.88,
+        "unit": "mg/dL",
+        "reference_range": [
+          0.7,
+          1.3
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "BUN",
+        "value": 18.93,
+        "unit": "mg/dL",
+        "reference_range": [
+          7,
+          20
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Sodium",
+        "value": 143.31,
+        "unit": "mEq/L",
+        "reference_range": [
+          136,
+          145
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Potassium",
+        "value": 4.34,
+        "unit": "mEq/L",
+        "reference_range": [
+          3.5,
+          5.0
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "WBC",
+        "value": 5.51,
+        "unit": "K/uL",
+        "reference_range": [
+          4.5,
+          11.0
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "RBC",
+        "value": 4.1,
+        "unit": "M/uL",
+        "reference_range": [
+          4.0,
+          5.5
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Hemoglobin",
+        "value": 14.65,
+        "unit": "g/dL",
+        "reference_range": [
+          12,
+          16
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Hematocrit",
+        "value": 44.1,
+        "unit": "%",
+        "reference_range": [
+          36,
+          48
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Platelets",
+        "value": 354.13,
+        "unit": "K/uL",
+        "reference_range": [
+          150,
+          400
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "ALT",
+        "value": 30.47,
+        "unit": "U/L",
+        "reference_range": [
+          7,
+          56
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "AST",
+        "value": 16.47,
+        "unit": "U/L",
+        "reference_range": [
+          10,
+          40
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "Albumin",
+        "value": 3.66,
+        "unit": "g/dL",
+        "reference_range": [
+          3.5,
+          5.0
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "Bilirubin",
+        "value": 0.8,
+        "unit": "mg/dL",
+        "reference_range": [
+          0.1,
+          1.2
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "BNP",
+        "value": 735.75,
+        "unit": "pg/mL",
+        "reference_range": [
+          100,
+          1000
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      },
+      {
+        "name": "EF",
+        "value": 44.5,
+        "unit": "%",
+        "reference_range": [
+          25,
+          55
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      },
+      {
+        "name": "HbA1c",
+        "value": 8.8,
+        "unit": "%",
+        "reference_range": [
+          5.5,
+          9.5
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      },
+      {
+        "name": "Glucose",
+        "value": 168.8,
+        "unit": "mg/dL",
+        "reference_range": [
+          80,
+          250
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      }
+    ],
+    "outcomes": {
+      "readmitted": false,
+      "days_to_readmission": null,
+      "discharge_disposition": "Home with Services"
+    }
+  },
+  {
+    "patient_id": "26052529-8ebb-4c34-a547-3f74badb98eb",
+    "demographics": {
+      "age": 81,
+      "gender": "M",
+      "ethnicity": "White",
+      "insurance": "Medicare"
+    },
+    "diagnoses": [
+      {
+        "icd10": "J18.9",
+        "description": "Pneumonia, unspecified organism",
+        "primary": true
+      },
+      {
+        "icd10": "J44.9",
+        "description": "Chronic Obstructive Pulmonary Disease (COPD)",
+        "primary": false
+      },
+      {
+        "icd10": "M54.5",
+        "description": "Low Back Pain",
+        "primary": false
+      }
+    ],
+    "medications": [
+      {
+        "name": "Amoxicillin",
+        "dosage": "875mg",
+        "frequency": "As needed",
+        "route": "PO"
+      },
+      {
+        "name": "Azithromycin",
+        "dosage": "250mg",
+        "frequency": "Every 12 hours",
+        "route": "SC"
+      },
+      {
+        "name": "Ceftriaxone",
+        "dosage": "2g",
+        "frequency": "Three times daily",
+        "route": "IV"
+      },
+      {
+        "name": "Albuterol",
+        "dosage": "90mcg",
+        "frequency": "As needed",
+        "route": "IM"
+      },
+      {
+        "name": "Tiotropium",
+        "dosage": "18mcg",
+        "frequency": "Once daily",
+        "route": "SC"
+      },
+      {
+        "name": "Fluticasone",
+        "dosage": "100mcg",
+        "frequency": "Three times daily",
+        "route": "IM"
+      },
+      {
+        "name": "Prednisone",
+        "dosage": "60mg",
+        "frequency": "As needed",
+        "route": "PO"
+      },
+      {
+        "name": "Naproxen",
+        "dosage": "500mg",
+        "frequency": "Every 8 hours",
+        "route": "PO"
+      },
+      {
+        "name": "Cyclobenzaprine",
+        "dosage": "10mg",
+        "frequency": "Once daily",
+        "route": "TOP"
+      },
+      {
+        "name": "Physical therapy",
+        "dosage": "100mg",
+        "frequency": "As needed",
+        "route": "IN"
+      }
+    ],
+    "lab_results": [
+      {
+        "name": "Glucose",
+        "value": 104.69,
+        "unit": "mg/dL",
+        "reference_range": [
+          70,
+          140
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Creatinine",
+        "value": 1.29,
+        "unit": "mg/dL",
+        "reference_range": [
+          0.7,
+          1.3
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "BUN",
+        "value": 9.86,
+        "unit": "mg/dL",
+        "reference_range": [
+          7,
+          20
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Sodium",
+        "value": 144.93,
+        "unit": "mEq/L",
+        "reference_range": [
+          136,
+          145
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Potassium",
+        "value": 4.31,
+        "unit": "mEq/L",
+        "reference_range": [
+          3.5,
+          5.0
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "WBC",
+        "value": 7.19,
+        "unit": "K/uL",
+        "reference_range": [
+          4.5,
+          11.0
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "RBC",
+        "value": 5.24,
+        "unit": "M/uL",
+        "reference_range": [
+          4.0,
+          5.5
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Hemoglobin",
+        "value": 13.28,
+        "unit": "g/dL",
+        "reference_range": [
+          12,
+          16
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Hematocrit",
+        "value": 44.75,
+        "unit": "%",
+        "reference_range": [
+          36,
+          48
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Platelets",
+        "value": 301.29,
+        "unit": "K/uL",
+        "reference_range": [
+          150,
+          400
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "ALT",
+        "value": 13.5,
+        "unit": "U/L",
+        "reference_range": [
+          7,
+          56
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "AST",
+        "value": 25.72,
+        "unit": "U/L",
+        "reference_range": [
+          10,
+          40
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "Albumin",
+        "value": 4.52,
+        "unit": "g/dL",
+        "reference_range": [
+          3.5,
+          5.0
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "Bilirubin",
+        "value": 0.2,
+        "unit": "mg/dL",
+        "reference_range": [
+          0.1,
+          1.2
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "FEV1",
+        "value": 42.4,
+        "unit": "% predicted",
+        "reference_range": [
+          40,
+          80
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      },
+      {
+        "name": "pO2",
+        "value": 56.44,
+        "unit": "mmHg",
+        "reference_range": [
+          55,
+          80
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      }
+    ],
+    "outcomes": {
+      "readmitted": false,
+      "days_to_readmission": null,
+      "discharge_disposition": "Home"
+    }
+  },
+  {
+    "patient_id": "9fb8846a-a09e-4b85-88aa-39c3c8f8a087",
+    "demographics": {
+      "age": 60,
+      "gender": "F",
+      "ethnicity": "White",
+      "insurance": "Private"
+    },
+    "diagnoses": [
+      {
+        "icd10": "I50.9",
+        "description": "Congestive Heart Failure (CHF)",
+        "primary": true
+      },
+      {
+        "icd10": "J44.9",
+        "description": "Chronic Obstructive Pulmonary Disease (COPD)",
+        "primary": false
+      },
+      {
+        "icd10": "I10",
+        "description": "Essential Hypertension",
+        "primary": false
+      },
+      {
+        "icd10": "E78.5",
+        "description": "Hyperlipidemia, unspecified",
+        "primary": false
+      },
+      {
+        "icd10": "E11.9",
+        "description": "Type 2 Diabetes Mellitus",
+        "primary": false
+      }
+    ],
+    "medications": [
+      {
+        "name": "Furosemide",
+        "dosage": "80mg",
+        "frequency": "Every 8 hours",
+        "route": "IV"
+      },
+      {
+        "name": "Lisinopril",
+        "dosage": "5mg",
+        "frequency": "Once daily",
+        "route": "IN"
+      },
+      {
+        "name": "Carvedilol",
+        "dosage": "6.25mg",
+        "frequency": "As needed",
+        "route": "IM"
+      },
+      {
+        "name": "Spironolactone",
+        "dosage": "25mg",
+        "frequency": "As needed",
+        "route": "IV"
+      },
+      {
+        "name": "Albuterol",
+        "dosage": "90mcg",
+        "frequency": "Every 6 hours",
+        "route": "IM"
+      },
+      {
+        "name": "Tiotropium",
+        "dosage": "18mcg",
+        "frequency": "Every 12 hours",
+        "route": "IM"
+      },
+      {
+        "name": "Fluticasone",
+        "dosage": "100mcg",
+        "frequency": "Three times daily",
+        "route": "IM"
+      },
+      {
+        "name": "Prednisone",
+        "dosage": "10mg",
+        "frequency": "Every 12 hours",
+        "route": "IM"
+      },
+      {
+        "name": "Amlodipine",
+        "dosage": "2.5mg",
+        "frequency": "Every 8 hours",
+        "route": "IN"
+      },
+      {
+        "name": "Hydrochlorothiazide",
+        "dosage": "12.5mg",
+        "frequency": "Every 8 hours",
+        "route": "IN"
+      },
+      {
+        "name": "Atorvastatin",
+        "dosage": "10mg",
+        "frequency": "Twice daily",
+        "route": "SC"
+      },
+      {
+        "name": "Rosuvastatin",
+        "dosage": "40mg",
+        "frequency": "Three times daily",
+        "route": "IN"
+      },
+      {
+        "name": "Simvastatin",
+        "dosage": "10mg",
+        "frequency": "Every 12 hours",
+        "route": "IM"
+      },
+      {
+        "name": "Metformin",
+        "dosage": "500mg",
+        "frequency": "Twice daily",
+        "route": "PO"
+      },
+      {
+        "name": "Glipizide",
+        "dosage": "20mg",
+        "frequency": "Every 6 hours",
+        "route": "IM"
+      },
+      {
+        "name": "Liraglutide",
+        "dosage": "0.6mg",
+        "frequency": "Twice daily",
+        "route": "TOP"
+      },
+      {
+        "name": "Insulin",
+        "dosage": "100 units",
+        "frequency": "Twice daily",
+        "route": "IN"
+      }
+    ],
+    "lab_results": [
+      {
+        "name": "Glucose",
+        "value": 84.07,
+        "unit": "mg/dL",
+        "reference_range": [
+          70,
+          140
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Creatinine",
+        "value": 0.74,
+        "unit": "mg/dL",
+        "reference_range": [
+          0.7,
+          1.3
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "BUN",
+        "value": 19.53,
+        "unit": "mg/dL",
+        "reference_range": [
+          7,
+          20
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Sodium",
+        "value": 142.92,
+        "unit": "mEq/L",
+        "reference_range": [
+          136,
+          145
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Potassium",
+        "value": 4.63,
+        "unit": "mEq/L",
+        "reference_range": [
+          3.5,
+          5.0
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "WBC",
+        "value": 5.22,
+        "unit": "K/uL",
+        "reference_range": [
+          4.5,
+          11.0
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "RBC",
+        "value": 4.37,
+        "unit": "M/uL",
+        "reference_range": [
+          4.0,
+          5.5
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Hemoglobin",
+        "value": 15.14,
+        "unit": "g/dL",
+        "reference_range": [
+          12,
+          16
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Hematocrit",
+        "value": 43.35,
+        "unit": "%",
+        "reference_range": [
+          36,
+          48
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Platelets",
+        "value": 242.56,
+        "unit": "K/uL",
+        "reference_range": [
+          150,
+          400
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "ALT",
+        "value": 11.51,
+        "unit": "U/L",
+        "reference_range": [
+          7,
+          56
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "AST",
+        "value": 17.69,
+        "unit": "U/L",
+        "reference_range": [
+          10,
+          40
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "Albumin",
+        "value": 4.15,
+        "unit": "g/dL",
+        "reference_range": [
+          3.5,
+          5.0
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "Bilirubin",
+        "value": 1.06,
+        "unit": "mg/dL",
+        "reference_range": [
+          0.1,
+          1.2
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "BNP",
+        "value": 822.92,
+        "unit": "pg/mL",
+        "reference_range": [
+          100,
+          1000
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      },
+      {
+        "name": "EF",
+        "value": 33.0,
+        "unit": "%",
+        "reference_range": [
+          25,
+          55
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      },
+      {
+        "name": "FEV1",
+        "value": 42.9,
+        "unit": "% predicted",
+        "reference_range": [
+          40,
+          80
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      },
+      {
+        "name": "pO2",
+        "value": 78.3,
+        "unit": "mmHg",
+        "reference_range": [
+          55,
+          80
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      },
+      {
+        "name": "HbA1c",
+        "value": 6.46,
+        "unit": "%",
+        "reference_range": [
+          5.5,
+          9.5
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      },
+      {
+        "name": "Glucose",
+        "value": 203.44,
+        "unit": "mg/dL",
+        "reference_range": [
+          80,
+          250
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      }
+    ],
+    "outcomes": {
+      "readmitted": false,
+      "days_to_readmission": null,
+      "discharge_disposition": "Home with Services"
+    }
+  },
+  {
+    "patient_id": "56d35fde-4e27-4bfb-8d0d-a58d9410c697",
+    "demographics": {
+      "age": 40,
+      "gender": "F",
+      "ethnicity": "White",
+      "insurance": "Medicaid"
+    },
+    "diagnoses": [
+      {
+        "icd10": "E78.5",
+        "description": "Hyperlipidemia, unspecified",
+        "primary": true
+      },
+      {
+        "icd10": "F41.9",
+        "description": "Anxiety Disorder, unspecified",
+        "primary": false
+      }
+    ],
+    "medications": [
+      {
+        "name": "Atorvastatin",
+        "dosage": "80mg",
+        "frequency": "Every 6 hours",
+        "route": "IN"
+      },
+      {
+        "name": "Rosuvastatin",
+        "dosage": "40mg",
+        "frequency": "Twice daily",
+        "route": "IM"
+      },
+      {
+        "name": "Simvastatin",
+        "dosage": "10mg",
+        "frequency": "Twice daily",
+        "route": "IN"
+      },
+      {
+        "name": "Sertraline",
+        "dosage": "200mg",
+        "frequency": "Every 12 hours",
+        "route": "TOP"
+      },
+      {
+        "name": "Buspirone",
+        "dosage": "30mg",
+        "frequency": "Every 8 hours",
+        "route": "SC"
+      },
+      {
+        "name": "Lorazepam",
+        "dosage": "2mg",
+        "frequency": "Twice daily",
+        "route": "IV"
+      }
+    ],
+    "lab_results": [
+      {
+        "name": "Glucose",
+        "value": 127.45,
+        "unit": "mg/dL",
+        "reference_range": [
+          70,
+          140
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Creatinine",
+        "value": 0.82,
+        "unit": "mg/dL",
+        "reference_range": [
+          0.7,
+          1.3
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "BUN",
+        "value": 8.82,
+        "unit": "mg/dL",
+        "reference_range": [
+          7,
+          20
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Sodium",
+        "value": 141.88,
+        "unit": "mEq/L",
+        "reference_range": [
+          136,
+          145
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Potassium",
+        "value": 3.55,
+        "unit": "mEq/L",
+        "reference_range": [
+          3.5,
+          5.0
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "WBC",
+        "value": 7.18,
+        "unit": "K/uL",
+        "reference_range": [
+          4.5,
+          11.0
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "RBC",
+        "value": 4.05,
+        "unit": "M/uL",
+        "reference_range": [
+          4.0,
+          5.5
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Hemoglobin",
+        "value": 14.96,
+        "unit": "g/dL",
+        "reference_range": [
+          12,
+          16
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Hematocrit",
+        "value": 37.03,
+        "unit": "%",
+        "reference_range": [
+          36,
+          48
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Platelets",
+        "value": 380.31,
+        "unit": "K/uL",
+        "reference_range": [
+          150,
+          400
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "ALT",
+        "value": 48.82,
+        "unit": "U/L",
+        "reference_range": [
+          7,
+          56
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "AST",
+        "value": 31.36,
+        "unit": "U/L",
+        "reference_range": [
+          10,
+          40
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "Albumin",
+        "value": 3.76,
+        "unit": "g/dL",
+        "reference_range": [
+          3.5,
+          5.0
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "Bilirubin",
+        "value": 0.47,
+        "unit": "mg/dL",
+        "reference_range": [
+          0.1,
+          1.2
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      }
+    ],
+    "outcomes": {
+      "readmitted": false,
+      "days_to_readmission": null,
+      "discharge_disposition": "Home with Services"
+    }
+  },
+  {
+    "patient_id": "17fd806b-225c-42f9-a0e6-02dbf9bc01a6",
+    "demographics": {
+      "age": 67,
+      "gender": "M",
+      "ethnicity": "Hispanic",
+      "insurance": "Medicaid"
+    },
+    "diagnoses": [
+      {
+        "icd10": "K21.9",
+        "description": "Gastroesophageal Reflux Disease",
+        "primary": true
+      },
+      {
+        "icd10": "I50.9",
+        "description": "Congestive Heart Failure (CHF)",
+        "primary": false
+      },
+      {
+        "icd10": "F41.9",
+        "description": "Anxiety Disorder, unspecified",
+        "primary": false
+      },
+      {
+        "icd10": "J45.909",
+        "description": "Asthma, unspecified",
+        "primary": false
+      }
+    ],
+    "medications": [
+      {
+        "name": "Omeprazole",
+        "dosage": "40mg",
+        "frequency": "Once daily",
+        "route": "PO"
+      },
+      {
+        "name": "Pantoprazole",
+        "dosage": "40mg",
+        "frequency": "Twice daily",
+        "route": "IN"
+      },
+      {
+        "name": "Famotidine",
+        "dosage": "20mg",
+        "frequency": "As needed",
+        "route": "IN"
+      },
+      {
+        "name": "Furosemide",
+        "dosage": "80mg",
+        "frequency": "Every 8 hours",
+        "route": "PO"
+      },
+      {
+        "name": "Lisinopril",
+        "dosage": "20mg",
+        "frequency": "Every 6 hours",
+        "route": "TOP"
+      },
+      {
+        "name": "Carvedilol",
+        "dosage": "25mg",
+        "frequency": "Every 8 hours",
+        "route": "IM"
+      },
+      {
+        "name": "Spironolactone",
+        "dosage": "25mg",
+        "frequency": "Every 12 hours",
+        "route": "IN"
+      },
+      {
+        "name": "Sertraline",
+        "dosage": "25mg",
+        "frequency": "Every 12 hours",
+        "route": "TOP"
+      },
+      {
+        "name": "Buspirone",
+        "dosage": "30mg",
+        "frequency": "As needed",
+        "route": "IN"
+      },
+      {
+        "name": "Lorazepam",
+        "dosage": "2mg",
+        "frequency": "Once daily",
+        "route": "IM"
+      },
+      {
+        "name": "Albuterol",
+        "dosage": "180mcg",
+        "frequency": "Twice daily",
+        "route": "SC"
+      },
+      {
+        "name": "Fluticasone",
+        "dosage": "100mcg",
+        "frequency": "Every 12 hours",
+        "route": "IN"
+      },
+      {
+        "name": "Montelukast",
+        "dosage": "10mg",
+        "frequency": "Every 8 hours",
+        "route": "IV"
+      }
+    ],
+    "lab_results": [
+      {
+        "name": "Glucose",
+        "value": 107.89,
+        "unit": "mg/dL",
+        "reference_range": [
+          70,
+          140
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Creatinine",
+        "value": 1.2,
+        "unit": "mg/dL",
+        "reference_range": [
+          0.7,
+          1.3
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "BUN",
+        "value": 16.41,
+        "unit": "mg/dL",
+        "reference_range": [
+          7,
+          20
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Sodium",
+        "value": 142.54,
+        "unit": "mEq/L",
+        "reference_range": [
+          136,
+          145
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "Potassium",
+        "value": 3.65,
+        "unit": "mEq/L",
+        "reference_range": [
+          3.5,
+          5.0
+        ],
+        "flag": "normal",
+        "panel": "BMP"
+      },
+      {
+        "name": "WBC",
+        "value": 8.1,
+        "unit": "K/uL",
+        "reference_range": [
+          4.5,
+          11.0
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "RBC",
+        "value": 5.35,
+        "unit": "M/uL",
+        "reference_range": [
+          4.0,
+          5.5
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Hemoglobin",
+        "value": 12.74,
+        "unit": "g/dL",
+        "reference_range": [
+          12,
+          16
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Hematocrit",
+        "value": 46.97,
+        "unit": "%",
+        "reference_range": [
+          36,
+          48
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "Platelets",
+        "value": 374.47,
+        "unit": "K/uL",
+        "reference_range": [
+          150,
+          400
+        ],
+        "flag": "normal",
+        "panel": "CBC"
+      },
+      {
+        "name": "ALT",
+        "value": 39.4,
+        "unit": "U/L",
+        "reference_range": [
+          7,
+          56
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "AST",
+        "value": 39.49,
+        "unit": "U/L",
+        "reference_range": [
+          10,
+          40
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "Albumin",
+        "value": 4.74,
+        "unit": "g/dL",
+        "reference_range": [
+          3.5,
+          5.0
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "Bilirubin",
+        "value": 0.97,
+        "unit": "mg/dL",
+        "reference_range": [
+          0.1,
+          1.2
+        ],
+        "flag": "normal",
+        "panel": "LFT"
+      },
+      {
+        "name": "BNP",
+        "value": 953.72,
+        "unit": "pg/mL",
+        "reference_range": [
+          100,
+          1000
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      },
+      {
+        "name": "EF",
+        "value": 47.0,
+        "unit": "%",
+        "reference_range": [
+          25,
+          55
+        ],
+        "flag": "normal",
+        "panel": "Special"
+      }
+    ],
+    "outcomes": {
+      "readmitted": false,
+      "days_to_readmission": null,
+      "discharge_disposition": "Rehab"
+    }
+  }
+]

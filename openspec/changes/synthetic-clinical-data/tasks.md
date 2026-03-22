@@ -11,12 +11,12 @@
 
 ## Phase 2: Core Generation
 
-- [ ] 2.1 Implement `generate_demographics(faker, n)` in `scripts/generate_clinical_data.py` — weighted age 18-95, gender, ethnicity matching US Census distributions
-- [ ] 2.2 Implement `sample_icd10_diagnoses(demographics, prevalence_dict, rng)` — return 2-6 codes per patient correlated with age/gender
-- [ ] 2.3 Implement `generate_medications(diagnoses, faker)` — map ICD10 codes to medication classes with realistic dosage ranges
-- [ ] 2.4 Implement `generate_labs(diagnoses, faker)` — correlate BNP/creatinine/glucose with specific diagnoses, include reference ranges
-- [ ] 2.5 Implement `assign_readmission(diagnoses, comorbidities)` — ~16% rate; weight CHF, COPD, multi-morbidity patients higher
-- [ ] 2.6 Write `generate_patients(n=100)` loop that calls 2.1–2.5 and outputs list of dicts
+- [x] 2.1 Implement `generate_demographics(faker, n)` in `scripts/generate_clinical_data.py` — weighted age 18-95, gender, ethnicity matching US Census distributions
+- [x] 2.2 Implement `sample_icd10_diagnoses(demographics, prevalence_dict, rng)` — return 2-6 codes per patient correlated with age/gender
+- [x] 2.3 Implement `generate_medications(diagnoses, faker)` — map ICD10 codes to medication classes with realistic dosage ranges
+- [x] 2.4 Implement `generate_labs(diagnoses, faker)` — correlate BNP/creatinine/glucose with specific diagnoses, include reference ranges
+- [x] 2.5 Implement `assign_readmission(diagnoses, comorbidities)` — ~16% rate; weight CHF, COPD, multi-morbidity patients higher
+- [x] 2.6 Write `generate_patients(n=100)` loop that calls 2.1–2.5 and outputs list of dicts
 
 ## Phase 3: Clinical Notes
 
