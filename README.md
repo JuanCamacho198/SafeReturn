@@ -59,3 +59,36 @@ To package SafeReturn into a standalone desktop executable (.exe, .app, .deb):
    ```
 
 This will generate the final installer in `frontend/src-tauri/target/release/bundle/`. Ensure you have the corresponding local ML models placed in the correct resource directory as specified in your `tauri.conf.json`.
+
+## 🔑 API Key Setup (Optional)
+
+SafeReturn supports both local LLM (llama.cpp) and remote LLM via API.
+
+### Groq (Recommended - Free & Fast)
+
+1. Get a free API key at [console.groq.com/keys](https://console.groq.com/keys)
+2. Create a `.env` file:
+   ```bash
+   cp .env.example .env
+   ```
+3. Edit `.env` and add your key:
+   ```
+   GROQ_API_KEY=gsk_your_key_here
+   ```
+
+### Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `GROQ_API_KEY` | Your Groq API key | Required for remote LLM |
+| `GROQ_MODEL` | Model to use | `llama-3.3-70b-versatile` |
+| `EMBEDDING_MODEL` | Sentence transformer model | `all-MiniLM-L6-v2` |
+
+## Quick Start with Groq
+
+```bash
+cd backend
+cp ../.env.example ../.env
+# Edit .env with your Groq API key
+bun run index.ts
+```

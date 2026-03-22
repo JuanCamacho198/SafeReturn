@@ -11,3 +11,6 @@ src-tauri/target/
 models/*.gguf
 models/*.bin
 vector_store/*.faiss
+.env
+.env.local
+.env.production
