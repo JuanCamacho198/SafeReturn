@@ -6,10 +6,27 @@ clinical notes (via Groq LLM), lab results, medications, and readmission outcome
 
 import argparse
 import logging
+import random
 import sys
+import uuid
+from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Any
 
-CONFIG = {
+from faker import Faker
+
+from icd10_prevalence import (
+    COMORBIDITY_WEIGHTS,
+    DIAGNOSIS_LAB_CORRELATIONS,
+    ICD10_MEDICATION_MAP,
+    ICD10_PREVALENCE,
+)
+from schemas import (
+    AGE_DISTRIBUTION,
+    ETHNICITY_WEIGHTS,
+    GENDER_WEIGHTS,
+    INSURANCE_WEIGHTS,
+)
     "N_PATIENTS": 100,
     "MIN_DIAGNOSES": 2,
     "MAX_DIAGNOSES": 6,

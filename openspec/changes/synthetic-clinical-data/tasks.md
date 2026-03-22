@@ -2,12 +2,12 @@
 
 ## Phase 1: Foundation
 
-- [ ] 1.1 Create `scripts/generate_clinical_data.py` — stub with argparse, config constants, and logging setup
-- [ ] 1.2 Create `data/` directory
-- [ ] 1.3 Install dependencies: `pip install faker groq python-dotenv`; add `requirements.txt` if absent
-- [ ] 1.4 Create `.env.example` with `GROQ_API_KEY=` placeholder
-- [ ] 1.5 Define ICD10 prevalence dictionary in `scripts/icd10_prevalence.py` (CHF ~6%, COPD ~5%, pneumonia ~4%, AMI ~3%, etc.)
-- [ ] 1.6 Define patient schema constants in `scripts/schemas.py`: demographics, diagnosis, lab, medication, note fields
+- [x] 1.1 Create `scripts/generate_clinical_data.py` — stub with argparse, config constants, and logging setup
+- [x] 1.2 Create `data/` directory
+- [x] 1.3 Install dependencies: `pip install faker groq python-dotenv`; add `requirements.txt` if absent
+- [x] 1.4 Create `.env.example` with `GROQ_API_KEY=` placeholder
+- [x] 1.5 Define ICD10 prevalence dictionary in `scripts/icd10_prevalence.py` (CHF ~6%, COPD ~5%, pneumonia ~4%, AMI ~3%, etc.)
+- [x] 1.6 Define patient schema constants in `scripts/schemas.py`: demographics, diagnosis, lab, medication, note fields
 
 ## Phase 2: Core Generation
 
