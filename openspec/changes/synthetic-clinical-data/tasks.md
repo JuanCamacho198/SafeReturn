@@ -20,18 +20,18 @@
 
 ## Phase 3: Clinical Notes
 
-- [ ] 3.1 Create `scripts/llm_client.py` — Groq client wrapper with rate limiting, prompt caching, and error retry
-- [ ] 3.2 Define note templates in `scripts/note_templates.py`: SOAP, H&P, discharge summary — with `{diagnosis}`, `{medications}`, `{labs}` fill points
-- [ ] 3.3 Implement `generate_note_for_patient(patient, template_type, groq_client)` — call LLM to produce natural-language note
-- [ ] 3.4 Implement batch generation in `generate_clinical_data.py` — each patient gets 2-5 notes (SOAP on admission, H&P, daily progress, discharge)
-- [ ] 3.5 Add progress bar via `tqdm` and checkpoint saving every 10 patients to `data/checkpoint.json`
+- [x] 3.1 Create `scripts/llm_client.py` — Groq client wrapper with rate limiting, prompt caching, and error retry
+- [x] 3.2 Define note templates in `scripts/note_templates.py`: SOAP, H&P, discharge summary — with `{diagnosis}`, `{medications}`, `{labs}` fill points
+- [x] 3.3 Implement `generate_note_for_patient(patient, template_type, groq_client)` — call LLM to produce natural-language note
+- [x] 3.4 Implement batch generation in `generate_clinical_data.py` — each patient gets 2-5 notes (SOAP on admission, H&P, daily progress, discharge)
+- [x] 3.5 Add progress bar via `tqdm` and checkpoint saving every 10 patients to `data/checkpoint.json`
 
 ## Phase 4: Validation & Export
 
-- [ ] 4.1 Validate diagnosis distribution in `scripts/validate_data.py` — compare generated ICD10 prevalence against real benchmarks
-- [ ] 4.2 Validate readmission rate — check 15-20 patients flagged as readmitted
-- [ ] 4.3 Validate demographics distribution — print age/gender/ethnicity histograms
-- [ ] 4.4 Validate note realism — sample 5 notes, manually spot-check coherence
-- [ ] 4.5 Export final dataset to `data/synthetic_patients.json` with all fields per patient
-- [ ] 4.6 Load data into SQLite: create `database/schema.sql` with patients, diagnoses, labs, medications, notes tables; run `scripts/load_to_sqlite.py`
-- [ ] 4.7 Run test RAG query: verify retrieval returns relevant fragments for "heart failure discharge" query
+- [x] 4.1 Validate diagnosis distribution in `scripts/validate_data.py` — compare generated ICD10 prevalence against real benchmarks
+- [x] 4.2 Validate readmission rate — check 15-20 patients flagged as readmitted
+- [x] 4.3 Validate demographics distribution — print age/gender/ethnicity histograms
+- [x] 4.4 Validate note realism — sample 5 notes, manually spot-check coherence
+- [x] 4.5 Export final dataset to `data/synthetic_patients.json` with all fields per patient
+- [x] 4.6 Load data into SQLite: create `database/schema.sql` with patients, diagnoses, labs, medications, notes tables; run `scripts/load_to_sqlite.py`
+- [x] 4.7 Run test RAG query: verify retrieval returns relevant fragments for "heart failure discharge" query
