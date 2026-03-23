@@ -6,9 +6,10 @@
   import RiskCard from '../../../components/RiskCard.svelte';
   import EvidencePanel from '../../../components/EvidencePanel.svelte';
 
-  let patientId = $page.params.id;
   let assessment: RiskAssessment | null = null;
   let loading = true;
+
+  $: patientId = $page.params.id ?? '';
 
   onMount(async () => {
     try {
@@ -23,7 +24,7 @@
 
 <div class="space-y-6">
   <div class="flex items-center justify-between">
-    <h1 class="text-3xl font-bold text-gray-800">Patient Details (ID: {patientId})</h1>
+    <h1 class="text-3xl font-bold text-gray-800">Patient: {patientId}</h1>
     <a href="/dashboard" class="text-blue-600 hover:underline">← Back to Dashboard</a>
   </div>
 
