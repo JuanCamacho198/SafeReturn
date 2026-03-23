@@ -1,20 +1,20 @@
 <script lang="ts">
-  export let score: number;
-  export let explanation: string;
-
+  export let score: number = 0;
+  export let explanation: string = '';
+  
   $: isHighRisk = score >= 0.7;
   $: isMediumRisk = score >= 0.4 && score < 0.7;
-  $: riskColor = isHighRisk ? 'text-red-600' : (isMediumRisk ? 'text-yellow-600' : 'text-green-600');
-  $: riskBg = isHighRisk ? 'bg-red-50 border-red-200' : (isMediumRisk ? 'bg-yellow-50 border-yellow-200' : 'bg-green-50 border-green-200');
+  $: riskColor = isHighRisk ? 'text-red-600 bg-red-50' : (isMediumRisk ? 'text-yellow-600 bg-yellow-50' : 'text-green-600 bg-green-50');
+  $: riskLabel = isHighRisk ? 'High Risk' : (isMediumRisk ? 'Medium Risk' : 'Low Risk');
 </script>
 
-<div class="p-6 rounded-lg shadow-sm border {riskBg}">
-  <h3 class="text-lg font-semibold mb-2 text-gray-800">30-Day Readmission Risk</h3>
-  <div class="flex items-end gap-2 mb-4">
-    <span class="text-5xl font-bold {riskColor}">{(score * 100).toFixed(0)}%</span>
-  </div>
-  <p class="text-sm text-gray-700 leading-relaxed border-t border-black/10 pt-4 mt-2">
-    <strong>LLM Analysis:</strong><br/>
-    {explanation}
-  </p>
+<div class="card {riskColor} border-2">
+  <div class="text-xs font-semibold uppercase tracking-wide mb-2">{riskLabel}</div>
+  <div class="text-4xl font-bold mb-2">{(score * 100).toFixed(0)}%</div>
+  <div class="text-sm opacity-80">30-Day Readmission</div>
+  {#if explanation}
+    <div class="mt-4 pt-4 border-t border-current/20 text-xs">
+      {explanation}
+    </div>
+  {/if}
 </div>
