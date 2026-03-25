@@ -13,6 +13,27 @@
     await loadKey();
   });
 
+  const SETTINGS_STORAGE_KEY = 'app_settings';
+
+  function loadSettingsFromStorage(): Record<string, string> {
+    try {
+      const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
+      return stored ? JSON.parse(stored) : {};
+    } catch {
+      return {};
+    }
+  }
+
+  function saveSettingsToStorage(settings: Record<string, string>) {
+    localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
+  }
+
+  function deleteSettingFromStorage(key: string) {
+    const settings = loadSettingsFromStorage();
+    delete settings[key];
+    localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
+  }
+
   async function loadKey() {
     isLoading = true;
     try {
@@ -24,8 +45,15 @@
         status = 'Not Configured';
       }
     } catch (e) {
-      console.error('Failed to load settings:', e);
-      message = 'Error loading settings: ' + e;
+      // Fallback to localStorage when Tauri is not available
+      console.warn('Tauri invoke failed, falling back to localStorage:', e);
+      const settings = loadSettingsFromStorage();
+      if (settings.groq_api_key) {
+        apiKey = settings.groq_api_key;
+        status = 'Configured';
+      } else {
+        status = 'Not Configured';
+      }
     } finally {
       isLoading = false;
     }
@@ -33,7 +61,7 @@
 
   async function saveKey() {
     if (!apiKey.trim()) {
-      message = 'Please enter a valid API Key.'; // NOTE: Not translating this dynamic error message yet for simplicity
+      message = 'Please enter a valid API Key.';
       return;
     }
     
@@ -49,8 +77,14 @@
       message = 'API Key saved successfully!';
       setTimeout(() => message = '', 3000);
     } catch (e) {
-      console.error('Failed to save settings:', e);
-      message = 'Error saving settings: ' + e;
+      // Fallback to localStorage when Tauri is not available
+      console.warn('Tauri invoke failed, falling back to localStorage:', e);
+      const settings = loadSettingsFromStorage();
+      settings.groq_api_key = apiKey;
+      saveSettingsToStorage(settings);
+      status = 'Saved';
+      message = 'API Key saved to local storage (fallback mode)!';
+      setTimeout(() => message = '', 3000);
     }
   }
 
@@ -62,8 +96,13 @@
       message = 'API Key removed.';
       setTimeout(() => message = '', 3000);
     } catch (e) {
-      console.error('Failed to clear settings:', e);
-      message = 'Error clearing settings: ' + e;
+      // Fallback to localStorage when Tauri is not available
+      console.warn('Tauri invoke failed, falling back to localStorage:', e);
+      deleteSettingFromStorage('groq_api_key');
+      apiKey = '';
+      status = 'Not Configured';
+      message = 'API Key removed from local storage.';
+      setTimeout(() => message = '', 3000);
     }
   }
 </script>
