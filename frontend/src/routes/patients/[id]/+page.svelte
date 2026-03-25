@@ -13,6 +13,7 @@
   let loading = true;
   let error: string | null = null;
   let assessingRisk = false;
+  let riskError: string | null = null;
 
   $: patientId = $page.params.id ?? '';
 
@@ -32,6 +33,7 @@
   async function handleRiskAssessment() {
     if (!patient) return;
     assessingRisk = true;
+    riskError = null;
     try {
       // Try to load API key from settings
       let apiKey: string | undefined = undefined;
@@ -45,6 +47,12 @@
       assessment = await assessRisk(patient.id, apiKey);
     } catch (e) {
       console.error('Error assessing risk:', e);
+      const errorMsg = String(e);
+      if (errorMsg.includes("Groq API key not configured")) {
+         riskError = "API key missing. Please configure your Groq API key in settings.";
+      } else {
+         riskError = "Risk assessment failed. Please try again.";
+      }
     } finally {
       assessingRisk = false;
     }
@@ -268,7 +276,15 @@
                 </div>
                 
                 <div class="p-5">
-                    {#if !assessment && !assessingRisk}
+                    {#if riskError}
+                        <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded relative text-sm mb-4" role="alert">
+                            <strong class="font-bold">Error:</strong>
+                            <span class="block sm:inline">{riskError}</span>
+                        </div>
+                        <div class="text-center">
+                             <button on:click={handleRiskAssessment} class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">Try again</button>
+                        </div>
+                    {:else if !assessment && !assessingRisk}
                         <div class="text-center py-6">
                             <p class="text-slate-500 text-sm mb-4">{$t('patient.risk.prompt')}</p>
                             <button on:click={handleRiskAssessment} class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded shadow-sm transition-colors">

@@ -42,12 +42,13 @@ fn delete_setting(app: tauri::AppHandle, key: String) -> Result<(), String> {
 #[derive(Debug, Deserialize)]
 pub struct AssessRiskPayload {
     id: String,
-    #[serde(default)]
+    #[serde(default, rename = "apiKey")]
     api_key: Option<String>,
 }
 
 /// Risk assessment result returned to frontend
 #[derive(Debug, Serialize)]
+#[serde(rename_all = "camelCase")]
 pub struct RiskAssessmentResult {
     pub risk_score: f64,
     pub explanation: String,

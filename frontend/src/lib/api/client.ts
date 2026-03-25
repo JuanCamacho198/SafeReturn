@@ -123,6 +123,12 @@ export async function assessRisk(id: string, apiKey?: string): Promise<RiskAsses
   try {
     return await invoke('assess_risk', { payload: { id, apiKey } });
   } catch (error) {
+     const errorMsg = String(error);
+     // Propagate configuration errors explicitly so UI can prompt user
+     if (errorMsg.includes("Groq API key not configured")) {
+       throw new Error("Groq API key not configured");
+     }
+
      console.warn(`Tauri invoke failed for assessRisk: ${error}. Falling back to mock data.`);
      
      const patient = (syntheticPatients as any[]).find(p => p.patient_id === id);
