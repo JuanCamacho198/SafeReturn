@@ -104,6 +104,7 @@ Si deseas compilar el ejecutable tú mismo, usa estos comandos:
 # 1. Build del Frontend (Svelte)
 cd frontend
 npm run build
+bun run build
 
 # 2. Compilar el Backend (Bun sidecar)
 cd ../backend
@@ -112,6 +113,7 @@ bun build ./index.ts --compile --outfile ../frontend/src-tauri/bin/backend-sidec
 # 3. Empaquetar con Tauri (genera el .exe)
 cd ../frontend
 npm run tauri build
+bun run tauri build
 ```
 
 El archivo `.exe` se generará en:
@@ -140,6 +142,8 @@ cp .env.example .env
 
 # 5. Ejecutar en modo desarrollo
 npm run tauri dev
+bun run tauri dev
+
 ```
 
 ## Configuración de API
@@ -186,9 +190,11 @@ npm run tauri dev
 ```bash
 # Desarrollo
 npm run tauri dev
+bun run tauri dev
 
 # Verificar tipos
 npm run check
+bun run check
 
 # Build del frontend
 cd frontend && npm run build
@@ -216,6 +222,7 @@ Para empaquetar SafeReturn en un ejecutable de escritorio (.exe, .app, .deb):
    ```bash
    cd frontend
    npm run build
+   bun run build
    ```
 
 2. **Empaquetar el Backend Sidecar (Bun)**:
@@ -228,6 +235,7 @@ Para empaquetar SafeReturn en un ejecutable de escritorio (.exe, .app, .deb):
    ```bash
    cd frontend
    npm run tauri build
+   bun run tauri build
    ```
 
 Esto generará el instalador final en `frontend/src-tauri/target/release/bundle/`.
@@ -239,5 +247,5 @@ MIT License - consulta el archivo [LICENSE](LICENSE) para más detalles.
 ---
 
 <div align="center">
-  <p>Construido con ❤️ para mejorar la atención médica</p>
+  <p>Construido para mejorar la atención médica</p>
 </div>

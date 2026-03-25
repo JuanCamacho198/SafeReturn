@@ -29,7 +29,7 @@ Para sugerir nuevas funcionalidades:
 1. Haz fork del repositorio
 2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
 3. Haz tus cambios siguiendo las convenciones del proyecto
-4. Asegúrate de que los tests pasen (`npm run check` y `bun test`)
+4. Asegúrate de que los tests pasen (`npm run check` o `bun run check` y `bun test`)
 5. Commitea tus cambios con mensajes claros
 6. Push a tu rama y crea un Pull Request
 
@@ -48,8 +48,10 @@ cd ../backend && bun install
 cp .env.example .env
 # Edita .env con tu API key de Groq
 
-# Ejecutar en desarrollo
+# Ejecutar en desarrollo con NPM o Bun
 npm run tauri dev
+bun run tauri dev
+
 ```
 
 ## Estándares de Código
