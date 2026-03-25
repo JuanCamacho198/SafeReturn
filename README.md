@@ -2,14 +2,18 @@
   <img src="Logo SAFERETUrn.png" alt="SAFERETUrn Logo" width="200" />
   <h1>SAFERETUrn 🏥</h1>
   <p>
-    <a href="https://github.com/yourusername/safereturn/releases/latest">
-      <img src="https://img.shields.io/github/v/release/yourusername/safereturn?include_prereleases&style=flat" alt="GitHub Release" />
+    <a href="https://github.com/JuanCamacho198/SafeReturn/releases/latest">
+      <img src="https://img.shields.io/github/v/release/JuanCamacho198/SafeReturn?include_prereleases&style=flat" alt="GitHub Release" />
     </a>
-    <a href="https://github.com/yourusername/safereturn/blob/main/LICENSE">
-      <img src="https://img.shields.io/github/license/yourusername/safereturn?style=flat" alt="License" />
+    <a href="https://github.com/JuanCamacho198/SafeReturn/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/JuanCamacho198/SafeReturn?style=flat" alt="License" />
     </a>
-    <a href="https://github.com/yourusername/safereturn/actions">
-      <img src="https://img.shields.io/github/actions/workflow/status/yourusername/safereturn/main.yml?style=flat" alt="Build Status" />
+  </p>
+  
+  <h3>📥 Descargar</h3>
+  <p>
+    <a href="https://github.com/JuanCamacho198/SafeReturn/releases/latest">
+      <img src="https://img.shields.io/badge/Windows-.exe-blue?style=for-the-badge&logo=windows" alt="Download for Windows" />
     </a>
   </p>
 </div>
@@ -60,9 +64,9 @@ Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan
 
 | Plataforma | Descarga |
 |------------|----------|
-| Windows (.exe) | [safeturn-0.9.0-setup.exe](https://github.com/yourusername/safereturn/releases/latest) |
-| macOS (.dmg) | [safeturn-0.9.0.dmg](https://github.com/yourusername/safereturn/releases/latest) |
-| Linux (.deb) | [safeturn-0.9.0.deb](https://github.com/yourusername/safereturn/releases/latest) |
+| Windows (.exe) | [safeturn-0.9.0-setup.exe](https://github.com/JuanCamacho198/safereturn/releases/latest) |
+| macOS (.dmg) | [safeturn-0.9.0.dmg](https://github.com/JuanCamacho198/safereturn/releases/latest) |
+| Linux (.deb) | [safeturn-0.9.0.deb](https://github.com/JuanCamacho198/safereturn/releases/latest) |
 
 ### Requisitos Previos
 
@@ -70,11 +74,36 @@ Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan
 - [Rust](https://rustup.rs/) (para Tauri)
 - Python 3.10+ (para scripts de ML/FAISS)
 
+## 🛠️ Construir el .exe
+
+Si deseas compilar el ejecutable tú mismo, usa estos comandos:
+
+```bash
+# 1. Build del Frontend (Svelte)
+cd frontend
+npm run build
+
+# 2. Compilar el Backend (Bun sidecar)
+cd ../backend
+bun build ./index.ts --compile --outfile ../frontend/src-tauri/bin/backend-sidecar
+
+# 3. Empaquetar con Tauri (genera el .exe)
+cd ../frontend
+npm run tauri build
+```
+
+El archivo `.exe` se generará en:
+```
+frontend/src-tauri/target/release/bundle/nsis/
+```
+
+> **Nota**: Necesitas tener Rust instalado (`rustup.rs`) y las dependencias de Tauri configuradas.
+
 ## Primeros Pasos
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/yourusername/safereturn.git
+git clone https://github.com/JuanCamacho198/safereturn.git
 cd safereturn
 
 # 2. Instalar dependencias del frontend
