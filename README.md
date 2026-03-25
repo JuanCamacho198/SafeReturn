@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="Logo SAFERETUrn.png" alt="SAFERETUrn Logo" width="200" />
-  <h1>SAFERETUrn 🏥</h1>
+  <img src="Logo SafeReturn.png" alt="SafeReturn Logo" width="200" />
+  <h1>SafeReturn 🏥</h1>
   <p>
     <a href="https://github.com/JuanCamacho198/SafeReturn/releases/latest">
       <img src="https://img.shields.io/github/v/release/JuanCamacho198/SafeReturn?include_prereleases&style=flat" alt="GitHub Release" />
@@ -20,7 +20,7 @@
 
 ---
 
-SAFERETUrn es una aplicación de escritorio de salud **100% local** que utiliza una arquitectura de Generación Aumentada por Recuperación (RAG) para predecir la probabilidad de reingreso hospitalario a 30 días basándose en notas clínicas no estructuradas.
+SafeReturn es una aplicación de escritorio de salud **100% local** que utiliza una arquitectura de Generación Aumentada por Recuperación (RAG) para predecir la probabilidad de reingreso hospitalario a 30 días basándose en notas clínicas no estructuradas.
 
 Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan **sin conexión** en la máquina local sin depender de APIs externas en la nube.
 
@@ -188,7 +188,7 @@ Consulta la documentación SDD en `openspec/` para propuestas completas, documen
 
 ## Construcción para Producción
 
-Para empaquetar SAFERETUrn en un ejecutable de escritorio (.exe, .app, .deb):
+Para empaquetar SafeReturn en un ejecutable de escritorio (.exe, .app, .deb):
 
 1. **Build del Frontend**:
    ```bash

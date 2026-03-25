@@ -1,6 +1,6 @@
-# Contributing to SAFERETUrn
+# Contributing to SafeReturn
 
-¡Gracias por tu interés en contribuir a SAFERETUrn!
+¡Gracias por tu interés en contribuir a SafeReturn!
 
 ## Código de Conducta
 
