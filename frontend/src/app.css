@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
-/* SafeReturn Custom Styles */
+/* SafeReturn Custom Styles - Clinical Dark Glassmorphism */
 :root {
-  --primary: #1e40af;
-  --primary-dark: #1e3a8a;
-  --secondary: #64748b;
-  --background: #f8fafc;
-  --surface: #ffffff;
-  --text: #1e293b;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
-  --success: #10b981;
+  --primary: #00f3ff;
+  --primary-dark: #00b8c2;
+  --secondary: #b026ff;
+  --background: #0a0a0e;
+  --surface: rgba(255, 255, 255, 0.03);
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.08);
+  --success: #00f3ff;
   --warning: #f59e0b;
-  --danger: #ef4444;
+  --danger: #ff2a85;
 }
 
 * {
@@ -26,4 +26,17 @@ html, body {
   background-color: var(--background);
   color: var(--text);
   min-height: 100vh;
+}
+
+.glass-panel {
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.text-neon {
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.3), 0 0 20px rgba(0, 243, 255, 0.1);
 }
