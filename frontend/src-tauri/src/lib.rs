@@ -75,49 +75,20 @@ async fn assess_risk(app: tauri::AppHandle, payload: AssessRiskPayload) -> Resul
         return Err("Groq API key not configured. Please add it in Settings.".to_string());
     }
     
-    // Load patient data
-    let patient = risk::load_patient_data(&payload.id)?;
-    
-    // Build clinical prompt
-    let prompt = prompt::build_clinical_prompt(&patient);
-    
-    // Try to call Groq API with timeout
-    let result = tokio::time::timeout(
-        std::time::Duration::from_secs(30),
-        risk::call_groq_api(&api_key, &prompt)
-    ).await;
-    
-    match result {
-        Ok(Ok(assessment)) => {
-            // API call succeeded
+    // Call sidecar for risk assessment
+    // The sidecar handles loading patient data from the DB and running the RAG pipeline
+    match risk::assess_risk_with_sidecar(app, payload.id, Some(api_key)).await {
+        Ok(assessment) => {
             Ok(RiskAssessmentResult {
                 risk_score: assessment.risk_score,
                 explanation: assessment.explanation,
                 fragments: assessment.fragments,
                 is_fallback: assessment.is_fallback,
             })
-        }
-        Ok(Err(e)) => {
-            // API call failed - use fallback
-            eprintln!("Groq API error: {}. Using fallback.", e);
-            let fallback = risk::fallback_assessment(&patient);
-            Ok(RiskAssessmentResult {
-                risk_score: fallback.risk_score,
-                explanation: fallback.explanation,
-                fragments: fallback.fragments,
-                is_fallback: true,
-            })
-        }
-        Err(_) => {
-            // Timeout - use fallback
-            eprintln!("Groq API timeout. Using fallback.");
-            let fallback = risk::fallback_assessment(&patient);
-            Ok(RiskAssessmentResult {
-                risk_score: fallback.risk_score,
-                explanation: fallback.explanation,
-                fragments: fallback.fragments,
-                is_fallback: true,
-            })
+        },
+        Err(e) => {
+            eprintln!("Sidecar error: {}", e);
+            Err(format!("Risk assessment failed: {}", e))
         }
     }
 }
@@ -127,6 +98,7 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_store::Builder::default().build())
         .plugin(tauri_plugin_opener::init())
+        .plugin(tauri_plugin_shell::init())
         .invoke_handler(tauri::generate_handler![
             greet,
             save_setting,

@@ -19,3 +19,6 @@ vector_store/*.faiss
 frontend/src-tauri/bin/
 !frontend/src-tauri/bin/.gitkeep
 
+# Ignore Windows executables
+*.exe
+

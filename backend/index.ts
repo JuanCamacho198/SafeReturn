@@ -3,9 +3,10 @@ import { createInterface } from 'readline';
 import { getPatients, getMetrics, getPatientById, assessPatientRisk } from './services/patient';
 
 // Initialize the database
-const db = initDb('storage.sqlite');
+const dbPath = process.env.DB_PATH || 'storage.sqlite';
+const db = initDb(dbPath);
 
-console.log(JSON.stringify({ type: 'log', message: 'Sidecar initialized' }));
+console.log(JSON.stringify({ type: 'log', message: `Sidecar initialized with DB: ${dbPath}` }));
 
 const rl = createInterface({
   input: process.stdin,

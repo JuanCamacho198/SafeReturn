@@ -10,6 +10,9 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/sqlite3": "^5.1.0"
   },
+  "scripts": {
+    "build:sidecar": "bun build --compile --outfile backend-sidecar ./index.ts"
+  },
   "peerDependencies": {
     "typescript": "^5"
   },

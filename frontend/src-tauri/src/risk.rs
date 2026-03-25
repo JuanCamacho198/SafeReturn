@@ -1,10 +1,11 @@
-// Risk assessment module - core logic for calling Groq API and fallback
-use crate::prompt::{self, Patient};
 use serde::{Deserialize, Serialize};
-use std::fs;
+use tauri::Manager;
+use tauri_plugin_shell::ShellExt;
+use tauri_plugin_shell::process::{Command, CommandEvent};
 
 /// Risk assessment result structure
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct RiskAssessment {
     pub risk_score: f64,
     pub explanation: String,
@@ -13,222 +14,101 @@ pub struct RiskAssessment {
     pub is_fallback: bool,
 }
 
-/// Groq API request structure
-#[derive(Debug, Serialize)]
-struct GroqRequest {
-    model: String,
-    messages: Vec<GroqMessage>,
-    temperature: f64,
-    max_tokens: u32,
-    response_format: GroqResponseFormat,
-}
-
-/// Groq message structure
-#[derive(Debug, Serialize)]
-struct GroqMessage {
-    role: String,
-    content: String,
-}
-
-/// Groq response format structure
-#[derive(Debug, Serialize)]
-struct GroqResponseFormat {
-    #[serde(rename = "type")]
-    format_type: String,
-}
-
-/// Groq API response structure
 #[derive(Debug, Deserialize)]
-struct GroqResponse {
-    choices: Vec<GroqChoice>,
+struct SidecarResponse {
+    id: String,
+    success: bool,
+    data: Option<RiskAssessment>,
+    error: Option<String>,
 }
 
-/// Groq choice structure
-#[derive(Debug, Deserialize)]
-struct GroqChoice {
-    message: GroqMessageContent,
-}
+/// Call the sidecar to assess risk
+pub async fn assess_risk_with_sidecar(
+    app: tauri::AppHandle,
+    patient_id: String,
+    api_key: Option<String>,
+) -> Result<RiskAssessment, String> {
+    let sidecar_command: Command = app.shell().sidecar("backend-sidecar").map_err(|e| e.to_string())?;
 
-/// Groq message content structure
-#[derive(Debug, Deserialize)]
-struct GroqMessageContent {
-    content: String,
-}
-
-/// Load patient data from synthetic_patients.json
-pub fn load_patient_data(patient_id: &str) -> Result<Patient, String> {
-    let path = std::path::Path::new("frontend/src/lib/synthetic_patients.json");
-    let content = fs::read_to_string(path).map_err(|e| format!("Failed to read patient data: {}", e))?;
-    
-    let patients: Vec<Patient> = serde_json::from_str(&content)
-        .map_err(|e| format!("Failed to parse patient data: {}", e))?;
-    
-    patients
-        .into_iter()
-        .find(|p| p.patient_id == patient_id)
-        .ok_or_else(|| format!("Patient not found: {}", patient_id))
-}
-
-/// Call the Groq API with the constructed prompt
-pub async fn call_groq_api(api_key: &str, prompt: &str) -> Result<RiskAssessment, String> {
-    let client = reqwest::Client::new();
-    
-    let system_prompt = prompt::get_system_prompt();
-    
-    let request = GroqRequest {
-        model: "llama-3.1-70b-versatile".to_string(),
-        messages: vec![
-            GroqMessage {
-                role: "system".to_string(),
-                content: system_prompt,
-            },
-            GroqMessage {
-                role: "user".to_string(),
-                content: prompt.to_string(),
-            },
-        ],
-        temperature: 0.1,
-        max_tokens: 512,
-        response_format: GroqResponseFormat {
-            format_type: "json_object".to_string(),
-        },
-    };
-    
-    let response = client
-        .post("https://api.groq.com/openai/v1/chat/completions")
-        .header("Authorization", format!("Bearer {}", api_key))
-        .header("Content-Type", "application/json")
-        .json(&request)
-        .send()
-        .await
-        .map_err(|e| format!("API request failed: {}", e))?;
-    
-    // Check for HTTP errors
-    if !response.status().is_success() {
-        let status = response.status();
-        let error_text = response.text().await.unwrap_or_default();
-        
-        return match status.as_u16() {
-            429 => Err("API rate limit exceeded. Please try again later.".to_string()),
-            402 => Err("API quota exhausted. Please check your Groq account.".to_string()),
-            _ => Err(format!("API error ({}): {}", status, error_text)),
-        };
-    }
-    
-    let groq_response: GroqResponse = response
-        .json()
-        .map_err(|e| format!("Failed to parse API response: {}", e))?;
-    
-    let content = groq_response
-        .choices
-        .first()
-        .ok_or_else(|| "No response from API".to_string())?
-        .message
-        .content
-        .clone();
-    
-    parse_groq_response(&content)
-}
-
-/// Parse the Groq API JSON response
-pub fn parse_groq_response(response: &str) -> Result<RiskAssessment, String> {
-    // Try to parse the JSON response
-    #[derive(Deserialize)]
-    struct RawResponse {
-        risk_score: f64,
-        explanation: String,
-        fragments: Vec<String>,
-    }
-    
-    match serde_json::from_str::<RawResponse>(response) {
-        Ok(raw) => Ok(RiskAssessment {
-            risk_score: raw.risk_score.clamp(0.0, 1.0),
-            explanation: raw.explanation,
-            fragments: raw.fragments,
-            is_fallback: false,
-        }),
-        Err(e) => Err(format!("Failed to parse response as JSON: {}. Raw response: {}", e, response)),
-    }
-}
-
-/// Fallback assessment using clinical rules based on patient data
-pub fn fallback_assessment(patient: &Patient) -> RiskAssessment {
-    let mut risk_score: f64 = 0.3; // Base risk
-    let mut fragments = Vec::new();
-    
-    // Check prior readmission - highest indicator
-    if patient.outcomes.readmitted {
-        risk_score += 0.4;
-        fragments.push("Prior readmission within 30 days".to_string());
-    }
-    
-    // Check number of diagnoses
-    let diagnosis_count = patient.diagnoses.len();
-    if diagnosis_count >= 4 {
-        risk_score += 0.2;
-        fragments.push(format!("Multiple comorbidities ({} diagnoses)", diagnosis_count));
-    } else if diagnosis_count >= 2 {
-        risk_score += 0.1;
-    }
-    
-    // Check number of medications (polypharmacy risk)
-    let med_count = patient.medications.len();
-    if med_count >= 5 {
-        risk_score += 0.15;
-        fragments.push(format!("Polypharmacy ({} medications)", med_count));
-    } else if med_count >= 3 {
-        risk_score += 0.05;
-    }
-    
-    // Check abnormal lab values
-    let abnormal_labs: Vec<_> = patient.lab_results.iter()
-        .filter(|l| l.flag != "normal")
-        .collect();
-    
-    if !abnormal_labs.is_empty() {
-        risk_score += 0.1;
-        fragments.push(format!("{} abnormal lab values", abnormal_labs.len()));
-        for lab in abnormal_labs.iter().take(3) {
-            fragments.push(format!("{}: {}", lab.name, lab.flag));
-        }
-    }
-    
-    // Age factor
-    if patient.demographics.age >= 70 {
-        risk_score += 0.1;
-        fragments.push(format!("Advanced age ({})", patient.demographics.age));
-    }
-    
-    // High-risk diagnoses
-    let high_risk_conditions = ["CHF", "Heart Failure", "COPD", "Diabetes", "Renal"];
-    for diag in &patient.diagnoses {
-        for condition in &high_risk_conditions {
-            if diag.description.to_uppercase().contains(condition) {
-                risk_score += 0.05;
-                if !fragments.contains(&diag.description.clone()) {
-                    fragments.push(diag.description.clone());
-                }
-                break;
+    // Try multiple database locations
+    let db_path = if let Ok(app_data_dir) = app.path().app_data_dir() {
+        let db_in_app_data = app_data_dir.join("storage.sqlite");
+        if db_in_app_data.exists() {
+            db_in_app_data
+        } else {
+            // Fallback: use the root storage.sqlite next to the exe
+            if let Ok(exe_path) = std::env::current_exe() {
+                exe_path.parent().map(|p| p.join("storage.sqlite")).unwrap_or_else(|| std::path::PathBuf::from("storage.sqlite"))
+            } else {
+                std::path::PathBuf::from("storage.sqlite")
             }
         }
-    }
-    
-    // Clamp to 0-1 range
-    risk_score = risk_score.clamp(0.0, 1.0);
-    
-    // Generate explanation based on top factors
-    let explanation = if risk_score >= 0.7 {
-        "High readmission risk based on prior readmission history, multiple comorbidities, and polypharmacy.".to_string()
-    } else if risk_score >= 0.4 {
-        "Moderate readmission risk. Consider close follow-up and medication reconciliation.".to_string()
     } else {
-        "Low readmission risk based on stable clinical indicators.".to_string()
+        std::path::PathBuf::from("storage.sqlite")
     };
     
-    RiskAssessment {
-        risk_score,
-        explanation,
-        fragments,
-        is_fallback: true,
+    let (mut rx, mut child) = sidecar_command
+        .env("DB_PATH", db_path.to_string_lossy().as_ref())
+        .spawn()
+        .map_err(|e| format!("Failed to spawn sidecar: {}", e))?;
+
+    let request = serde_json::json!({
+        "id": "req-1",
+        "command": "assess_risk",
+        "payload": {
+            "id": patient_id,
+            "apiKey": api_key
+        }
+    });
+
+    let request_str = request.to_string() + "\n";
+    child.write(request_str.as_bytes()).map_err(|e| format!("Failed to write to sidecar: {}", e))?;
+
+    let mut result: Result<RiskAssessment, String> = Err("No response from sidecar".to_string());
+
+    // Wait for response
+    // We expect a JSON line on stdout
+    while let Some(event) = rx.recv().await {
+        match event {
+            CommandEvent::Stdout(line) => {
+                let line_str = String::from_utf8_lossy(&line);
+                // The sidecar logs other things too (e.g., "Sidecar initialized"). 
+                // We need to look for our response id "req-1"
+                
+                if let Ok(response) = serde_json::from_str::<SidecarResponse>(&line_str) {
+                    if response.id == "req-1" {
+                        if response.success {
+                            if let Some(data) = response.data {
+                                result = Ok(data);
+                            } else {
+                                result = Err("Sidecar returned success but no data".to_string());
+                            }
+                        } else {
+                            result = Err(response.error.unwrap_or_else(|| "Unknown sidecar error".to_string()));
+                        }
+                        break; // Found our response
+                    }
+                }
+            }
+            CommandEvent::Stderr(line) => {
+                eprintln!("Sidecar stderr: {}", String::from_utf8_lossy(&line));
+            }
+            CommandEvent::Error(e) => {
+                result = Err(format!("Sidecar communication error: {}", e));
+                break;
+            }
+            CommandEvent::Terminated(payload) => {
+                 result = Err(format!("Sidecar terminated unexpectedly with code {:?}", payload.code));
+                 break;
+            }
+            _ => {}
+        }
     }
+    
+    // Close the sidecar
+    // child.kill(); // The Drop trait might handle it, or we can explicit kill.
+    // In V2, child.kill() is correct.
+    let _ = child.kill();
+
+    result
 }
