@@ -5,9 +5,6 @@
   import type { Patient, RiskAssessment } from '$lib/types/ipc';
   import { fade, fly } from 'svelte/transition';
 
-  // Components (keeping local for simplicity or importing if complex)
-  // Re-using existing components where possible, but refining here for the new theme
-  
   let patient: Patient | null = null;
   let assessment: RiskAssessment | null = null;
   let loading = true;
@@ -20,9 +17,7 @@
     loading = true;
     error = null;
     try {
-      console.log('Fetching patient:', patientId);
       patient = await getPatient(patientId);
-      console.log('Patient data:', patient);
     } catch (e) {
       console.error('Error fetching patient:', e);
       error = "Failed to load patient data. Please try again.";
@@ -38,7 +33,6 @@
       assessment = await assessRisk(patient.id);
     } catch (e) {
       console.error('Error assessing risk:', e);
-      // Optional: Show toast or inline error for risk assessment
     } finally {
       assessingRisk = false;
     }
@@ -48,7 +42,6 @@
     loadData();
   });
 
-  // Helper for dates
   function formatDate(dateStr?: string) {
     if (!dateStr) return 'N/A';
     return new Date(dateStr).toLocaleDateString(undefined, {
@@ -60,19 +53,13 @@
 </script>
 
 <div class="min-h-screen bg-slate-50 pb-12">
-  <!-- Top Navigation / Breadcrumbs -->
-  <div class="bg-white border-b border-slate-200 px-6 py-4">
+  <!-- Navigation -->
+  <div class="bg-white border-b border-slate-200 px-6 py-4 sticky top-0 z-10">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       <div class="flex items-center space-x-4">
         <a href="/dashboard" class="text-slate-500 hover:text-sky-600 transition-colors flex items-center font-medium">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-          </svg>
-          Back to Dashboard
+          ← Back to Dashboard
         </a>
-      </div>
-      <div>
-        <!-- Potential Actions like Edit Patient -->
       </div>
     </div>
   </div>
@@ -84,18 +71,7 @@
   {:else if error}
     <div class="max-w-7xl mx-auto px-6 py-12">
       <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
-        <div class="flex">
-          <div class="flex-shrink-0">
-            <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-            </svg>
-          </div>
-          <div class="ml-3">
-            <p class="text-sm text-red-700 font-medium">
-              {error}
-            </p>
-          </div>
-        </div>
+        <p class="text-sm text-red-700 font-medium">{error}</p>
       </div>
     </div>
   {:else if patient}
@@ -117,8 +93,7 @@
             <span>DOB: {formatDate(patient.dob)}</span>
           </div>
         </div>
-        <div class="flex items-center gap-3">
-            <!-- Status Badge Placeholder -->
+        <div>
             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
                 Active Patient
             </span>
@@ -127,18 +102,11 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- Left Column: Clinical History -->
+        <!-- Clinical History -->
         <div class="lg:col-span-2 space-y-8">
-          
-          <!-- Encounters / Timeline -->
           <section>
             <div class="flex items-center justify-between mb-4">
-              <h2 class="text-xl font-bold text-slate-800 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                Clinical Timeline
-              </h2>
+              <h2 class="text-xl font-bold text-slate-800">Clinical Timeline</h2>
               <span class="text-sm text-slate-500">{patient.encounters?.length || 0} Encounters</span>
             </div>
 
@@ -157,7 +125,7 @@
                           </p>
                         </div>
                         <span class="text-xs bg-sky-50 text-sky-700 px-2 py-1 rounded font-medium border border-sky-100">
-                          Encounter #{encounter.id.substring(0, 6)}
+                          #{encounter.id.substring(0, 6)}
                         </span>
                       </div>
                       
@@ -176,14 +144,100 @@
               </div>
             {/if}
           </section>
-
         </div>
 
-        <!-- Right Column: Analytics & Risk -->
+        <!-- Sidebar -->
         <div class="space-y-6">
             
-            <!-- Risk Assessment Card -->
+            <!-- Risk Assessment -->
             <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-                <div class="bg-slate-50 px-5 py-4 border-b border-slate-200 flex justify-between items-center">
-                    <h3 class="font-bold text-slate-800 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-
+                <div class="bg-slate-50 px-5 py-4 border-b border-slate-200">
+                    <h3 class="font-bold text-slate-800">Risk Assessment</h3>
+                </div>
+                
+                <div class="p-5">
+                    {#if !assessment && !assessingRisk}
+                        <div class="text-center py-6">
+                            <p class="text-slate-500 text-sm mb-4">Run AI analysis on patient history to identify risks.</p>
+                            <button on:click={handleRiskAssessment} class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded shadow-sm transition-colors">
+                                Run Analysis
+                            </button>
+                        </div>
+                    {:else if assessingRisk}
+                        <div class="text-center py-8">
+                            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mx-auto mb-3"></div>
+                            <p class="text-sm text-indigo-600 font-medium animate-pulse">Analyzing...</p>
+                        </div>
+                    {:else if assessment}
+                        <div in:fly={{ y: 20, duration: 400 }}>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-medium text-slate-500 uppercase">Risk Score</span>
+                                <span class="text-2xl font-bold {assessment.riskScore >= 0.7 ? 'text-red-600' : (assessment.riskScore >= 0.4 ? 'text-amber-600' : 'text-emerald-600')}">
+                                    {(assessment.riskScore * 100).toFixed(0)}%
+                                </span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2 mb-6 overflow-hidden">
+                                <div class="h-2 rounded-full {assessment.riskScore >= 0.7 ? 'bg-red-500' : (assessment.riskScore >= 0.4 ? 'bg-amber-500' : 'bg-emerald-500')}" style="width: {assessment.riskScore * 100}%"></div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <div class="bg-slate-50 p-3 rounded border border-slate-100">
+                                    <h4 class="text-xs font-bold text-slate-700 uppercase mb-1">AI Explanation</h4>
+                                    <p class="text-sm text-slate-600 leading-snug">{assessment.explanation}</p>
+                                </div>
+                                
+                                {#if assessment.fragments && assessment.fragments.length > 0}
+                                    <div>
+                                        <h4 class="text-xs font-bold text-slate-700 uppercase mb-2">Key Evidence</h4>
+                                        <ul class="space-y-2 max-h-48 overflow-y-auto pr-1 custom-scrollbar">
+                                            {#each assessment.fragments as fragment}
+                                                <li class="text-xs bg-indigo-50 text-indigo-900 p-2 rounded border border-indigo-100">"{fragment}"</li>
+                                            {/each}
+                                        </ul>
+                                    </div>
+                                {/if}
+                            </div>
+                        </div>
+                    {/if}
+                </div>
+            </div>
+
+            <!-- Demographics -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+                <h3 class="font-bold text-slate-800 mb-3 text-sm uppercase tracking-wide">Demographics</h3>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between py-1 border-b border-slate-50">
+                        <span class="text-slate-500">Name</span>
+                        <span class="font-medium text-slate-800 text-right">{patient.first_name} {patient.last_name}</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-slate-50">
+                        <span class="text-slate-500">DOB</span>
+                        <span class="font-medium text-slate-800 text-right">{formatDate(patient.dob)}</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-slate-50">
+                        <span class="text-slate-500">Gender</span>
+                        <span class="font-medium text-slate-800 text-right">{patient.gender}</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-slate-50">
+                        <span class="text-slate-500">ID</span>
+                        <span class="font-medium text-slate-800 font-mono text-xs text-right">{patient.id}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  {:else}
+    <div class="max-w-7xl mx-auto px-6 py-12 text-center">
+      <h2 class="text-2xl font-bold text-slate-800">Patient not found</h2>
+      <a href="/dashboard" class="mt-4 inline-block text-sky-600 hover:underline">Return to Dashboard</a>
+    </div>
+  {/if}
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+</style>

@@ -61,13 +61,14 @@
     loadMetrics();
   });
 
-  // Chart Data Preparation
+  // Chart Data Preparation - Using Medical Theme Colors
+  // Sky: #0ea5e9, Indigo: #6366f1, Emerald: #10b981, Amber: #f59e0b, Rose: #f43f5e
   $: distributionData = metrics ? {
     labels: metrics.conditionDistribution.map(d => d.label),
     datasets: [{
       label: 'Patients',
       data: metrics.conditionDistribution.map(d => d.value),
-      backgroundColor: ['rgba(0, 243, 255, 0.6)', 'rgba(176, 38, 255, 0.6)', 'rgba(255, 42, 133, 0.6)', 'rgba(59, 130, 246, 0.6)', 'rgba(16, 185, 129, 0.6)'],
+      backgroundColor: ['rgba(14, 165, 233, 0.7)', 'rgba(99, 102, 241, 0.7)', 'rgba(244, 63, 94, 0.7)', 'rgba(245, 158, 11, 0.7)', 'rgba(16, 185, 129, 0.7)'],
       borderWidth: 0,
       borderRadius: 4,
     }]
@@ -79,38 +80,47 @@
       label: 'New Patients',
       data: [65, 59, 80, 81, 56, metrics?.newThisMonth || 124],
       fill: true,
-      borderColor: '#00f3ff',
-      tension: 0.4
+      borderColor: '#0ea5e9',
+      tension: 0.4,
+      pointBackgroundColor: '#ffffff',
+      pointBorderColor: '#0ea5e9',
+      pointBorderWidth: 2,
     }]
   };
 
 </script>
 
-<div class="min-h-screen bg-background p-8 font-sans text-gray-200 selection:bg-neon-blue/30 selection:text-white">
-  <div class="mx-auto max-w-7xl space-y-8">
-    
-    <!-- Header -->
-    <header class="flex items-center justify-between">
+<div class="min-h-screen bg-slate-50 font-sans text-slate-900 pb-12">
+  <!-- Navigation/Header Bar -->
+  <div class="bg-white border-b border-slate-200 sticky top-0 z-10 px-8 py-4 mb-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
       <div>
-        <h1 class="bg-linear-to-r from-white to-gray-500 bg-clip-text text-4xl font-bold text-transparent tracking-tighter">
-          Clinical Intelligence
+        <h1 class="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+            <span class="text-sky-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+                </svg>
+            </span>
+            Clinical Intelligence
         </h1>
-        <p class="mt-1 text-sm text-gray-500">Real-time patient monitoring & analytics</p>
       </div>
       <div class="flex items-center gap-4">
-        <div class="flex items-center gap-2 rounded-full border border-surface-border bg-surface px-3 py-1 text-xs text-gray-400">
+        <div class="flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs text-emerald-700 font-medium">
           <span class="relative flex h-2 w-2">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-neon-green opacity-75"></span>
-            <span class="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
           </span>
           System Online
         </div>
-        <div class="h-10 w-10 overflow-hidden rounded-full border border-surface-border bg-surface-border">
-          <img src="https://ui-avatars.com/api/?name=Dr+Smith&background=0a0a0e&color=fff" alt="User" />
+        <div class="h-9 w-9 overflow-hidden rounded-full border border-slate-200 bg-slate-100">
+          <img src="https://ui-avatars.com/api/?name=Dr+Smith&background=0ea5e9&color=fff" alt="User" />
         </div>
       </div>
-    </header>
+    </div>
+  </div>
 
+  <div class="mx-auto max-w-7xl px-8 space-y-8">
+    
     <!-- KPI Grid -->
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
       <StatCard 
@@ -118,7 +128,8 @@
         value={metrics?.totalPatients || 0} 
         loading={loadingMetrics} 
         trend="up" 
-        trendValue="12%" 
+        trendValue="12%"
+        icon="fas fa-users"
       />
       <StatCard 
         title="New Admissions" 
@@ -126,6 +137,7 @@
         loading={loadingMetrics} 
         trend="up" 
         trendValue="5%" 
+        icon="fas fa-user-plus"
       />
       <StatCard 
         title="Critical Alerts" 
@@ -133,23 +145,28 @@
         loading={loadingMetrics} 
         trend="down" 
         trendValue="2" 
+        icon="fas fa-exclamation-triangle"
       />
     </div>
 
     <!-- Charts Row -->
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-      <GlassChart 
-        type="bar" 
-        title="Condition Distribution" 
-        data={distributionData} 
-        loading={loadingMetrics} 
-      />
-      <GlassChart 
-        type="line" 
-        title="Patient Growth Trend" 
-        data={growthData} 
-        loading={loadingMetrics} 
-      />
+      <div class="min-h-[350px]">
+          <GlassChart 
+            type="bar" 
+            title="Condition Distribution" 
+            data={distributionData} 
+            loading={loadingMetrics} 
+          />
+      </div>
+      <div class="min-h-[350px]">
+          <GlassChart 
+            type="line" 
+            title="Patient Growth Trend" 
+            data={growthData} 
+            loading={loadingMetrics} 
+          />
+      </div>
     </div>
 
     <!-- Patient Table -->

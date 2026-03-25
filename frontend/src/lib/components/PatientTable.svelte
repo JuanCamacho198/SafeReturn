@@ -32,21 +32,26 @@
   }
 </script>
 
-<div class="w-full rounded-2xl border border-surface-border bg-glass-gradient backdrop-blur-glass shadow-glass">
+<div class="card overflow-hidden">
   <!-- Header with search -->
-  <div class="flex items-center justify-between border-b border-surface-border p-6">
-    <h3 class="text-lg font-medium text-white">Recent Patients</h3>
+  <div class="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-6 py-4">
+    <h3 class="text-lg font-bold text-slate-800 flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+      Recent Patients
+    </h3>
     <div class="relative w-64">
       <input
         type="text"
         placeholder="Search patients..."
         value={search}
         on:input={handleSearch}
-        class="w-full rounded-lg border border-surface-border bg-surface px-4 py-2 pl-10 text-sm text-white placeholder-gray-500 transition-colors focus:border-neon-blue focus:outline-none focus:ring-1 focus:ring-neon-blue"
+        class="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 pl-10 text-sm text-slate-900 placeholder-slate-400 transition-colors focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 shadow-sm"
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="absolute left-3 top-2.5 h-4 w-4 text-gray-500"
+        class="absolute left-3 top-2.5 h-4 w-4 text-slate-400"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -63,47 +68,47 @@
 
   <!-- Table -->
   <div class="overflow-x-auto">
-    <table class="w-full text-left text-sm text-gray-400">
-      <thead class="bg-surface/50 text-xs uppercase text-gray-400">
+    <table class="w-full text-left text-sm text-slate-600">
+      <thead class="bg-slate-50 text-xs uppercase text-slate-500 font-semibold tracking-wider border-b border-slate-200">
         <tr>
-          <th scope="col" class="px-6 py-3 font-medium">Name</th>
-          <th scope="col" class="px-6 py-3 font-medium">Age</th>
-          <th scope="col" class="px-6 py-3 font-medium">Condition</th>
-          <th scope="col" class="px-6 py-3 font-medium text-right">Actions</th>
+          <th scope="col" class="px-6 py-3">Name</th>
+          <th scope="col" class="px-6 py-3">Age</th>
+          <th scope="col" class="px-6 py-3">Condition</th>
+          <th scope="col" class="px-6 py-3 text-right">Actions</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-surface-border">
+      <tbody class="divide-y divide-slate-100 bg-white">
         {#if loading}
           {#each Array(5) as _}
             <tr class="animate-pulse">
-              <td class="px-6 py-4"><div class="h-4 w-32 rounded bg-surface-border"></div></td>
-              <td class="px-6 py-4"><div class="h-4 w-8 rounded bg-surface-border"></div></td>
-              <td class="px-6 py-4"><div class="h-4 w-24 rounded bg-surface-border"></div></td>
-              <td class="px-6 py-4 text-right"><div class="ml-auto h-8 w-20 rounded bg-surface-border"></div></td>
+              <td class="px-6 py-4"><div class="h-4 w-32 rounded bg-slate-100"></div></td>
+              <td class="px-6 py-4"><div class="h-4 w-8 rounded bg-slate-100"></div></td>
+              <td class="px-6 py-4"><div class="h-4 w-24 rounded bg-slate-100"></div></td>
+              <td class="px-6 py-4 text-right"><div class="ml-auto h-8 w-20 rounded bg-slate-100"></div></td>
             </tr>
           {/each}
         {:else if patients.length === 0}
           <tr>
-            <td colspan="4" class="px-6 py-8 text-center text-gray-500">
+            <td colspan="4" class="px-6 py-12 text-center text-slate-500 italic">
               No patients found matching "{search}"
             </td>
           </tr>
         {:else}
           {#each patients as patient}
-            <tr class="group transition-colors hover:bg-surface/50">
-              <td class="whitespace-nowrap px-6 py-4 font-medium text-white group-hover:text-neon-blue transition-colors">
-                {patient.name}
+            <tr class="group transition-colors hover:bg-slate-50">
+              <td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900">
+                {patient.name || (patient.first_name + ' ' + patient.last_name)}
               </td>
-              <td class="whitespace-nowrap px-6 py-4">{patient.age}</td>
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500">{patient.age}</td>
               <td class="whitespace-nowrap px-6 py-4">
-                <span class="inline-flex items-center rounded-full bg-neon-blue/10 px-2.5 py-0.5 text-xs font-medium text-neon-blue border border-neon-blue/20">
-                  {patient.condition}
+                <span class="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700 border border-emerald-100">
+                  {patient.condition || 'General'}
                 </span>
               </td>
               <td class="whitespace-nowrap px-6 py-4 text-right">
-                <button class="text-neon-blue hover:text-white transition-colors text-xs font-medium uppercase tracking-wider">
+                <a href="/patients/{patient.id}" class="text-sky-600 hover:text-sky-800 transition-colors text-xs font-semibold uppercase tracking-wider hover:underline">
                   View Details
-                </button>
+                </a>
               </td>
             </tr>
           {/each}
@@ -113,24 +118,24 @@
   </div>
 
   <!-- Pagination -->
-  <div class="flex items-center justify-between border-t border-surface-border px-6 py-4">
-    <div class="text-xs text-gray-500">
-      Showing <span class="font-medium text-white">{(metadata.current_page - 1) * metadata.limit + 1}</span>
-      to <span class="font-medium text-white">{Math.min(metadata.current_page * metadata.limit, metadata.total_items)}</span>
-      of <span class="font-medium text-white">{metadata.total_items}</span> results
+  <div class="flex items-center justify-between border-t border-slate-200 bg-white px-6 py-4">
+    <div class="text-xs text-slate-500">
+      Showing <span class="font-medium text-slate-900">{(metadata.current_page - 1) * metadata.limit + 1}</span>
+      to <span class="font-medium text-slate-900">{Math.min(metadata.current_page * metadata.limit, metadata.total_items)}</span>
+      of <span class="font-medium text-slate-900">{metadata.total_items}</span> results
     </div>
     <div class="flex gap-2">
       <button
         on:click={() => changePage(metadata.current_page - 1)}
         disabled={metadata.current_page === 1}
-        class="rounded-lg border border-surface-border px-3 py-1 text-xs font-medium text-gray-400 hover:border-neon-blue hover:text-neon-blue disabled:opacity-50 disabled:hover:border-surface-border disabled:hover:text-gray-400 transition-colors"
+        class="rounded border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:hover:bg-white transition-colors shadow-sm"
       >
         Previous
       </button>
       <button
         on:click={() => changePage(metadata.current_page + 1)}
         disabled={metadata.current_page === metadata.total_pages}
-        class="rounded-lg border border-surface-border px-3 py-1 text-xs font-medium text-gray-400 hover:border-neon-blue hover:text-neon-blue disabled:opacity-50 disabled:hover:border-surface-border disabled:hover:text-gray-400 transition-colors"
+        class="rounded border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:hover:bg-white transition-colors shadow-sm"
       >
         Next
       </button>
