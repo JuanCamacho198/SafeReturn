@@ -1,4 +1,15 @@
 import type { Database } from "bun:sqlite";
+import { RagOrchestrator } from "../rag/orchestrator";
+
+// Initialize the RAG orchestrator lazily
+let ragOrchestrator: RagOrchestrator | null = null;
+
+function getRagOrchestrator() {
+  if (!ragOrchestrator) {
+    ragOrchestrator = new RagOrchestrator();
+  }
+  return ragOrchestrator;
+}
 
 export interface GetPatientsOptions {
   page?: number;
@@ -20,7 +31,10 @@ export function getPatients(db: Database, options: GetPatientsOptions = {}) {
   
   let dataQuery = `
     SELECT DISTINCT 
-      p.id, p.mrn, p.first_name, p.last_name, p.dob, p.gender, p.created_at,
+      p.id, p.mrn, 
+      (p.first_name || ' ' || p.last_name) as name,
+      (strftime('%Y', 'now') - strftime('%Y', p.dob)) - (strftime('%m-%d', 'now') < strftime('%m-%d', p.dob)) as age,
+      p.dob, p.gender, p.created_at,
       e.diagnosis as condition
     FROM Patients p
     LEFT JOIN Encounters e ON p.id = e.patient_id
@@ -82,4 +96,32 @@ export function getMetrics(db: Database) {
     newThisMonth: newThisMonthRow.count,
     conditionDistribution: conditionDist
   };
+}
+
+export function getPatientById(db: Database, id: string) {
+  const patient = db.query(`
+    SELECT *, 
+    (first_name || ' ' || last_name) as name,
+    (strftime('%Y', 'now') - strftime('%Y', dob)) - (strftime('%m-%d', 'now') < strftime('%m-%d', dob)) as age
+    FROM Patients WHERE id = ?
+  `).get(id);
+  
+  if (!patient) return null;
+  
+  const encounters = db.query("SELECT * FROM Encounters WHERE patient_id = ? ORDER BY admission_date DESC").all(id);
+  
+  return { ...patient, encounters };
+}
+
+export async function assessPatientRisk(db: Database, id: string) {
+  const encounters = db.query("SELECT notes FROM Encounters WHERE patient_id = ? ORDER BY admission_date ASC").all(id) as { notes: string }[];
+  
+  if (!encounters || encounters.length === 0) {
+      throw new Error("No encounters found for patient");
+  }
+
+  const allNotes = encounters.map(e => e.notes).join("\n\n---\n\n");
+  
+  const rag = getRagOrchestrator();
+  return await rag.assessRisk(allNotes);
 }
