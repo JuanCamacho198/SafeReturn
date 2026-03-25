@@ -1,94 +1,192 @@
-# SafeReturn 🏥
+<div align="center">
+  <img src="Logo SAFERETUrn.png" alt="SAFERETUrn Logo" width="200" />
+  <h1>SAFERETUrn 🏥</h1>
+  <p>
+    <a href="https://github.com/yourusername/safereturn/releases/latest">
+      <img src="https://img.shields.io/github/v/release/yourusername/safereturn?include_prereleases&style=flat" alt="GitHub Release" />
+    </a>
+    <a href="https://github.com/yourusername/safereturn/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/yourusername/safereturn?style=flat" alt="License" />
+    </a>
+    <a href="https://github.com/yourusername/safereturn/actions">
+      <img src="https://img.shields.io/github/actions/workflow/status/yourusername/safereturn/main.yml?style=flat" alt="Build Status" />
+    </a>
+  </p>
+</div>
 
-SafeReturn is a local-first, desktop healthcare application that utilizes a Retrieval-Augmented Generation (RAG) architecture to predict the 30-day hospital readmission probability based on unstructured clinical notes.
+---
 
-Built for privacy and compliance, all data and models run **100% offline** on the local machine without relying on external cloud APIs.
+SAFERETUrn es una aplicación de escritorio de salud **100% local** que utiliza una arquitectura de Generación Aumentada por Recuperación (RAG) para predecir la probabilidad de reingreso hospitalario a 30 días basándose en notas clínicas no estructuradas.
+
+Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan **sin conexión** en la máquina local sin depender de APIs externas en la nube.
+
+## Tabla de Contenidos
+
+- [Características](#características)
+- [Tech Stack](#tech-stack)
+- [Instalación](#instalación)
+- [Primeros Pasos](#primeros-pasos)
+- [Configuración de API](#configuración-de-api)
+- [Desarrollo](#desarrollo)
+- [Arquitectura](#arquitectura)
+- [Construcción para Producción](#construcción-para-producción)
+- [Licencia](#licencia)
+
+---
+
+## Características
+
+- 📊 **Dashboard de Riesgo**: Interfaz intuitiva para visualizar puntuaciones de riesgo de pacientes.
+- 🧠 **RAG Local**: Procesa notas de pacientes, las vectoriza y recupera contexto para predicciones precisas del LLM.
+- 🔍 **Explicabilidad**: Muestra los fragmentos exactos de las notas clínicas utilizados por el LLM para generar la predicción.
+- 🔒 **Privacidad Primero**: Cero datos salen de la máquina host.
+- 📈 **Predicción de Reingreso**: Modelo de IA que predice el riesgo de reingreso hospitalario a 30 días.
+- 📤 **Exportación de Datos**: Exporta resultados y reportes a CSV o JSON.
 
 ## Tech Stack
-- **Frontend**: Tauri (Rust) + Svelte + Vite
-- **Backend / Sidecar**: Bun (TypeScript)
-- **Machine Learning**: 
-  - Embeddings: `sentence-transformers`
-  - Vector Store: `FAISS`
-  - Local LLM: `llama.cpp` (GGML/GGUF models)
-- **Database**: SQLite
 
-## Features
-- **Local RAG Pipeline**: Ingests patient notes, vectorizes them, and retrieves context for accurate LLM predictions.
-- **Risk Dashboard**: Intuitive Svelte UI to view patient risk scores and analytical drill-downs.
-- **Explainability**: Displays the exact clinical note fragments used by the LLM to generate the prediction.
-- **Offline First**: Absolutely zero data leaves the host machine.
-- **Data Export**: Export results and reports to CSV or JSON for compliance and further analysis.
+| Capa | Tecnología |
+|------|------------|
+| Frontend | Tauri (Rust) + Svelte + Vite |
+| Backend | Bun (TypeScript) |
+| ML - Embeddings | sentence-transformers |
+| ML - Vector Store | FAISS |
+| LLM | Groq (API cloud) |
+| Base de Datos | SQLite |
 
-## Development
+## Instalación
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) or [Bun](https://bun.sh/)
-- [Rust](https://rustup.rs/) (for Tauri)
-- Python 3.10+ (for ML scripts/FAISS)
+### Descargar la última versión
 
-### Setup
-1. Clone the repository
-2. Install frontend dependencies: `cd frontend && npm install`
-3. Install backend dependencies: `cd backend && bun install`
-4. Run in dev mode: `npm run tauri dev`
+| Plataforma | Descarga |
+|------------|----------|
+| Windows (.exe) | [safeturn-0.9.0-setup.exe](https://github.com/yourusername/safereturn/releases/latest) |
+| macOS (.dmg) | [safeturn-0.9.0.dmg](https://github.com/yourusername/safereturn/releases/latest) |
+| Linux (.deb) | [safeturn-0.9.0.deb](https://github.com/yourusername/safereturn/releases/latest) |
 
-## Architecture
-See the SDD documentation in `openspec/` for full proposals, design documents, and architecture decisions.
+### Requisitos Previos
 
-## Production Build & Packaging
+- [Node.js](https://nodejs.org/) o [Bun](https://bun.sh/)
+- [Rust](https://rustup.rs/) (para Tauri)
+- Python 3.10+ (para scripts de ML/FAISS)
 
-To package SafeReturn into a standalone desktop executable (.exe, .app, .deb):
+## Primeros Pasos
 
-1. **Build the Frontend**:
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/yourusername/safereturn.git
+cd safereturn
+
+# 2. Instalar dependencias del frontend
+cd frontend && npm install
+
+# 3. Instalar dependencias del backend
+cd ../backend && bun install
+
+# 4. Configurar variables de entorno
+cp .env.example .env
+# Edita .env con tu API key de Groq
+
+# 5. Ejecutar en modo desarrollo
+npm run tauri dev
+```
+
+## Configuración de API
+
+### Groq (Recomendado - Gratis y Rápido)
+
+1. Obtén una API key gratuita en [console.groq.com/keys](https://console.groq.com/keys)
+2. Crea un archivo `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+3. Edita `.env` y añade tu key:
+   ```
+   GROQ_API_KEY=gsk_your_key_here
+   ```
+
+### Variables de Entorno
+
+| Variable | Descripción | Valor por defecto |
+|----------|-------------|-------------------|
+| `GROQ_API_KEY` | Tu API key de Groq | Obligatorio |
+| `GROQ_MODEL` | Modelo a usar | `llama-3.3-70b-versatile` |
+| `EMBEDDING_MODEL` | Modelo de embeddings | `all-MiniLM-L6-v2` |
+
+## Desarrollo
+
+### Estructura del Proyecto
+
+```
+├── frontend/           # Aplicación Svelte + Tauri
+│   ├── src/
+│   │   ├── routes/    # Páginas de la app
+│   │   └── lib/      # Componentes y utilidades
+│   └── src-tauri/    # Configuración de Rust
+├── backend/            # Servidor Bun (sidecar)
+│   ├── services/      # Lógica de negocio
+│   ├── ml/           # Modelos de ML
+│   └── rag/          # Pipeline RAG
+└── openspec/          # Documentación SDD
+```
+
+### Comandos Útiles
+
+```bash
+# Desarrollo
+npm run tauri dev
+
+# Verificar tipos
+npm run check
+
+# Build del frontend
+cd frontend && npm run build
+
+# Tests
+cd backend && bun test
+```
+
+## Arquitectura
+
+Consulta la documentación SDD en `openspec/` para propuestas completas, documentos de diseño y decisiones de arquitectura.
+
+### Flujo de Predicción de Riesgo
+
+1. **Ingesta de Datos**: Las notas clínicas se almacenan en SQLite.
+2. **Vectorización**: Las notas se convierten en embeddings usando sentence-transformers.
+3. **Recuperación**: FAISS recupera los casos más similares.
+4. **Generación**: Groq LLM genera la predicción basada en el contexto recuperado.
+
+## Construcción para Producción
+
+Para empaquetar SAFERETUrn en un ejecutable de escritorio (.exe, .app, .deb):
+
+1. **Build del Frontend**:
    ```bash
    cd frontend
    npm run build
    ```
 
-2. **Bundle the Backend Sidecar (Bun)**:
+2. **Empaquetar el Backend Sidecar (Bun)**:
    ```bash
    cd backend
    bun build ./index.ts --compile --outfile ../frontend/src-tauri/bin/backend-sidecar
    ```
 
-3. **Package with Tauri**:
+3. **Empaquetar con Tauri**:
    ```bash
    cd frontend
    npm run tauri build
    ```
 
-This will generate the final installer in `frontend/src-tauri/target/release/bundle/`. Ensure you have the corresponding local ML models placed in the correct resource directory as specified in your `tauri.conf.json`.
+Esto generará el instalador final en `frontend/src-tauri/target/release/bundle/`.
 
-## 🔑 API Key Setup (Optional)
+## Licencia
 
-SafeReturn supports both local LLM (llama.cpp) and remote LLM via API.
+MIT License - consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-### Groq (Recommended - Free & Fast)
+---
 
-1. Get a free API key at [console.groq.com/keys](https://console.groq.com/keys)
-2. Create a `.env` file:
-   ```bash
-   cp .env.example .env
-   ```
-3. Edit `.env` and add your key:
-   ```
-   GROQ_API_KEY=gsk_your_key_here
-   ```
-
-### Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `GROQ_API_KEY` | Your Groq API key | Required for remote LLM |
-| `GROQ_MODEL` | Model to use | `llama-3.3-70b-versatile` |
-| `EMBEDDING_MODEL` | Sentence transformer model | `all-MiniLM-L6-v2` |
-
-## Quick Start with Groq
-
-```bash
-cd backend
-cp ../.env.example ../.env
-# Edit .env with your Groq API key
-bun run index.ts
-```
+<div align="center">
+  <p>Construido con ❤️ para mejorar la atención médica</p>
+</div>
