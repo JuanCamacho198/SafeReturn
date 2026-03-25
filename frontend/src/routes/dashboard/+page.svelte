@@ -8,7 +8,8 @@
 
   onMount(async () => {
     try {
-      patients = await getPatients();
+      const res = await getPatients();
+      patients = res.items;
     } catch (e) {
       console.error(e);
     } finally {
