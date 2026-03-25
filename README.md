@@ -47,6 +47,28 @@ Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan
 - 📈 **Predicción de Reingreso**: Modelo de IA que predice el riesgo de reingreso hospitalario a 30 días.
 - 📤 **Exportación de Datos**: Exporta resultados y reportes a CSV o JSON.
 
+## 📝 Changelog
+
+### v0.9.1 (2026-03-25)
+#### Nuevas Funciones
+- 🌐 **Internacionalización (i18n)**: Español como idioma por defecto, Inglés como secundario. Selector de idioma en el navbar.
+- 📊 **Dashboard Mejorado**: Panel de control con métricas, gráficos y datos de pacientes sintéticos.
+- 🎨 **Tema Medical Light**: Interfaz limpia y profesional con colores hospitalarios.
+- ⚙️ **Configuración de API Key**: Interfaz para configurar la API key de Groq desde la app.
+- 🤖 **Predicción de Reingreso**: Análisis de riesgo de reingreso hospitalario a 30 días con evidencia clínica.
+- 📋 **Datos de Pacientes**: 100 pacientes sintéticos incluidos para pruebas.
+
+#### Mejoras Técnicas
+- Actualizado a Vite 8
+- Actualizado a Tailwind CSS 3
+- Migración de svelte-chartjs a chart.js nativo
+- Arreglos de compatibilidad con Svelte 5
+
+### v0.9.0 (2026-03-24)
+- Lanzamiento inicial
+- Dashboard con tabla de pacientes
+- Análisis de riesgo con RAG
+
 ## Tech Stack
 
 | Capa | Tecnología |
@@ -64,9 +86,9 @@ Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan
 
 | Plataforma | Descarga |
 |------------|----------|
-| Windows (.exe) | [safeturn-0.9.0-setup.exe](https://github.com/JuanCamacho198/safereturn/releases/latest) |
-| macOS (.dmg) | [safeturn-0.9.0.dmg](https://github.com/JuanCamacho198/safereturn/releases/latest) |
-| Linux (.deb) | [safeturn-0.9.0.deb](https://github.com/JuanCamacho198/safereturn/releases/latest) |
+| Windows (.exe) | [safeturn-0.9.1-setup.exe](https://github.com/JuanCamacho198/safereturn/releases/latest) |
+| macOS (.dmg) | [safeturn-0.9.1.dmg](https://github.com/JuanCamacho198/safereturn/releases/latest) |
+| Linux (.deb) | [safeturn-0.9.1.deb](https://github.com/JuanCamacho198/safereturn/releases/latest) |
 
 ### Requisitos Previos
 
