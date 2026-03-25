@@ -48,10 +48,20 @@
     } catch (e) {
       console.error('Error assessing risk:', e);
       const errorMsg = String(e);
+      
       if (errorMsg.includes("Groq API key not configured")) {
          riskError = "API key missing. Please configure your Groq API key in settings.";
+      } else if (errorMsg.includes("401") || errorMsg.includes("Unauthorized")) {
+         riskError = "Invalid API Key. Please check your settings.";
+      } else if (errorMsg.includes("429") || errorMsg.includes("Too Many Requests")) {
+         riskError = "Too many requests. Please try again later.";
+      } else if (errorMsg.includes("Network") || errorMsg.includes("fetch") || errorMsg.includes("connection")) {
+         riskError = "Network connection failed. Please check your internet.";
+      } else if (errorMsg.includes("No encounters found")) {
+         riskError = "No clinical notes available for analysis.";
       } else {
-         riskError = "Risk assessment failed. Please try again.";
+         // Show the actual error message if it's safe and short
+         riskError = errorMsg.length < 150 ? errorMsg : "Risk assessment failed. Please try again.";
       }
     } finally {
       assessingRisk = false;

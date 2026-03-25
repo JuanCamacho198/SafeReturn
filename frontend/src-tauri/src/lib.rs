@@ -89,7 +89,7 @@ async fn assess_risk(app: tauri::AppHandle, payload: AssessRiskPayload) -> Resul
         },
         Err(e) => {
             eprintln!("Sidecar error: {}", e);
-            Err(format!("Risk assessment failed: {}", e))
+            Err(e)
         }
     }
 }

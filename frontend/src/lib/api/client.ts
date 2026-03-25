@@ -129,24 +129,7 @@ export async function assessRisk(id: string, apiKey?: string): Promise<RiskAsses
        throw new Error("Groq API key not configured");
      }
 
-     console.warn(`Tauri invoke failed for assessRisk: ${error}. Falling back to mock data.`);
-     
-     const patient = (syntheticPatients as any[]).find(p => p.patient_id === id);
-     if (!patient) {
-        throw new Error(`Patient with ID ${id} not found in mock data.`);
-     }
-
-     // Synthesize a risk assessment based on patient data
-     const isHighRisk = patient.outcomes?.readmitted || patient.diagnoses?.length > 3;
-     
-     return {
-         riskScore: isHighRisk ? 0.85 : 0.25,
-         explanation: isHighRisk 
-            ? "High risk of readmission due to prior history and multiple comorbidities." 
-            : "Low risk profile based on current clinical indicators.",
-         fragments: isHighRisk 
-            ? ["Readmission history", "Multiple diagnoses", "Complex medication regimen"] 
-            : ["Stable vital signs", "Good adherence"]
-     };
+     console.error(`Tauri invoke failed for assessRisk: ${error}`);
+     throw error;
   }
 }
