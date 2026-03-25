@@ -2,6 +2,18 @@ import { invoke } from '@tauri-apps/api/core';
 import type { Patient, RiskAssessment } from '../types/ipc';
 import syntheticPatients from '../synthetic_patients.json';
 
+// Generate random names for patients (matching dashboard approach)
+const firstNames = ['James', 'Mary', 'John', 'Patricia', 'Robert', 'Jennifer', 'Michael', 'Linda', 'William', 'Elizabeth', 'David', 'Barbara', 'Richard', 'Susan', 'Joseph', 'Jessica', 'Thomas', 'Sarah', 'Charles', 'Karen'];
+const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'];
+
+// Map synthetic patient index to consistent names
+function getNameFromIndex(index: number) {
+  return {
+    firstName: firstNames[index % firstNames.length],
+    lastName: lastNames[index % lastNames.length]
+  };
+}
+
 export interface PatientListResponse {
   items: Patient[];
   metadata: {
@@ -39,30 +51,37 @@ export async function getPatient(id: string): Promise<Patient> {
     return await invoke('get_patient', { payload: { id } });
   } catch (error) {
     console.warn(`Tauri invoke failed for getPatient: ${error}. Falling back to mock data.`);
-    const patient = (syntheticPatients as any[]).find(p => p.patient_id === id);
+    
+    // Find patient in synthetic data
+    const allPatients = syntheticPatients as any[];
+    const patientIndex = allPatients.findIndex(p => p.patient_id === id);
+    const patient = allPatients.find(p => p.patient_id === id);
+    
     if (!patient) {
       throw new Error(`Patient with ID ${id} not found in mock data.`);
     }
     
-    // Map synthetic data to Patient interface if needed, or return as is if compatible
-    // Based on ipc.ts, Patient interface has optional fields matching synthetic data
-    // We might need to construct the full Patient object similar to how it's done in dashboard/+page.svelte
-    // but looking at ipc.ts, it seems lenient.
+    // Generate consistent names based on index
+    const { firstName, lastName } = getNameFromIndex(patientIndex >= 0 ? patientIndex : 0);
     
-    // Let's do a basic mapping to ensure compatibility with UI components that might expect certain fields
-    // derived from the raw data (like 'condition' or 'riskScore').
-    // However, the dashboard logic derives 'condition' and 'riskScore' when mapping for the list view.
-    // The detail view might expect raw data or the same derived data.
-    // Given 'getPatient' usually returns the full backend object, and the backend likely does some processing...
-    // But for the fallback, let's return the raw object plus the ID which is essential.
+    // Map synthetic data to Patient interface (matching dashboard/+page.svelte)
+    const primaryDiagnosis = patient.diagnoses?.find((d: any) => d.primary) || patient.diagnoses?.[0];
     
     return {
-        ...patient,
-        id: patient.patient_id,
-        // Add basic derived fields if they are missing and critical
-        riskScore: 0.5, // Default/Placeholder
-        condition: patient.diagnoses?.find((d: any) => d.primary)?.description || 'Unknown'
-    } as Patient;
+      id: patient.patient_id,
+      mrn: `MRN${String(patientIndex + 1).padStart(3, '0')}`,
+      first_name: firstName,
+      last_name: lastName,
+      firstName,
+      lastName,
+      gender: patient.demographics?.gender === 'M' ? 'Male' : 'Female',
+      dob: new Date(2024 - (patient.demographics?.age || 70), 0, 1).toISOString().split('T')[0],
+      age: patient.demographics?.age,
+      condition: primaryDiagnosis?.description || 'General',
+      riskScore: Math.random() * 0.5 + 0.3,
+      encounters: patient.encounters || [],
+      diagnoses: patient.diagnoses || []
+    };
   }
 }
 
