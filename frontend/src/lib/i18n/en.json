@@ -1,7 +1,7 @@
 {
   "app": {
     "title": "SafeReturn",
-    "subtitle": "SafeReturn v0.1.0 — Hospital Readmission Prediction",
+    "subtitle": "SafeReturn v0.9.1 — Hospital Readmission Prediction",
     "demo_mode": "Demo Mode - Synthetic patient data. Configure API key in Settings for real analysis.",
     "system_online": "System Online"
   },
