@@ -114,8 +114,108 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         
-        <!-- Clinical History -->
+        <!-- Clinical History & Extended Data -->
         <div class="lg:col-span-2 space-y-8">
+          
+          <!-- Medications -->
+          {#if patient.medications && patient.medications.length > 0}
+            <section>
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-slate-800">Medications</h2>
+                <span class="text-sm text-slate-500">{patient.medications.length} active</span>
+              </div>
+              <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+                <table class="w-full text-sm">
+                  <thead class="bg-slate-50 border-b border-slate-200">
+                    <tr>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Medication</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Dosage</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Frequency</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Route</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100">
+                    {#each patient.medications as med}
+                      <tr class="hover:bg-slate-50">
+                        <td class="px-4 py-3 font-medium text-slate-800">{med.name}</td>
+                        <td class="px-4 py-3 text-slate-600">{med.dosage}</td>
+                        <td class="px-4 py-3 text-slate-600">{med.frequency}</td>
+                        <td class="px-4 py-3 text-slate-600">{med.route}</td>
+                      </tr>
+                    {/each}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          {/if}
+
+          <!-- Lab Results -->
+          {#if patient.lab_results && patient.lab_results.length > 0}
+            <section>
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-slate-800">Lab Results</h2>
+                <span class="text-sm text-slate-500">{patient.lab_results.length} results</span>
+              </div>
+              <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+                <table class="w-full text-sm">
+                  <thead class="bg-slate-50 border-b border-slate-200">
+                    <tr>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Test</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Value</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Reference</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100">
+                    {#each patient.lab_results as lab}
+                      <tr class="hover:bg-slate-50">
+                        <td class="px-4 py-3 font-medium text-slate-800">{lab.name}</td>
+                        <td class="px-4 py-3 text-slate-600">{lab.value} {lab.unit}</td>
+                        <td class="px-4 py-3 text-slate-500 text-xs">{lab.reference_range[0]}-{lab.reference_range[1]} {lab.unit}</td>
+                        <td class="px-4 py-3">
+                          <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium
+                            {lab.flag === 'high' ? 'bg-red-100 text-red-800' : lab.flag === 'low' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}">
+                            {lab.flag}
+                          </span>
+                        </td>
+                      </tr>
+                    {/each}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          {/if}
+
+          <!-- Outcomes -->
+          {#if patient.outcomes}
+            <section>
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-slate-800">Outcomes</h2>
+              </div>
+              <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div class="text-center p-4 bg-slate-50 rounded-lg">
+                    <div class="text-sm text-slate-500 mb-1">Readmitted</div>
+                    <div class="text-lg font-semibold {patient.outcomes.readmitted ? 'text-amber-600' : 'text-emerald-600'}">
+                      {patient.outcomes.readmitted ? 'Yes' : 'No'}
+                    </div>
+                  </div>
+                  {#if patient.outcomes.days_to_readmission !== null}
+                    <div class="text-center p-4 bg-slate-50 rounded-lg">
+                      <div class="text-sm text-slate-500 mb-1">Days to Readmission</div>
+                      <div class="text-lg font-semibold text-slate-800">{patient.outcomes.days_to_readmission}</div>
+                    </div>
+                  {/if}
+                  <div class="text-center p-4 bg-slate-50 rounded-lg">
+                    <div class="text-sm text-slate-500 mb-1">Discharge</div>
+                    <div class="text-lg font-semibold text-slate-800">{patient.outcomes.discharge_disposition || 'N/A'}</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          {/if}
+
+          <!-- Clinical History -->
           <section>
             <div class="flex items-center justify-between mb-4">
               <h2 class="text-xl font-bold text-slate-800">{$t('patient.history.title')}</h2>
