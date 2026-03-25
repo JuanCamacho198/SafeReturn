@@ -6,8 +6,10 @@
   import GlassChart from '$lib/components/GlassChart.svelte';
   import PatientTable from '$lib/components/PatientTable.svelte';
   import syntheticData from '$lib/synthetic_patients.json';
+  import { t } from '$lib/i18n';
 
   // Generate random names for patients
+
   const firstNames = ['James', 'Mary', 'John', 'Patricia', 'Robert', 'Jennifer', 'Michael', 'Linda', 'William', 'Elizabeth', 'David', 'Barbara', 'Richard', 'Susan', 'Joseph', 'Jessica', 'Thomas', 'Sarah', 'Charles', 'Karen'];
   const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'];
 
@@ -142,7 +144,7 @@
 <div class="min-h-screen bg-slate-50 font-sans text-slate-900 pb-12">
   <!-- Demo Mode Banner -->
   <div class="bg-emerald-500 text-white text-center py-2 text-sm font-medium">
-    Modo Demo - Datos sintéticos de pacientes. Configure API key en Settings para análisis real.
+    {$t('app.demo_mode')}
   </div>
   
   <!-- Navigation/Header Bar -->
@@ -155,7 +157,7 @@
                     <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
                 </svg>
             </span>
-            Clinical Intelligence
+            {$t('dashboard.title')}
         </h1>
       </div>
       <div class="flex items-center gap-4">
@@ -164,7 +166,7 @@
             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
             <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
           </span>
-          System Online
+          {$t('app.system_online')}
         </div>
         <div class="h-9 w-9 overflow-hidden rounded-full border border-slate-200 bg-slate-100">
           <img src="https://ui-avatars.com/api/?name=Dr+Smith&background=0ea5e9&color=fff" alt="User" />
@@ -178,7 +180,7 @@
     <!-- KPI Grid -->
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
       <StatCard 
-        title="Total Patients" 
+        title={$t('dashboard.stats.total_patients')}
         value={metrics?.totalPatients || 0} 
         loading={loadingMetrics} 
         trend="up" 
@@ -186,7 +188,7 @@
         icon="fas fa-users"
       />
       <StatCard 
-        title="New Admissions" 
+        title={$t('dashboard.stats.new_admissions')}
         value={metrics?.newThisMonth || 0} 
         loading={loadingMetrics} 
         trend="up" 
@@ -194,7 +196,7 @@
         icon="fas fa-user-plus"
       />
       <StatCard 
-        title="Critical Alerts" 
+        title={$t('dashboard.stats.critical_alerts')}
         value="3" 
         loading={loadingMetrics} 
         trend="down" 
@@ -208,7 +210,7 @@
       <div class="min-h-87.5">
           <GlassChart 
             type="bar" 
-            title="Condition Distribution" 
+            title={$t('dashboard.charts.condition_distribution')}
             data={distributionData} 
             loading={loadingMetrics} 
           />
@@ -216,7 +218,7 @@
       <div class="min-h-87.5">
           <GlassChart 
             type="line" 
-            title="Patient Growth Trend" 
+            title={$t('dashboard.charts.patient_growth')}
             data={growthData} 
             loading={loadingMetrics} 
           />

@@ -1,21 +1,26 @@
 <script lang="ts">
   import '../app.css';
+  import { t } from '$lib/i18n';
+  import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
 </script>
 
 <div class="min-h-screen flex flex-col">
   <nav class="bg-blue-900 text-white p-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
-      <a href="/" class="text-xl font-bold flex items-center gap-2">
-        🏥 SafeReturn
-      </a>
-      <div class="flex gap-4">
-        <a href="/dashboard" class="hover:text-blue-200 transition px-3 py-1 rounded hover:bg-blue-800">
-          Dashboard
+      <div class="flex items-center gap-8">
+        <a href="/" class="text-xl font-bold flex items-center gap-2">
+          🏥 {$t('app.title')}
         </a>
-        <a href="/settings" class="hover:text-blue-200 transition px-3 py-1 rounded hover:bg-blue-800">
-          Settings
-        </a>
+        <div class="flex gap-4">
+          <a href="/dashboard" class="hover:text-blue-200 transition px-3 py-1 rounded hover:bg-blue-800">
+            {$t('nav.dashboard')}
+          </a>
+          <a href="/settings" class="hover:text-blue-200 transition px-3 py-1 rounded hover:bg-blue-800">
+            {$t('nav.settings')}
+          </a>
+        </div>
       </div>
+      <LanguageSwitcher />
     </div>
   </nav>
   
@@ -26,6 +31,6 @@
   </main>
   
   <footer class="bg-gray-100 p-4 text-center text-sm text-gray-600">
-    SafeReturn v0.1.0 — Healthcare Readmission Prediction
+    {$t('app.subtitle')}
   </footer>
 </div>

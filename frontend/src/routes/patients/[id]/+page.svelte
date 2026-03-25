@@ -5,8 +5,10 @@
   import { invoke } from '@tauri-apps/api/core';
   import type { Patient, RiskAssessment } from '$lib/types/ipc';
   import { fade, fly } from 'svelte/transition';
+  import { t } from '$lib/i18n';
 
   let patient: Patient | null = null;
+
   let assessment: RiskAssessment | null = null;
   let loading = true;
   let error: string | null = null;
@@ -68,7 +70,7 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between">
       <div class="flex items-center space-x-4">
         <a href="/dashboard" class="text-slate-500 hover:text-sky-600 transition-colors flex items-center font-medium">
-          ← Back to Dashboard
+          {$t('nav.back_dashboard')}
         </a>
       </div>
     </div>
@@ -81,7 +83,7 @@
   {:else if error}
     <div class="max-w-7xl mx-auto px-6 py-12">
       <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-md">
-        <p class="text-sm text-red-700 font-medium">{error}</p>
+        <p class="text-sm text-red-700 font-medium">{error || $t('patient.error_load')}</p>
       </div>
     </div>
   {:else if patient}
@@ -91,21 +93,21 @@
       <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <h1 class="text-3xl font-bold text-slate-900 tracking-tight">
-            {patient.name || patient.first_name + ' ' + patient.last_name || 'Unknown Patient'}
+            {patient.name || patient.first_name + ' ' + patient.last_name || $t('common.unknown')}
           </h1>
           <div class="flex flex-wrap items-center gap-3 mt-2 text-sm text-slate-500 font-medium">
-            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded">MRN: {patient.mrn || 'N/A'}</span>
+            <span class="bg-slate-100 text-slate-600 px-2 py-1 rounded">{$t('patient.header.mrn')}: {patient.mrn || $t('common.na')}</span>
             <span>•</span>
-            <span>{patient.gender || 'Unknown'}</span>
+            <span>{patient.gender || $t('common.unknown')}</span>
             <span>•</span>
-            <span>{patient.age ? `${patient.age} yrs` : 'Age N/A'}</span>
+            <span>{patient.age ? `${patient.age} yrs` : $t('patient.header.age') + ' ' + $t('common.na')}</span>
             <span>•</span>
-            <span>DOB: {formatDate(patient.dob)}</span>
+            <span>{$t('patient.header.dob')}: {formatDate(patient.dob)}</span>
           </div>
         </div>
         <div>
             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
-                Active Patient
+                {$t('patient.header.active_patient')}
             </span>
         </div>
       </div>
@@ -116,8 +118,8 @@
         <div class="lg:col-span-2 space-y-8">
           <section>
             <div class="flex items-center justify-between mb-4">
-              <h2 class="text-xl font-bold text-slate-800">Clinical Timeline</h2>
-              <span class="text-sm text-slate-500">{patient.encounters?.length || 0} Encounters</span>
+              <h2 class="text-xl font-bold text-slate-800">{$t('patient.history.title')}</h2>
+              <span class="text-sm text-slate-500">{patient.encounters?.length || 0} {$t('patient.history.encounters')}</span>
             </div>
 
             {#if patient.encounters && patient.encounters.length > 0}
@@ -150,7 +152,7 @@
               </div>
             {:else}
               <div class="bg-slate-50 rounded-lg p-8 text-center border-2 border-dashed border-slate-200">
-                <p class="text-slate-500">No clinical encounters recorded.</p>
+                <p class="text-slate-500">{$t('patient.history.no_encounters')}</p>
               </div>
             {/if}
           </section>
@@ -162,26 +164,26 @@
             <!-- Risk Assessment -->
             <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
                 <div class="bg-slate-50 px-5 py-4 border-b border-slate-200">
-                    <h3 class="font-bold text-slate-800">Risk Assessment</h3>
+                    <h3 class="font-bold text-slate-800">{$t('patient.risk.title')}</h3>
                 </div>
                 
                 <div class="p-5">
                     {#if !assessment && !assessingRisk}
                         <div class="text-center py-6">
-                            <p class="text-slate-500 text-sm mb-4">Run AI analysis on patient history to identify risks.</p>
+                            <p class="text-slate-500 text-sm mb-4">{$t('patient.risk.prompt')}</p>
                             <button on:click={handleRiskAssessment} class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded shadow-sm transition-colors">
-                                Run Analysis
+                                {$t('patient.risk.run_analysis')}
                             </button>
                         </div>
                     {:else if assessingRisk}
                         <div class="text-center py-8">
                             <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mx-auto mb-3"></div>
-                            <p class="text-sm text-indigo-600 font-medium animate-pulse">Analyzing...</p>
+                            <p class="text-sm text-indigo-600 font-medium animate-pulse">{$t('patient.risk.analyzing')}</p>
                         </div>
                     {:else if assessment}
                         <div in:fly={{ y: 20, duration: 400 }}>
                             <div class="flex items-center justify-between mb-4">
-                                <span class="text-sm font-medium text-slate-500 uppercase">Risk Score</span>
+                                <span class="text-sm font-medium text-slate-500 uppercase">{$t('patient.risk.score')}</span>
                                 <span class="text-2xl font-bold {assessment.riskScore >= 0.7 ? 'text-red-600' : (assessment.riskScore >= 0.4 ? 'text-amber-600' : 'text-emerald-600')}">
                                     {(assessment.riskScore * 100).toFixed(0)}%
                                 </span>
@@ -192,13 +194,13 @@
 
                             <div class="space-y-4">
                                 <div class="bg-slate-50 p-3 rounded border border-slate-100">
-                                    <h4 class="text-xs font-bold text-slate-700 uppercase mb-1">AI Explanation</h4>
+                                    <h4 class="text-xs font-bold text-slate-700 uppercase mb-1">{$t('patient.risk.explanation')}</h4>
                                     <p class="text-sm text-slate-600 leading-snug">{assessment.explanation}</p>
                                 </div>
                                 
                                 {#if assessment.fragments && assessment.fragments.length > 0}
                                     <div>
-                                        <h4 class="text-xs font-bold text-slate-700 uppercase mb-2">Key Evidence</h4>
+                                        <h4 class="text-xs font-bold text-slate-700 uppercase mb-2">{$t('patient.risk.evidence')}</h4>
                                         <ul class="space-y-2 max-h-48 overflow-y-auto pr-1 custom-scrollbar">
                                             {#each assessment.fragments as fragment}
                                                 <li class="text-xs bg-indigo-50 text-indigo-900 p-2 rounded border border-indigo-100">"{fragment}"</li>
@@ -214,22 +216,22 @@
 
             <!-- Demographics -->
             <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
-                <h3 class="font-bold text-slate-800 mb-3 text-sm uppercase tracking-wide">Demographics</h3>
+                <h3 class="font-bold text-slate-800 mb-3 text-sm uppercase tracking-wide">{$t('patient.demographics.title')}</h3>
                 <div class="space-y-3 text-sm">
                     <div class="flex justify-between py-1 border-b border-slate-50">
-                        <span class="text-slate-500">Name</span>
+                        <span class="text-slate-500">{$t('patient.demographics.name')}</span>
                         <span class="font-medium text-slate-800 text-right">{patient.first_name} {patient.last_name}</span>
                     </div>
                     <div class="flex justify-between py-1 border-b border-slate-50">
-                        <span class="text-slate-500">DOB</span>
+                        <span class="text-slate-500">{$t('patient.demographics.dob')}</span>
                         <span class="font-medium text-slate-800 text-right">{formatDate(patient.dob)}</span>
                     </div>
                     <div class="flex justify-between py-1 border-b border-slate-50">
-                        <span class="text-slate-500">Gender</span>
+                        <span class="text-slate-500">{$t('patient.demographics.gender')}</span>
                         <span class="font-medium text-slate-800 text-right">{patient.gender}</span>
                     </div>
                     <div class="flex justify-between py-1 border-b border-slate-50">
-                        <span class="text-slate-500">ID</span>
+                        <span class="text-slate-500">{$t('patient.demographics.id')}</span>
                         <span class="font-medium text-slate-800 font-mono text-xs text-right">{patient.id}</span>
                     </div>
                 </div>
@@ -239,8 +241,8 @@
     </div>
   {:else}
     <div class="max-w-7xl mx-auto px-6 py-12 text-center">
-      <h2 class="text-2xl font-bold text-slate-800">Patient not found</h2>
-      <a href="/dashboard" class="mt-4 inline-block text-sky-600 hover:underline">Return to Dashboard</a>
+      <h2 class="text-2xl font-bold text-slate-800">{$t('patient.not_found')}</h2>
+      <a href="/dashboard" class="mt-4 inline-block text-sky-600 hover:underline">{$t('patient.return_dashboard')}</a>
     </div>
   {/if}
 </div>
