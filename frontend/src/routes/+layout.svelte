@@ -12,6 +12,9 @@
         <a href="/dashboard" class="hover:text-blue-200 transition px-3 py-1 rounded hover:bg-blue-800">
           Dashboard
         </a>
+        <a href="/settings" class="hover:text-blue-200 transition px-3 py-1 rounded hover:bg-blue-800">
+          Settings
+        </a>
       </div>
     </div>
   </nav>

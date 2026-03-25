@@ -2,6 +2,7 @@
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
   import { getPatient, assessRisk } from '$lib/api/client';
+  import { invoke } from '@tauri-apps/api/core';
   import type { Patient, RiskAssessment } from '$lib/types/ipc';
   import { fade, fly } from 'svelte/transition';
 
@@ -30,7 +31,16 @@
     if (!patient) return;
     assessingRisk = true;
     try {
-      assessment = await assessRisk(patient.id);
+      // Try to load API key from settings
+      let apiKey: string | undefined = undefined;
+      try {
+        const storedKey = await invoke<string | null>('load_setting', { key: 'groq_api_key' });
+        if (storedKey) apiKey = storedKey;
+      } catch (e) {
+        console.warn('Failed to load API key from settings, using default/env:', e);
+      }
+      
+      assessment = await assessRisk(patient.id, apiKey);
     } catch (e) {
       console.error('Error assessing risk:', e);
     } finally {
