@@ -5,33 +5,41 @@
   import StatCard from '$lib/components/StatCard.svelte';
   import GlassChart from '$lib/components/GlassChart.svelte';
   import PatientTable from '$lib/components/PatientTable.svelte';
+  import syntheticData from '$lib/synthetic_patients.json';
 
-  // Mock data for development/testing
-  const mockPatients: Patient[] = [
-    { id: '1', mrn: 'MRN001', firstName: 'John', lastName: 'Smith', gender: 'Male', dateOfBirth: '1955-03-15', age: 70, condition: 'Heart Failure', riskScore: 0.85 },
-    { id: '2', mrn: 'MRN002', firstName: 'Maria', lastName: 'Garcia', gender: 'Female', dateOfBirth: '1968-07-22', age: 57, condition: 'Diabetes Type 2', riskScore: 0.45 },
-    { id: '3', mrn: 'MRN003', firstName: 'Robert', lastName: 'Johnson', gender: 'Male', dateOfBirth: '1942-11-08', age: 83, condition: 'COPD', riskScore: 0.72 },
-    { id: '4', mrn: 'MRN004', firstName: 'Emily', lastName: 'Davis', gender: 'Female', dateOfBirth: '1975-01-30', age: 51, condition: 'Hypertension', riskScore: 0.28 },
-    { id: '5', mrn: 'MRN005', firstName: 'Michael', lastName: 'Wilson', gender: 'Male', dateOfBirth: '1960-09-12', age: 65, condition: 'Heart Failure', riskScore: 0.78 },
-    { id: '6', mrn: 'MRN006', firstName: 'Sarah', lastName: 'Brown', gender: 'Female', dateOfBirth: '1982-05-18', age: 43, condition: 'Asthma', riskScore: 0.15 },
-    { id: '7', mrn: 'MRN007', firstName: 'James', lastName: 'Miller', gender: 'Male', dateOfBirth: '1958-12-03', age: 67, condition: 'Diabetes Type 2', riskScore: 0.52 },
-    { id: '8', mrn: 'MRN008', firstName: 'Linda', lastName: 'Taylor', gender: 'Female', dateOfBirth: '1970-08-25', age: 55, condition: 'Hypertension', riskScore: 0.33 },
-    { id: '9', mrn: 'MRN009', firstName: 'David', lastName: 'Anderson', gender: 'Male', dateOfBirth: '1948-02-14', age: 78, condition: 'COPD', riskScore: 0.81 },
-    { id: '10', mrn: 'MRN010', firstName: 'Patricia', lastName: 'Thomas', gender: 'Female', dateOfBirth: '1965-10-07', age: 60, condition: 'Heart Failure', riskScore: 0.68 },
-  ];
+  // Generate random names for patients
+  const firstNames = ['James', 'Mary', 'John', 'Patricia', 'Robert', 'Jennifer', 'Michael', 'Linda', 'William', 'Elizabeth', 'David', 'Barbara', 'Richard', 'Susan', 'Joseph', 'Jessica', 'Thomas', 'Sarah', 'Charles', 'Karen'];
+  const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'];
 
-  const mockMetrics: MetricsResponse = {
-    totalPatients: 10,
-    averageAge: 62.9,
-    highRiskCount: 4,
-    newThisMonth: 3,
-    conditionDistribution: [
-      { label: 'Heart Failure', value: 3 },
-      { label: 'Diabetes Type 2', value: 2 },
-      { label: 'COPD', value: 2 },
-      { label: 'Hypertension', value: 2 },
-      { label: 'Asthma', value: 1 },
-    ]
+  // Transform synthetic data to patient format
+  const realPatients: Patient[] = syntheticData.slice(0, 10).map((p: any, index: number) => {
+    const firstName = firstNames[index % firstNames.length];
+    const lastName = lastNames[index % lastNames.length];
+    const primaryDiagnosis = p.diagnoses?.find((d: any) => d.primary) || p.diagnoses?.[0];
+    return {
+      id: p.patient_id,
+      mrn: `MRN${String(index + 1).padStart(3, '0')}`,
+      firstName,
+      lastName,
+      gender: p.demographics?.gender === 'M' ? 'Male' : 'Female',
+      dateOfBirth: new Date(2024 - p.demographics?.age, 0, 1).toISOString().split('T')[0],
+      age: p.demographics?.age,
+      condition: primaryDiagnosis?.description || 'General',
+      riskScore: Math.random() * 0.5 + 0.3 // Random risk between 30-80%
+    };
+  });
+
+  // Calculate metrics from real data
+  const conditions = realPatients.map(p => p.condition);
+  const conditionCounts: Record<string, number> = {};
+  conditions.forEach(c => { conditionCounts[c] = (conditionCounts[c] || 0) + 1; });
+
+  const realMetrics: MetricsResponse = {
+    totalPatients: realPatients.length,
+    averageAge: Math.round(realPatients.reduce((sum, p) => sum + p.age, 0) / realPatients.length),
+    highRiskCount: realPatients.filter(p => p.riskScore > 0.7).length,
+    newThisMonth: Math.floor(realPatients.length * 0.3),
+    conditionDistribution: Object.entries(conditionCounts).map(([label, value]) => ({ label, value }))
   };
 
   // State
@@ -56,11 +64,11 @@
       patients = res.items;
       metadata = res.metadata;
     } catch (e) {
-      console.warn("Using mock data (API not available):", e);
-      // Use mock data for development
-      let filtered = mockPatients;
+      console.warn("Using real synthetic data (API not available):", e);
+      // Use real synthetic data
+      let filtered = realPatients;
       if (searchQuery) {
-        filtered = mockPatients.filter(p => 
+        filtered = realPatients.filter(p => 
           p.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
           p.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
           p.condition.toLowerCase().includes(searchQuery.toLowerCase())
@@ -78,9 +86,9 @@
     try {
       metrics = await getMetrics();
     } catch (e) {
-      console.warn("Using mock metrics (API not available):", e);
-      // Use mock metrics for development
-      metrics = mockMetrics;
+      console.warn("Using real synthetic metrics (API not available):", e);
+      // Use real synthetic metrics
+      metrics = realMetrics;
     } finally {
       loadingMetrics = false;
     }
@@ -133,8 +141,8 @@
 
 <div class="min-h-screen bg-slate-50 font-sans text-slate-900 pb-12">
   <!-- Demo Mode Banner -->
-  <div class="bg-amber-500 text-white text-center py-2 text-sm font-medium">
-    Modo Demo - Usando datos de prueba. Ejecuta en Tauri para usar datos reales.
+  <div class="bg-emerald-500 text-white text-center py-2 text-sm font-medium">
+    Modo Demo - Datos sintéticos de pacientes. Configure API key en Settings para análisis real.
   </div>
   
   <!-- Navigation/Header Bar -->

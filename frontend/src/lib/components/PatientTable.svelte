@@ -95,20 +95,32 @@
           </tr>
         {:else}
           {#each patients as patient}
+            {@const fullName = patient.firstName && patient.lastName ? `${patient.firstName} ${patient.lastName}` : (patient.name || 'Unknown')}
+            {@const patientAge = patient.age || patient.demographics?.age || 'N/A'}
+            {@const condition = patient.condition || patient.diagnoses?.[0]?.description || 'General'}
+            {@const patientId = patient.id || patient.patient_id}
             <tr class="group transition-colors hover:bg-slate-50">
               <td class="whitespace-nowrap px-6 py-4 font-medium text-slate-900">
-                {patient.name || (patient.first_name + ' ' + patient.last_name)}
+                {fullName}
               </td>
-              <td class="whitespace-nowrap px-6 py-4 text-slate-500">{patient.age}</td>
+              <td class="whitespace-nowrap px-6 py-4 text-slate-500">{patientAge}</td>
               <td class="whitespace-nowrap px-6 py-4">
                 <span class="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700 border border-emerald-100">
-                  {patient.condition || 'General'}
+                  {condition}
                 </span>
               </td>
               <td class="whitespace-nowrap px-6 py-4 text-right">
-                <a href="/patients/{patient.id}" class="text-sky-600 hover:text-sky-800 transition-colors text-xs font-semibold uppercase tracking-wider hover:underline">
-                  View Details
-                </a>
+                <div class="flex items-center justify-end gap-2">
+                  <a href="/patients/{patientId}" class="text-sky-600 hover:text-sky-800 transition-colors text-xs font-semibold uppercase tracking-wider hover:underline">
+                    View Details
+                  </a>
+                  <button 
+                    on:click={() => window.location.href = `/patients/${patientId}?analyze=true`}
+                    class="rounded bg-rose-500 px-3 py-1 text-xs font-semibold text-white hover:bg-rose-600 transition-colors shadow-sm"
+                  >
+                    Analyze Risk
+                  </button>
+                </div>
               </td>
             </tr>
           {/each}
