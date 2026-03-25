@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use std::path::PathBuf;
 use tauri::Manager;
 use tauri_plugin_shell::ShellExt;
 use tauri_plugin_shell::process::{Command, CommandEvent};
@@ -22,13 +23,63 @@ struct SidecarResponse {
     error: Option<String>,
 }
 
+fn is_windows_not_found_error(message: &str) -> bool {
+    let lower = message.to_ascii_lowercase();
+    lower.contains("os error 2")
+        || lower.contains("cannot find the file specified")
+        || lower.contains("no se puede encontrar el archivo especificado")
+}
+
+fn candidate_sidecar_paths() -> Vec<PathBuf> {
+    let mut candidates = Vec::new();
+
+    if let Ok(cwd) = std::env::current_dir() {
+        candidates.push(cwd.join("src-tauri").join("bin").join("backend-sidecar.exe"));
+        candidates.push(
+            cwd.join("src-tauri")
+                .join("binaries")
+                .join("backend-sidecar-x86_64-pc-windows-msvc.exe"),
+        );
+        candidates.push(cwd.join("bin").join("backend-sidecar.exe"));
+        candidates.push(
+            cwd.join("binaries")
+                .join("backend-sidecar-x86_64-pc-windows-msvc.exe"),
+        );
+    }
+
+    if let Ok(exe_path) = std::env::current_exe() {
+        if let Some(exe_dir) = exe_path.parent() {
+            candidates.push(exe_dir.join("backend-sidecar.exe"));
+            candidates.push(exe_dir.join("bin").join("backend-sidecar.exe"));
+        }
+    }
+
+    candidates
+}
+
+fn sidecar_not_found_error(candidates: &[PathBuf]) -> String {
+    let checked_paths = candidates
+        .iter()
+        .map(|path| path.display().to_string())
+        .collect::<Vec<_>>()
+        .join(" | ");
+
+    format!(
+        "SIDECAR_NOT_FOUND: No se encontro el servicio local de IA (backend-sidecar.exe). Rutas revisadas: [{}]. Ejecuta: cd backend && bun run build:sidecar:tauri-win",
+        checked_paths
+    )
+}
+
 /// Call the sidecar to assess risk
 pub async fn assess_risk_with_sidecar(
     app: tauri::AppHandle,
     patient_id: String,
     api_key: Option<String>,
 ) -> Result<RiskAssessment, String> {
-    let sidecar_command: Command = app.shell().sidecar("backend-sidecar").map_err(|e| e.to_string())?;
+    let sidecar_command: Command = app
+        .shell()
+        .sidecar("backend-sidecar")
+        .map_err(|e| format!("Failed to resolve sidecar declaration: {}", e))?;
 
     // Try multiple database locations
     let db_path = if let Ok(app_data_dir) = app.path().app_data_dir() {
@@ -47,10 +98,36 @@ pub async fn assess_risk_with_sidecar(
         std::path::PathBuf::from("storage.sqlite")
     };
     
-    let (mut rx, mut child) = sidecar_command
+    let (mut rx, mut child) = match sidecar_command
         .env("DB_PATH", db_path.to_string_lossy().as_ref())
         .spawn()
-        .map_err(|e| format!("Failed to spawn sidecar: {}", e))?;
+    {
+        Ok(process) => process,
+        Err(primary_error) => {
+            let primary_error_msg = primary_error.to_string();
+            if is_windows_not_found_error(&primary_error_msg) {
+                let candidates = candidate_sidecar_paths();
+
+                if let Some(found_path) = candidates.iter().find(|path| path.exists()) {
+                    app.shell()
+                        .command(found_path.to_string_lossy().as_ref())
+                        .env("DB_PATH", db_path.to_string_lossy().as_ref())
+                        .spawn()
+                        .map_err(|fallback_error| {
+                            format!(
+                                "Failed to spawn fallback sidecar at {}: {}",
+                                found_path.display(),
+                                fallback_error
+                            )
+                        })?
+                } else {
+                    return Err(sidecar_not_found_error(&candidates));
+                }
+            } else {
+                return Err(format!("Failed to spawn sidecar: {}", primary_error_msg));
+            }
+        }
+    };
 
     let request = serde_json::json!({
         "id": "req-1",

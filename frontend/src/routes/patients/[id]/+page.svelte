@@ -51,6 +51,8 @@
       
       if (errorMsg.includes("Groq API key not configured")) {
          riskError = "API key missing. Please configure your Groq API key in settings.";
+      } else if (errorMsg.includes("No se encontro el servicio de IA local") || errorMsg.includes("SIDECAR_NOT_FOUND")) {
+         riskError = "No se encontro el servicio de IA local. En la raiz del proyecto ejecuta: cd backend && bun run build:sidecar:tauri-win. Luego reinicia la aplicacion y vuelve a intentar.";
       } else if (errorMsg.includes("401") || errorMsg.includes("Unauthorized")) {
          riskError = "Invalid API Key. Please check your settings.";
       } else if (errorMsg.includes("429") || errorMsg.includes("Too Many Requests")) {

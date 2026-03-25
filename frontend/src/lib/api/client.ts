@@ -124,10 +124,15 @@ export async function assessRisk(id: string, apiKey?: string): Promise<RiskAsses
     return await invoke('assess_risk', { payload: { id, apiKey } });
   } catch (error) {
      const errorMsg = String(error);
-     // Propagate configuration errors explicitly so UI can prompt user
-     if (errorMsg.includes("Groq API key not configured")) {
-       throw new Error("Groq API key not configured");
+
+     if (errorMsg.includes("SIDECAR_NOT_FOUND") || (errorMsg.includes("Failed to spawn sidecar") && (errorMsg.includes("os error 2") || errorMsg.includes("cannot find the file specified") || errorMsg.includes("No se puede encontrar el archivo especificado")))) {
+       throw new Error("No se encontro el servicio de IA local (sidecar). Ejecuta: cd backend && bun run build:sidecar:tauri-win, luego reinicia la app.");
      }
+
+      // Propagate configuration errors explicitly so UI can prompt user
+      if (errorMsg.includes("Groq API key not configured")) {
+        throw new Error("Groq API key not configured");
+      }
 
      console.error(`Tauri invoke failed for assessRisk: ${error}`);
      throw error;

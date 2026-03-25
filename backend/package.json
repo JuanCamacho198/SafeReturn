@@ -11,7 +11,8 @@
     "@types/sqlite3": "^5.1.0"
   },
   "scripts": {
-    "build:sidecar": "bun build --compile --outfile backend-sidecar ./index.ts"
+    "build:sidecar": "bun build --compile --outfile backend-sidecar ./index.ts",
+    "build:sidecar:tauri-win": "bun build --compile --outfile ../frontend/src-tauri/binaries/backend-sidecar-x86_64-pc-windows-msvc.exe ./index.ts"
   },
   "peerDependencies": {
     "typescript": "^5"
