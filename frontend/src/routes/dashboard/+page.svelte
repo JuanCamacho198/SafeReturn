@@ -6,6 +6,34 @@
   import GlassChart from '$lib/components/GlassChart.svelte';
   import PatientTable from '$lib/components/PatientTable.svelte';
 
+  // Mock data for development/testing
+  const mockPatients: Patient[] = [
+    { id: '1', mrn: 'MRN001', firstName: 'John', lastName: 'Smith', gender: 'Male', dateOfBirth: '1955-03-15', age: 70, condition: 'Heart Failure', riskScore: 0.85 },
+    { id: '2', mrn: 'MRN002', firstName: 'Maria', lastName: 'Garcia', gender: 'Female', dateOfBirth: '1968-07-22', age: 57, condition: 'Diabetes Type 2', riskScore: 0.45 },
+    { id: '3', mrn: 'MRN003', firstName: 'Robert', lastName: 'Johnson', gender: 'Male', dateOfBirth: '1942-11-08', age: 83, condition: 'COPD', riskScore: 0.72 },
+    { id: '4', mrn: 'MRN004', firstName: 'Emily', lastName: 'Davis', gender: 'Female', dateOfBirth: '1975-01-30', age: 51, condition: 'Hypertension', riskScore: 0.28 },
+    { id: '5', mrn: 'MRN005', firstName: 'Michael', lastName: 'Wilson', gender: 'Male', dateOfBirth: '1960-09-12', age: 65, condition: 'Heart Failure', riskScore: 0.78 },
+    { id: '6', mrn: 'MRN006', firstName: 'Sarah', lastName: 'Brown', gender: 'Female', dateOfBirth: '1982-05-18', age: 43, condition: 'Asthma', riskScore: 0.15 },
+    { id: '7', mrn: 'MRN007', firstName: 'James', lastName: 'Miller', gender: 'Male', dateOfBirth: '1958-12-03', age: 67, condition: 'Diabetes Type 2', riskScore: 0.52 },
+    { id: '8', mrn: 'MRN008', firstName: 'Linda', lastName: 'Taylor', gender: 'Female', dateOfBirth: '1970-08-25', age: 55, condition: 'Hypertension', riskScore: 0.33 },
+    { id: '9', mrn: 'MRN009', firstName: 'David', lastName: 'Anderson', gender: 'Male', dateOfBirth: '1948-02-14', age: 78, condition: 'COPD', riskScore: 0.81 },
+    { id: '10', mrn: 'MRN010', firstName: 'Patricia', lastName: 'Thomas', gender: 'Female', dateOfBirth: '1965-10-07', age: 60, condition: 'Heart Failure', riskScore: 0.68 },
+  ];
+
+  const mockMetrics: MetricsResponse = {
+    totalPatients: 10,
+    averageAge: 62.9,
+    highRiskCount: 4,
+    newThisMonth: 3,
+    conditionDistribution: [
+      { label: 'Heart Failure', value: 3 },
+      { label: 'Diabetes Type 2', value: 2 },
+      { label: 'COPD', value: 2 },
+      { label: 'Hypertension', value: 2 },
+      { label: 'Asthma', value: 1 },
+    ]
+  };
+
   // State
   let patients: Patient[] = [];
   let metadata = {
@@ -28,7 +56,18 @@
       patients = res.items;
       metadata = res.metadata;
     } catch (e) {
-      console.error("Failed to load patients:", e);
+      console.warn("Using mock data (API not available):", e);
+      // Use mock data for development
+      let filtered = mockPatients;
+      if (searchQuery) {
+        filtered = mockPatients.filter(p => 
+          p.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          p.condition.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      }
+      patients = filtered;
+      metadata = { total_items: filtered.length, total_pages: 1, current_page: 1, limit: 10 };
     } finally {
       loadingPatients = false;
     }
@@ -39,7 +78,9 @@
     try {
       metrics = await getMetrics();
     } catch (e) {
-      console.error("Failed to load metrics:", e);
+      console.warn("Using mock metrics (API not available):", e);
+      // Use mock metrics for development
+      metrics = mockMetrics;
     } finally {
       loadingMetrics = false;
     }
@@ -91,6 +132,11 @@
 </script>
 
 <div class="min-h-screen bg-slate-50 font-sans text-slate-900 pb-12">
+  <!-- Demo Mode Banner -->
+  <div class="bg-amber-500 text-white text-center py-2 text-sm font-medium">
+    Modo Demo - Usando datos de prueba. Ejecuta en Tauri para usar datos reales.
+  </div>
+  
   <!-- Navigation/Header Bar -->
   <div class="bg-white border-b border-slate-200 sticky top-0 z-10 px-8 py-4 mb-8">
     <div class="max-w-7xl mx-auto flex items-center justify-between">
