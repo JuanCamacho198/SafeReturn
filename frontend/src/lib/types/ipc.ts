@@ -24,5 +24,5 @@ export interface Encounter {
 export interface RiskAssessment {
   riskScore: number;
   explanation: string;
-  fragments: any[];
+  fragments: string[];
 }
