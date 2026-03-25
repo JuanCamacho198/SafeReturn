@@ -1,5 +1,6 @@
 import { initDb } from './db';
 import { createInterface } from 'readline';
+import { getPatients, getMetrics } from './services/patient';
 
 // Initialize the database
 const db = initDb('storage.sqlite');
@@ -27,6 +28,22 @@ rl.on('line', async (line) => {
         break;
       case 'health':
         sendResponse(id, { status: 'healthy', db: db.filename });
+        break;
+      case 'get_patients':
+        try {
+          const result = getPatients(db, payload);
+          sendResponse(id, result);
+        } catch (e) {
+          sendError(id, `Error getting patients: ${e}`);
+        }
+        break;
+      case 'get_metrics':
+        try {
+          const result = getMetrics(db);
+          sendResponse(id, result);
+        } catch (e) {
+          sendError(id, `Error getting metrics: ${e}`);
+        }
         break;
       default:
         sendError(id, `Unknown command: ${command}`);
