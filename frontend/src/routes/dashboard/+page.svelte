@@ -76,8 +76,19 @@
           (p.condition?.toLowerCase() || '').includes(searchQuery.toLowerCase())
         );
       }
-      patients = filtered;
-      metadata = { total_items: filtered.length, total_pages: 1, current_page: 1, limit: 10 };
+      
+      // Fallback pagination logic
+      const limit = metadata.limit;
+      const start = (page - 1) * limit;
+      const end = start + limit;
+      patients = filtered.slice(start, end);
+      
+      metadata = { 
+        total_items: filtered.length, 
+        total_pages: Math.ceil(filtered.length / limit), 
+        current_page: page, 
+        limit: limit 
+      };
     } finally {
       loadingPatients = false;
     }
@@ -206,36 +217,4 @@
     </div>
 
     <!-- Charts Row -->
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-      <div class="min-h-87.5">
-          <GlassChart 
-            type="bar" 
-            title={$t('dashboard.charts.condition_distribution')}
-            data={distributionData} 
-            loading={loadingMetrics} 
-          />
-      </div>
-      <div class="min-h-87.5">
-          <GlassChart 
-            type="line" 
-            title={$t('dashboard.charts.patient_growth')}
-            data={growthData} 
-            loading={loadingMetrics} 
-          />
-      </div>
-    </div>
-
-    <!-- Patient Table -->
-    <section>
-      <PatientTable 
-        {patients} 
-        {metadata} 
-        loading={loadingPatients} 
-        {search}
-        on:changePage={handlePageChange}
-        on:changeSearch={handleSearchChange}
-      />
-    </section>
-
-  </div>
-</div>
+    <div class=
