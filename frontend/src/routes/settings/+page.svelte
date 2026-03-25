@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { invoke } from '@tauri-apps/api/core';
+  import { t } from '$lib/i18n';
 
   let apiKey = '';
   let showKey = false;
@@ -32,7 +33,7 @@
 
   async function saveKey() {
     if (!apiKey.trim()) {
-      message = 'Please enter a valid API Key.';
+      message = 'Please enter a valid API Key.'; // NOTE: Not translating this dynamic error message yet for simplicity
       return;
     }
     
@@ -68,20 +69,20 @@
 </script>
 
 <div class="max-w-2xl mx-auto py-8">
-  <h1 class="text-3xl font-bold text-gray-900 mb-8">Settings</h1>
+  <h1 class="text-3xl font-bold text-gray-900 mb-8">{$t('settings.title')}</h1>
 
   <div class="bg-white shadow rounded-lg p-6 border border-gray-200">
-    <h2 class="text-xl font-semibold text-gray-800 mb-4">API Configuration</h2>
+    <h2 class="text-xl font-semibold text-gray-800 mb-4">{$t('settings.api_config')}</h2>
     
     <div class="mb-6">
-      <label for="apiKey" class="block text-sm font-medium text-gray-700 mb-2">Groq API Key</label>
+      <label for="apiKey" class="block text-sm font-medium text-gray-700 mb-2">{$t('settings.groq_key_label')}</label>
       <div class="relative rounded-md shadow-sm">
         <input
           type={showKey ? 'text' : 'password'}
           id="apiKey"
           bind:value={apiKey}
           class="block w-full rounded-md border-gray-300 pr-10 focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 border"
-          placeholder="gsk_..."
+          placeholder={$t('settings.placeholder')}
         />
         <button
           type="button"
@@ -103,9 +104,9 @@
         </button>
       </div>
       <p class="mt-2 text-sm text-gray-500">
-        Status: 
+        {$t('settings.status')}: 
         <span class={status === 'Configured' || status === 'Saved' ? 'text-green-600 font-semibold' : 'text-amber-600'}>
-          {status === 'Saved' ? 'Configured (Saved just now)' : status}
+          {status === 'Saved' ? $t('settings.status_saved') : (status === 'Configured' ? $t('settings.status_configured') : $t('settings.status_not_configured'))}
         </span>
       </p>
     </div>
@@ -115,13 +116,13 @@
         on:click={clearKey}
         class="text-red-600 hover:text-red-800 text-sm font-medium px-4 py-2 rounded transition"
       >
-        Clear Key
+        {$t('settings.clear_key')}
       </button>
       <button
         on:click={saveKey}
         class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition"
       >
-        Save Configuration
+        {$t('settings.save_config')}
       </button>
     </div>
 

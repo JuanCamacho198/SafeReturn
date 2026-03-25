@@ -15,6 +15,8 @@ export interface MetricsResponse {
   totalPatients: number;
   newThisMonth: number;
   conditionDistribution: { label: string; value: number }[];
+  averageAge?: number;
+  highRiskCount?: number;
 }
 
 export async function getPatients(page: number = 1, limit: number = 10, search: string = ""): Promise<PatientListResponse> {

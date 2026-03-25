@@ -10,6 +10,13 @@ export interface Patient {
   created_at?: string;
   condition?: string;
   encounters?: Encounter[];
+  riskScore?: number;
+  demographics?: any;
+  diagnoses?: any[];
+  // For compatibility with synthetic data
+  firstName?: string;
+  lastName?: string;
+  patient_id?: string;
 }
 
 export interface Encounter {
