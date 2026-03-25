@@ -8,8 +8,9 @@
   <nav class="bg-blue-900 text-white p-4 shadow-md">
     <div class="container mx-auto flex justify-between items-center">
       <div class="flex items-center gap-8">
-        <a href="/" class="text-xl font-bold flex items-center gap-2">
-          🏥 {$t('app.title')}
+        <a href="/" class="text-xl font-bold flex items-center gap-3">
+          <img src="/logo.png" alt="SafeReturn" class="h-10 w-auto" />
+          <span class="hidden sm:inline">{$t('app.title')}</span>
         </a>
         <div class="flex gap-4">
           <a href="/dashboard" class="hover:text-blue-200 transition px-3 py-1 rounded hover:bg-blue-800">
