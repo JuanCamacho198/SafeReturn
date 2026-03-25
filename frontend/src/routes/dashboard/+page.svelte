@@ -34,12 +34,12 @@
   // Calculate metrics from real data
   const conditions = realPatients.map(p => p.condition);
   const conditionCounts: Record<string, number> = {};
-  conditions.forEach(c => { conditionCounts[c] = (conditionCounts[c] || 0) + 1; });
+  conditions.forEach(c => { if (c) conditionCounts[c] = (conditionCounts[c] || 0) + 1; });
 
   const realMetrics: MetricsResponse = {
     totalPatients: realPatients.length,
-    averageAge: Math.round(realPatients.reduce((sum, p) => sum + p.age, 0) / realPatients.length),
-    highRiskCount: realPatients.filter(p => p.riskScore > 0.7).length,
+    averageAge: Math.round(realPatients.reduce((sum, p) => sum + (p.age || 0), 0) / realPatients.length),
+    highRiskCount: realPatients.filter(p => (p.riskScore || 0) > 0.7).length,
     newThisMonth: Math.floor(realPatients.length * 0.3),
     conditionDistribution: Object.entries(conditionCounts).map(([label, value]) => ({ label, value }))
   };
@@ -71,9 +71,9 @@
       let filtered = realPatients;
       if (searchQuery) {
         filtered = realPatients.filter(p => 
-          p.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          p.lastName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          p.condition.toLowerCase().includes(searchQuery.toLowerCase())
+          (p.firstName?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
+          (p.lastName?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
+          (p.condition?.toLowerCase() || '').includes(searchQuery.toLowerCase())
         );
       }
       patients = filtered;
