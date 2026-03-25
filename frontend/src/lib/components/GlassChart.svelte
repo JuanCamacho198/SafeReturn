@@ -1,12 +1,17 @@
 <script lang="ts">
-  import { Line, Bar } from 'svelte-chartjs';
-  import '../chartConfig'; // Register components
+  import { onMount } from 'svelte';
+  import { Chart, registerables } from 'chart.js';
+  
+  Chart.register(...registerables);
 
   export let type: 'line' | 'bar' = 'line';
   export let data: any;
   export let options: any = {};
   export let title: string = '';
   export let loading: boolean = false;
+
+  let canvas: HTMLCanvasElement;
+  let chart: Chart | null = null;
 
   const baseOptions = {
     responsive: true,
@@ -25,14 +30,6 @@
         displayColors: true,
         boxPadding: 4,
         usePointStyle: true,
-        callbacks: {
-            labelColor: function(context: any) {
-                return {
-                    borderColor: context.dataset.borderColor || context.dataset.backgroundColor,
-                    backgroundColor: context.dataset.backgroundColor
-                };
-            }
-        }
       },
     },
     scales: {
@@ -71,13 +68,6 @@
         tension: 0.4,
         borderWidth: 3,
         borderColor: '#0ea5e9',
-        backgroundColor: (context: any) => {
-          const ctx = context.chart.ctx;
-          const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-          gradient.addColorStop(0, 'rgba(14, 165, 233, 0.2)');
-          gradient.addColorStop(1, 'rgba(14, 165, 233, 0)');
-          return gradient;
-        },
         fill: true,
       },
       point: {
@@ -95,8 +85,8 @@
       },
     },
     interaction: {
-      mode: 'nearest',
-      axis: 'x',
+      mode: 'nearest' as const,
+      axis: 'x' as const,
       intersect: false
     }
   };
@@ -110,6 +100,30 @@
           y: { ...baseOptions.scales.y, ...(options.scales?.y || {}) }
       } 
   };
+
+  function createChart() {
+    if (chart) {
+      chart.destroy();
+    }
+    if (canvas && data) {
+      chart = new Chart(canvas, {
+        type: type === 'line' ? 'line' : 'bar',
+        data: data,
+        options: finalOptions
+      });
+    }
+  }
+
+  $: if (data && canvas) {
+    createChart();
+  }
+
+  onMount(() => {
+    createChart();
+    return () => {
+      if (chart) chart.destroy();
+    };
+  });
 </script>
 
 <div class="card p-6 h-full flex flex-col">
@@ -125,11 +139,7 @@
     {#if loading}
       <div class="h-full w-full animate-pulse rounded-lg bg-slate-50 border border-slate-100"></div>
     {:else}
-      {#if type === 'line'}
-        <Line {data} options={finalOptions} />
-      {:else if type === 'bar'}
-        <Bar {data} options={finalOptions} />
-      {/if}
+      <canvas bind:this={canvas}></canvas>
     {/if}
   </div>
 </div>
