@@ -1,4 +1,5 @@
 // Prompt module for building clinical prompts for Groq API
+#![allow(dead_code)]
 use serde::{Deserialize, Serialize};
 
 /// Patient demographics structure

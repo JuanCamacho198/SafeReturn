@@ -98,8 +98,64 @@ pub async fn assess_risk_with_sidecar(
         std::path::PathBuf::from("storage.sqlite")
     };
     
+    // Find schema.sql path
+    let schema_path = {
+        let mut path = PathBuf::from("schema.sql");
+        
+        // 1. Check resource directory (Production / Bundled)
+        if let Ok(resource_dir) = app.path().resource_dir() {
+            let p = resource_dir.join("schema.sql");
+            if p.exists() {
+                path = p;
+            } else {
+                 // Try looking inside a 'resources' subdirectory if flattened logic is different
+                 let p2 = resource_dir.join("resources").join("schema.sql");
+                 if p2.exists() {
+                     path = p2;
+                 }
+            }
+        }
+        
+        // 2. Fallback: Check relative to executable (Dev / Manual Copy)
+        if !path.exists() {
+            if let Ok(exe_path) = std::env::current_exe() {
+                if let Some(exe_dir) = exe_path.parent() {
+                    let p = exe_dir.join("schema.sql");
+                    if p.exists() {
+                        path = p;
+                    } else {
+                         // Check bin/schema.sql
+                         let p_bin = exe_dir.join("bin").join("schema.sql");
+                         if p_bin.exists() {
+                             path = p_bin;
+                         } else {
+                             // Check binaries/schema.sql
+                             let p_binaries = exe_dir.join("binaries").join("schema.sql");
+                             if p_binaries.exists() {
+                                 path = p_binaries;
+                             }
+                         }
+                    }
+                }
+            }
+        }
+        
+        // 3. Last resort: current dir (Development running from root)
+        if !path.exists() {
+             if let Ok(cwd) = std::env::current_dir() {
+                let p = cwd.join("src-tauri").join("bin").join("schema.sql");
+                if p.exists() {
+                    path = p;
+                }
+             }
+        }
+        
+        path
+    };
+
     let (mut rx, mut child) = match sidecar_command
         .env("DB_PATH", db_path.to_string_lossy().as_ref())
+        .env("SCHEMA_PATH", schema_path.to_string_lossy().as_ref())
         .spawn()
     {
         Ok(process) => process,
@@ -112,6 +168,7 @@ pub async fn assess_risk_with_sidecar(
                     app.shell()
                         .command(found_path.to_string_lossy().as_ref())
                         .env("DB_PATH", db_path.to_string_lossy().as_ref())
+                        .env("SCHEMA_PATH", schema_path.to_string_lossy().as_ref())
                         .spawn()
                         .map_err(|fallback_error| {
                             format!(
