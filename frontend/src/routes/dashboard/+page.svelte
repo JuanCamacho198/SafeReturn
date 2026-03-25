@@ -217,4 +217,36 @@
     </div>
 
     <!-- Charts Row -->
-    <div class=
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div class="min-h-87.5">
+          <GlassChart 
+            type="bar" 
+            title={$t('dashboard.charts.condition_distribution')}
+            data={distributionData} 
+            loading={loadingMetrics} 
+          />
+      </div>
+      <div class="min-h-87.5">
+          <GlassChart 
+            type="line" 
+            title={$t('dashboard.charts.patient_growth')}
+            data={growthData} 
+            loading={loadingMetrics} 
+          />
+      </div>
+    </div>
+
+    <!-- Patient Table -->
+    <section>
+      <PatientTable 
+        {patients} 
+        {metadata} 
+        loading={loadingPatients} 
+        {search}
+        on:changePage={handlePageChange}
+        on:changeSearch={handleSearchChange}
+      />
+    </section>
+
+  </div>
+</div>
