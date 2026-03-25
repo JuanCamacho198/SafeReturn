@@ -121,7 +121,7 @@
     {/if}
   </div>
 
-  <div class="relative flex-grow min-h-[250px] w-full">
+  <div class="relative grow min-h-62.5 w-full">
     {#if loading}
       <div class="h-full w-full animate-pulse rounded-lg bg-slate-50 border border-slate-100"></div>
     {:else}

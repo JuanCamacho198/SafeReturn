@@ -151,7 +151,7 @@
 
     <!-- Charts Row -->
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-      <div class="min-h-[350px]">
+      <div class="min-h-87.5">
           <GlassChart 
             type="bar" 
             title="Condition Distribution" 
@@ -159,7 +159,7 @@
             loading={loadingMetrics} 
           />
       </div>
-      <div class="min-h-[350px]">
+      <div class="min-h-87.5">
           <GlassChart 
             type="line" 
             title="Patient Growth Trend" 
