@@ -2,6 +2,13 @@ import { invoke } from '@tauri-apps/api/core';
 import type { Patient, RiskAssessment } from '../types/ipc';
 import syntheticPatients from '../synthetic_patients.json';
 
+// DEBUG: Check Tauri API availability
+console.log('[DEBUG] Tauri API check:');
+console.log('  - invoke exists:', typeof invoke !== 'undefined');
+console.log('  - invoke type:', typeof invoke);
+console.log('  - window.__TAURI__:', typeof window !== 'undefined' ? (window as any).__TAURI__ : 'N/A');
+console.log('  - window.__TAURI_INTERNALS__:', typeof window !== 'undefined' ? (window as any).__TAURI_INTERNALS__ : 'N/A');
+
 // Generate random names for patients (matching dashboard approach)
 // Expanded to 50+ names with diverse nationalities
 const firstNames = [
