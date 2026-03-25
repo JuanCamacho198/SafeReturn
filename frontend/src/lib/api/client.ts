@@ -125,6 +125,10 @@ export async function assessRisk(id: string, apiKey?: string): Promise<RiskAsses
   } catch (error) {
      const errorMsg = String(error);
 
+     if (errorMsg.includes("schema.sql") || errorMsg.includes("No se encontró schema.sql")) {
+       throw new Error("Error crítico: El sidecar de IA no pudo encontrar 'schema.sql'. Reinstala la aplicación o verifica los archivos de recursos.");
+     }
+
      if (errorMsg.includes("SIDECAR_NOT_FOUND") || (errorMsg.includes("Failed to spawn sidecar") && (errorMsg.includes("os error 2") || errorMsg.includes("cannot find the file specified") || errorMsg.includes("No se puede encontrar el archivo especificado")))) {
        throw new Error("No se encontro el servicio de IA local (sidecar). Ejecuta: cd backend && bun run build:sidecar:tauri-win, luego reinicia la app.");
      }

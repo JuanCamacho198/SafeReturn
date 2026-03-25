@@ -142,6 +142,7 @@ pub async fn assess_risk_with_sidecar(
     child.write(request_str.as_bytes()).map_err(|e| format!("Failed to write to sidecar: {}", e))?;
 
     let mut result: Result<RiskAssessment, String> = Err("No response from sidecar".to_string());
+    let mut stderr_buffer = String::new();
 
     // Wait for response
     // We expect a JSON line on stdout
@@ -168,14 +169,23 @@ pub async fn assess_risk_with_sidecar(
                 }
             }
             CommandEvent::Stderr(line) => {
-                eprintln!("Sidecar stderr: {}", String::from_utf8_lossy(&line));
+                let text = String::from_utf8_lossy(&line);
+                eprintln!("Sidecar stderr: {}", text);
+                stderr_buffer.push_str(&text);
             }
             CommandEvent::Error(e) => {
                 result = Err(format!("Sidecar communication error: {}", e));
                 break;
             }
             CommandEvent::Terminated(payload) => {
-                 result = Err(format!("Sidecar terminated unexpectedly with code {:?}", payload.code));
+                 let code = payload.code.unwrap_or(-1);
+                 let stderr_lower = stderr_buffer.to_ascii_lowercase();
+                 
+                 if stderr_lower.contains("schema.sql") && (stderr_lower.contains("enoent") || stderr_lower.contains("not found")) {
+                     result = Err(format!("No se encontró schema.sql del sidecar. Asegúrate de que el archivo existe en resources o junto al ejecutable. Error original: {}", stderr_buffer));
+                 } else {
+                     result = Err(format!("Sidecar terminated unexpectedly with code {}. Stderr: {}", code, stderr_buffer));
+                 }
                  break;
             }
             _ => {}
