@@ -7,9 +7,9 @@ export class RagOrchestrator {
   vectorStore: VectorStore;
   llm: GroqLLM;
 
-  constructor(db: Database) {
+  constructor(db: Database, apiKey?: string) {
     this.vectorStore = new VectorStore(db);
-    this.llm = new GroqLLM();
+    this.llm = new GroqLLM(apiKey);
   }
 
   async assessRisk(patientNotes: string) {

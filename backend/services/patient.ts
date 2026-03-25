@@ -4,9 +4,9 @@ import { RagOrchestrator } from "../rag/orchestrator";
 // Initialize the RAG orchestrator lazily
 let ragOrchestrator: RagOrchestrator | null = null;
 
-function getRagOrchestrator(db: Database) {
-  if (!ragOrchestrator) {
-    ragOrchestrator = new RagOrchestrator(db);
+function getRagOrchestrator(db: Database, apiKey?: string) {
+  if (apiKey || !ragOrchestrator) {
+    ragOrchestrator = new RagOrchestrator(db, apiKey);
   }
   return ragOrchestrator;
 }
@@ -113,7 +113,7 @@ export function getPatientById(db: Database, id: string) {
   return { ...patient, encounters };
 }
 
-export async function assessPatientRisk(db: Database, id: string) {
+export async function assessPatientRisk(db: Database, id: string, apiKey?: string) {
   const encounters = db.query("SELECT notes FROM Encounters WHERE patient_id = ? ORDER BY admission_date ASC").all(id) as { notes: string }[];
   
   if (!encounters || encounters.length === 0) {
@@ -122,6 +122,6 @@ export async function assessPatientRisk(db: Database, id: string) {
 
   const allNotes = encounters.map(e => e.notes).join("\n\n---\n\n");
   
-  const rag = getRagOrchestrator(db);
+  const rag = getRagOrchestrator(db, apiKey);
   return await rag.assessRisk(allNotes);
 }

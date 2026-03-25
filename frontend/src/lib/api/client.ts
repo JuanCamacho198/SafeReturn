@@ -35,6 +35,6 @@ export async function getPatient(id: string): Promise<Patient> {
   return await invoke('get_patient', { payload: { id } });
 }
 
-export async function assessRisk(id: string): Promise<RiskAssessment> {
-  return await invoke('assess_risk', { payload: { id } });
+export async function assessRisk(id: string, apiKey?: string): Promise<RiskAssessment> {
+  return await invoke('assess_risk', { payload: { id, apiKey } });
 }

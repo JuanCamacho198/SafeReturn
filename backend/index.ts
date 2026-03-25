@@ -55,7 +55,7 @@ rl.on('line', async (line) => {
         break;
       case 'assess_risk':
         try {
-          const result = await assessPatientRisk(db, payload.id);
+          const result = await assessPatientRisk(db, payload.id, payload.apiKey);
           sendResponse(id, result);
         } catch (e) {
           sendError(id, `Error assessing risk: ${e}`);
