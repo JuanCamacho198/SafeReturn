@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "tauri-app",
-  "version": "0.1.0",
-  "identifier": "com.juan-camacho.tauri-app",
+  "productName": "SafeReturn",
+  "version": "0.9.0",
+  "identifier": "com.juan-camacho.safereturn",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
