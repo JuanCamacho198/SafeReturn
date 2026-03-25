@@ -1,0 +1,106 @@
+{
+  "app": {
+    "title": "SafeReturn",
+    "subtitle": "SafeReturn v0.1.0 — Predicción de reingresos hospitalarios",
+    "demo_mode": "Modo Demo - Datos sintéticos de pacientes. Configure API key en Settings para análisis real.",
+    "system_online": "Sistema En Línea"
+  },
+  "nav": {
+    "dashboard": "Tablero",
+    "settings": "Configuración",
+    "back_dashboard": "← Volver al Tablero"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "save": "Guardar",
+    "saved": "Guardado",
+    "cancel": "Cancelar",
+    "search": "Buscar",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "actions": "Acciones",
+    "view_details": "Ver Detalles",
+    "analyze_risk": "Analizar Riesgo",
+    "not_found": "No encontrado",
+    "unknown": "Desconocido",
+    "na": "N/D"
+  },
+  "dashboard": {
+    "title": "Inteligencia Clínica",
+    "stats": {
+      "total_patients": "Total Pacientes",
+      "new_admissions": "Nuevos Ingresos",
+      "critical_alerts": "Alertas Críticas"
+    },
+    "charts": {
+      "condition_distribution": "Distribución por Condición",
+      "patient_growth": "Tendencia de Crecimiento de Pacientes",
+      "patients": "Pacientes",
+      "new_patients": "Nuevos Pacientes"
+    },
+    "table": {
+      "recent_patients": "Pacientes Recientes",
+      "search_placeholder": "Buscar pacientes...",
+      "showing": "Mostrando",
+      "to": "a",
+      "of": "de",
+      "results": "resultados",
+      "no_results": "No se encontraron pacientes que coincidan con"
+    },
+    "columns": {
+      "name": "Nombre",
+      "age": "Edad",
+      "condition": "Condición"
+    }
+  },
+  "patient": {
+    "header": {
+      "mrn": "HC",
+      "gender": "Género",
+      "age": "Edad",
+      "dob": "Fec. Nac.",
+      "active_patient": "Paciente Activo"
+    },
+    "history": {
+      "title": "Línea de Tiempo Clínica",
+      "encounters": "Encuentros",
+      "no_encounters": "No hay encuentros clínicos registrados."
+    },
+    "risk": {
+      "title": "Evaluación de Riesgo",
+      "run_analysis": "Ejecutar Análisis",
+      "analyzing": "Analizando...",
+      "score": "Puntaje de Riesgo",
+      "explanation": "Explicación IA",
+      "evidence": "Evidencia Clave",
+      "prompt": "Ejecute análisis de IA en el historial del paciente para identificar riesgos."
+    },
+    "demographics": {
+      "title": "Demografía",
+      "name": "Nombre",
+      "dob": "Fec. Nac.",
+      "gender": "Género",
+      "id": "ID"
+    },
+    "error_load": "Error al cargar datos del paciente. Por favor intente de nuevo.",
+    "not_found": "Paciente no encontrado",
+    "return_dashboard": "Volver al Tablero"
+  },
+  "settings": {
+    "title": "Configuración",
+    "api_config": "Configuración de API",
+    "groq_key_label": "Clave API de Groq",
+    "placeholder": "gsk_...",
+    "status": "Estado",
+    "status_configured": "Configurado",
+    "status_not_configured": "No Configurado",
+    "status_saved": "Configurado (Guardado ahora)",
+    "clear_key": "Borrar Clave",
+    "save_config": "Guardar Configuración",
+    "valid_key_msg": "Por favor ingrese una Clave API válida.",
+    "invalid_format_msg": "Formato de Clave API inválido. Debe comenzar con \"gsk_\"",
+    "success_msg": "¡Clave API guardada exitosamente!",
+    "cleared_msg": "Clave API eliminada."
+  }
+}

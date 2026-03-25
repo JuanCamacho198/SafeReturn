@@ -1,0 +1,106 @@
+{
+  "app": {
+    "title": "SafeReturn",
+    "subtitle": "SafeReturn v0.1.0 — Hospital Readmission Prediction",
+    "demo_mode": "Demo Mode - Synthetic patient data. Configure API key in Settings for real analysis.",
+    "system_online": "System Online"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "back_dashboard": "← Back to Dashboard"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "saved": "Saved",
+    "cancel": "Cancel",
+    "search": "Search",
+    "next": "Next",
+    "previous": "Previous",
+    "actions": "Actions",
+    "view_details": "View Details",
+    "analyze_risk": "Analyze Risk",
+    "not_found": "Not found",
+    "unknown": "Unknown",
+    "na": "N/A"
+  },
+  "dashboard": {
+    "title": "Clinical Intelligence",
+    "stats": {
+      "total_patients": "Total Patients",
+      "new_admissions": "New Admissions",
+      "critical_alerts": "Critical Alerts"
+    },
+    "charts": {
+      "condition_distribution": "Condition Distribution",
+      "patient_growth": "Patient Growth Trend",
+      "patients": "Patients",
+      "new_patients": "New Patients"
+    },
+    "table": {
+      "recent_patients": "Recent Patients",
+      "search_placeholder": "Search patients...",
+      "showing": "Showing",
+      "to": "to",
+      "of": "of",
+      "results": "results",
+      "no_results": "No patients found matching"
+    },
+    "columns": {
+      "name": "Name",
+      "age": "Age",
+      "condition": "Condition"
+    }
+  },
+  "patient": {
+    "header": {
+      "mrn": "MRN",
+      "gender": "Gender",
+      "age": "Age",
+      "dob": "DOB",
+      "active_patient": "Active Patient"
+    },
+    "history": {
+      "title": "Clinical Timeline",
+      "encounters": "Encounters",
+      "no_encounters": "No clinical encounters recorded."
+    },
+    "risk": {
+      "title": "Risk Assessment",
+      "run_analysis": "Run Analysis",
+      "analyzing": "Analyzing...",
+      "score": "Risk Score",
+      "explanation": "AI Explanation",
+      "evidence": "Key Evidence",
+      "prompt": "Run AI analysis on patient history to identify risks."
+    },
+    "demographics": {
+      "title": "Demographics",
+      "name": "Name",
+      "dob": "DOB",
+      "gender": "Gender",
+      "id": "ID"
+    },
+    "error_load": "Failed to load patient data. Please try again.",
+    "not_found": "Patient not found",
+    "return_dashboard": "Return to Dashboard"
+  },
+  "settings": {
+    "title": "Settings",
+    "api_config": "API Configuration",
+    "groq_key_label": "Groq API Key",
+    "placeholder": "gsk_...",
+    "status": "Status",
+    "status_configured": "Configured",
+    "status_not_configured": "Not Configured",
+    "status_saved": "Configured (Saved just now)",
+    "clear_key": "Clear Key",
+    "save_config": "Save Configuration",
+    "valid_key_msg": "Please enter a valid API Key.",
+    "invalid_format_msg": "Invalid API Key format. Must start with \"gsk_\"",
+    "success_msg": "API Key saved successfully!",
+    "cleared_msg": "API Key removed."
+  }
+}
