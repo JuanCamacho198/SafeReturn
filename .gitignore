@@ -14,3 +14,8 @@ vector_store/*.faiss
 .env
 .env.local
 .env.production
+
+# Tauri sidecars
+frontend/src-tauri/bin/
+!frontend/src-tauri/bin/.gitkeep
+
