@@ -181,3 +181,31 @@ The system SHALL support bulk import of patient data from JSON format. Imports M
 - AND the system SHALL report which 5 records failed and why
 - AND the response SHALL include success_count=95, error_count=5
 - AND the error details SHALL list record index and validation failure reason
+
+### Requirement: PAT-010: Extended Clinical Data
+
+The system SHALL support extended clinical data for patients including medications, lab results, and outcomes. This data SHALL be available in patient detail retrieval and displayed in the UI.
+
+#### Scenario: Patient detail includes medications
+
+- GIVEN a patient has medications in synthetic data
+- WHEN retrieving patient detail
+- THEN the response SHALL include medications array with name, dosage, frequency, route
+
+#### Scenario: Patient detail includes lab results
+
+- GIVEN a patient has lab results in synthetic data
+- WHEN retrieving patient detail
+- THEN the response SHALL include lab_results array with name, value, unit, reference_range, flag, panel
+
+#### Scenario: Patient detail includes outcomes
+
+- GIVEN a patient has outcomes in synthetic data
+- WHEN retrieving patient detail
+- THEN the response SHALL include outcomes object with readmitted, days_to_readmission, discharge_disposition
+
+#### Scenario: Fallback data includes extended clinical data
+
+- GIVEN the Tauri backend is unavailable
+- WHEN the client requests patient detail
+- THEN the fallback SHALL return medications, lab_results, and outcomes from synthetic_patients.json
