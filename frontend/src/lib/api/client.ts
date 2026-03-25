@@ -3,8 +3,31 @@ import type { Patient, RiskAssessment } from '../types/ipc';
 import syntheticPatients from '../synthetic_patients.json';
 
 // Generate random names for patients (matching dashboard approach)
-const firstNames = ['James', 'Mary', 'John', 'Patricia', 'Robert', 'Jennifer', 'Michael', 'Linda', 'William', 'Elizabeth', 'David', 'Barbara', 'Richard', 'Susan', 'Joseph', 'Jessica', 'Thomas', 'Sarah', 'Charles', 'Karen'];
-const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'];
+// Expanded to 50+ names with diverse nationalities
+const firstNames = [
+  // Anglo-Saxon
+  'James', 'Mary', 'John', 'Patricia', 'Robert', 'Jennifer', 'Michael', 'Linda', 'William', 'Elizabeth',
+  'David', 'Barbara', 'Richard', 'Susan', 'Joseph', 'Jessica', 'Thomas', 'Sarah', 'Charles', 'Karen',
+  'Christopher', 'Nancy', 'Daniel', 'Lisa', 'Matthew', 'Betty', 'Anthony', 'Margaret', 'Mark', 'Sandra',
+  // Hispanic/Latino
+  'Carlos', 'Maria', 'Jose', 'Ana', 'Luis', 'Rosa', 'Miguel', 'Sofia', 'Antonio', 'Isabella',
+  'Fernando', 'Carmen', 'Diego', 'Valentina', 'Alejandro', 'Natalia', 'Rafael', 'Lucia', 'Eduardo', 'Paula',
+  // Asian
+  'Wei', 'Mei', 'Yuki', 'Hiroshi', 'Sakura', 'Kenji', 'Akiko', 'Takeshi', 'Sung', 'Min-jun',
+  'Ji-young', 'Hana', 'Raj', 'Priya', 'Aarav', 'Ananya', 'Wei-lin', 'Chen', 'Ling', 'Ming'
+];
+const lastNames = [
+  // Anglo-Saxon
+  'Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez',
+  'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin',
+  'Lee', 'Thompson', 'White', 'Harris', 'Clark', 'Lewis', 'Robinson', 'Walker', 'Young', 'Allen',
+  // Hispanic/Latino
+  'Perez', 'Sanchez', 'Ramirez', 'Torres', 'Flores', 'Rivera', 'Gomez', 'Diaz', 'Cruz', 'Reyes',
+  'Morales', 'Ortiz', 'Vargas', 'Chavez', 'Mendez', 'Ruiz', 'Fernandez', 'Alvarez', 'Castillo', 'Jimenez',
+  // Asian
+  'Wang', 'Li', 'Zhang', 'Liu', 'Chen', 'Yang', 'Huang', 'Zhao', 'Kim', 'Park', 'Choi', 'Nguyen',
+  'Tran', 'Le', 'Singh', 'Kumar', 'Patel', 'Shah', 'Tanaka', 'Suzuki', 'Takahashi', 'Watanabe'
+];
 
 // Map synthetic patient index to consistent names
 function getNameFromIndex(index: number) {
@@ -80,7 +103,11 @@ export async function getPatient(id: string): Promise<Patient> {
       condition: primaryDiagnosis?.description || 'General',
       riskScore: Math.random() * 0.5 + 0.3,
       encounters: patient.encounters || [],
-      diagnoses: patient.diagnoses || []
+      diagnoses: patient.diagnoses || [],
+      // Extended clinical data
+      medications: patient.medications || [],
+      lab_results: patient.lab_results || [],
+      outcomes: patient.outcomes || null
     };
   }
 }

@@ -17,6 +17,10 @@ export interface Patient {
   firstName?: string;
   lastName?: string;
   patient_id?: string;
+  // Extended clinical data
+  medications?: Medication[];
+  lab_results?: LabResult[];
+  outcomes?: Outcome;
 }
 
 export interface Encounter {
@@ -26,6 +30,28 @@ export interface Encounter {
   discharge_date?: string;
   notes?: string;
   diagnosis?: string;
+}
+
+export interface Medication {
+  name: string;
+  dosage: string;
+  frequency: string;
+  route: string;
+}
+
+export interface LabResult {
+  name: string;
+  value: number;
+  unit: string;
+  reference_range: [number, number];
+  flag: 'normal' | 'high' | 'low';
+  panel: string;
+}
+
+export interface Outcome {
+  readmitted: boolean;
+  days_to_readmission: number | null;
+  discharge_disposition: string;
 }
 
 export interface RiskAssessment {
