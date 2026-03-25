@@ -92,7 +92,7 @@
     <!-- Header -->
     <header class="flex items-center justify-between">
       <div>
-        <h1 class="bg-gradient-to-r from-white to-gray-500 bg-clip-text text-4xl font-bold text-transparent tracking-tighter">
+        <h1 class="bg-linear-to-r from-white to-gray-500 bg-clip-text text-4xl font-bold text-transparent tracking-tighter">
           Clinical Intelligence
         </h1>
         <p class="mt-1 text-sm text-gray-500">Real-time patient monitoring & analytics</p>
