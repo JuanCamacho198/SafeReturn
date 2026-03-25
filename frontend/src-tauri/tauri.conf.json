@@ -27,7 +27,7 @@
     "active": true,
     "targets": "all",
     "externalBin": [
-      "bin/sidecar"
+      "./bin/sidecar.exe"
     ],
     "icon": [
       "icons/32x32.png",
