@@ -4,9 +4,9 @@ import { RagOrchestrator } from "../rag/orchestrator";
 // Initialize the RAG orchestrator lazily
 let ragOrchestrator: RagOrchestrator | null = null;
 
-function getRagOrchestrator() {
+function getRagOrchestrator(db: Database) {
   if (!ragOrchestrator) {
-    ragOrchestrator = new RagOrchestrator();
+    ragOrchestrator = new RagOrchestrator(db);
   }
   return ragOrchestrator;
 }
@@ -122,6 +122,6 @@ export async function assessPatientRisk(db: Database, id: string) {
 
   const allNotes = encounters.map(e => e.notes).join("\n\n---\n\n");
   
-  const rag = getRagOrchestrator();
+  const rag = getRagOrchestrator(db);
   return await rag.assessRisk(allNotes);
 }
