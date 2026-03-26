@@ -26,6 +26,29 @@ CREATE TABLE IF NOT EXISTS Encounters (
     FOREIGN KEY(patient_id) REFERENCES Patients(id)
 );
 
+CREATE TABLE IF NOT EXISTS Medications (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    patient_id TEXT NOT NULL,
+    name TEXT NOT NULL,
+    dosage TEXT,
+    frequency TEXT,
+    route TEXT,
+    FOREIGN KEY(patient_id) REFERENCES Patients(id)
+);
+
+CREATE TABLE IF NOT EXISTS LabResults (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    patient_id TEXT NOT NULL,
+    name TEXT NOT NULL,
+    value REAL NOT NULL,
+    unit TEXT,
+    reference_range_low REAL,
+    reference_range_high REAL,
+    flag TEXT,
+    date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(patient_id) REFERENCES Patients(id)
+);
+
 CREATE TABLE IF NOT EXISTS Embeddings (
     id TEXT PRIMARY KEY,
     encounter_id TEXT NOT NULL,

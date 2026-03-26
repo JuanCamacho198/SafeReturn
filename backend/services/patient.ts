@@ -109,8 +109,15 @@ export function getPatientById(db: Database, id: string) {
   if (!patient) return null;
   
   const encounters = db.query("SELECT * FROM Encounters WHERE patient_id = ? ORDER BY admission_date DESC").all(id);
+  const medications = db.query("SELECT * FROM Medications WHERE patient_id = ?").all(id);
+  const rawLabs = db.query("SELECT * FROM LabResults WHERE patient_id = ? ORDER BY date DESC").all(id) as any[];
   
-  return { ...patient, encounters };
+  const lab_results = rawLabs.map(lab => ({
+    ...lab,
+    reference_range: [lab.reference_range_low, lab.reference_range_high]
+  }));
+  
+  return { ...patient, encounters, medications, lab_results };
 }
 
 export async function assessPatientRisk(db: Database, id: string, apiKey?: string) {
