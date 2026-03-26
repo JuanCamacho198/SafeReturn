@@ -75,6 +75,7 @@ pub async fn assess_risk_with_sidecar(
     app: tauri::AppHandle,
     patient_id: String,
     api_key: Option<String>,
+    locale: Option<String>,
 ) -> Result<RiskAssessment, String> {
     let sidecar_command: Command = app
         .shell()
@@ -203,7 +204,8 @@ pub async fn assess_risk_with_sidecar(
         "command": "assess_risk",
         "payload": {
             "id": patient_id,
-            "apiKey": api_key
+            "apiKey": api_key,
+            "locale": locale
         }
     });
 
