@@ -82,6 +82,25 @@
       day: 'numeric'
     });
   }
+
+  // Map medication route codes to human-friendly Spanish names
+  const routeNames: Record<string, string> = {
+    PO: 'Oral',
+    IV: 'Intravenosa',
+    SC: 'Subcutánea',
+    IM: 'Intramuscular',
+    IN: 'Intranasal',
+    TOP: 'Tópica',
+    PR: 'Rectal',
+    SL: 'Sublingual'
+  };
+
+  function formatRoute(route?: string) {
+    if (!route) return '';
+    const code = String(route).toUpperCase();
+    const name = routeNames[code];
+    return name ? `${code} (${name})` : code;
+  }
 </script>
 
 <div class="min-h-screen bg-slate-50 pb-12">
@@ -160,7 +179,7 @@
                         <td class="px-4 py-3 font-medium text-slate-800">{med.name}</td>
                         <td class="px-4 py-3 text-slate-600">{med.dosage}</td>
                         <td class="px-4 py-3 text-slate-600">{med.frequency}</td>
-                        <td class="px-4 py-3 text-slate-600">(vía: {med.route})</td>
+                        <td class="px-4 py-3 text-slate-600">{formatRoute(med.route)}</td>
                       </tr>
                     {/each}
                   </tbody>
