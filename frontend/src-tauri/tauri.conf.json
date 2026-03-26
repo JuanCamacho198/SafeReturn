@@ -30,7 +30,7 @@
       "binaries/backend-sidecar"
     ],
     "resources": [
-      "../../backend/db/schema.sql"
+      "resources/schema.sql"
     ],
     "icon": [
       "icons/32x32.png",
