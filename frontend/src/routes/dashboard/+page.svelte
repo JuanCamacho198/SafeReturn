@@ -14,7 +14,7 @@
   const lastNames = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia', 'Miller', 'Davis', 'Rodriguez', 'Martinez', 'Hernandez', 'Lopez', 'Gonzalez', 'Wilson', 'Anderson', 'Thomas', 'Taylor', 'Moore', 'Jackson', 'Martin'];
 
   // Transform synthetic data to patient format
-  const realPatients: Patient[] = syntheticData.slice(0, 10).map((p: any, index: number) => {
+  const realPatients: Patient[] = syntheticData.map((p: any, index: number) => {
     const firstName = firstNames[index % firstNames.length];
     const lastName = lastNames[index % lastNames.length];
     const primaryDiagnosis = p.diagnoses?.find((d: any) => d.primary) || p.diagnoses?.[0];

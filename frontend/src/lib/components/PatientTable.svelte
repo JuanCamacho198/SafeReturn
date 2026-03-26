@@ -116,12 +116,6 @@
                   <a href="/patients/{patientId}" class="text-sky-600 hover:text-sky-800 transition-colors text-xs font-semibold uppercase tracking-wider hover:underline">
                     {$t('common.view_details')}
                   </a>
-                  <button 
-                    on:click={() => window.location.href = `/patients/${patientId}?analyze=true`}
-                    class="rounded bg-rose-500 px-3 py-1 text-xs font-semibold text-white hover:bg-rose-600 transition-colors shadow-sm"
-                  >
-                    {$t('common.analyze_risk')}
-                  </button>
                 </div>
               </td>
             </tr>
