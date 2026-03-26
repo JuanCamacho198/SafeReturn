@@ -12,7 +12,7 @@ export class RagOrchestrator {
     this.llm = new GroqLLM(apiKey);
   }
 
-  async assessRisk(patientNotes: string) {
+  async assessRisk(patientNotes: string, locale: string = "en") {
     // 1. Generate embeddings for input
     // generateEmbeddings returns Promise<number[]>
     const embedding = await generateEmbeddings(patientNotes);
@@ -45,6 +45,8 @@ Output MUST be a valid JSON object with this exact structure:
   "explanation": "string", // Concise clinical explanation
   "evidence": ["string"] // Exact quotes or specific facts from the notes/context
 }
+
+IMPORTANT: Write the content of the "explanation" string and the "evidence" array strictly in the ISO language code: '${locale}'. Keep the JSON keys in English as specified above.
 
 Return ONLY the raw JSON string. No markdown, no code blocks.
 `;

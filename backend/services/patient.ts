@@ -120,7 +120,7 @@ export function getPatientById(db: Database, id: string) {
   return { ...patient, encounters, medications, lab_results };
 }
 
-export async function assessPatientRisk(db: Database, id: string, apiKey?: string) {
+export async function assessPatientRisk(db: Database, id: string, apiKey?: string, locale?: string) {
   const encounters = db.query("SELECT notes FROM Encounters WHERE patient_id = ? ORDER BY admission_date ASC").all(id) as { notes: string }[];
   
   if (!encounters || encounters.length === 0) {
@@ -130,5 +130,5 @@ export async function assessPatientRisk(db: Database, id: string, apiKey?: strin
   const allNotes = encounters.map(e => e.notes).join("\n\n---\n\n");
   
   const rag = getRagOrchestrator(db, apiKey);
-  return await rag.assessRisk(allNotes);
+  return await rag.assessRisk(allNotes, locale);
 }
