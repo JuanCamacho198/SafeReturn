@@ -1,6 +1,8 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, createEventDispatcher } from 'svelte';
   import { Chart, registerables } from 'chart.js';
+  
+  const dispatch = createEventDispatcher();
   
   Chart.register(...registerables);
 
@@ -132,6 +134,11 @@
       <div class="h-6 w-1/3 animate-pulse rounded bg-slate-100"></div>
     {:else}
       <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wide">{title}</h3>
+      <button on:click={() => dispatch('enlarge')} class="text-slate-400 hover:text-sky-600 transition-colors focus:outline-none" title="Expandir vista">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+        </svg>
+      </button>
     {/if}
   </div>
 
