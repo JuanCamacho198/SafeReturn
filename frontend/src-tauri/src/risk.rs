@@ -143,10 +143,22 @@ pub async fn assess_risk_with_sidecar(
         // 3. Last resort: current dir (Development running from root)
         if !path.exists() {
              if let Ok(cwd) = std::env::current_dir() {
-                let p = cwd.join("src-tauri").join("bin").join("schema.sql");
-                if p.exists() {
-                    path = p;
-                }
+                 let p = cwd.join("src-tauri").join("bin").join("schema.sql");
+                 if p.exists() {
+                     path = p;
+                 } else {
+                     // Development mode: also check project root structure
+                     let p_root = cwd.join("backend").join("db").join("schema.sql");
+                     if p_root.exists() {
+                         path = p_root;
+                     } else {
+                         // Check relative to src-tauri (for tauri dev scenarios)
+                         let p_tauri = cwd.join("src-tauri").join("binaries").join("schema.sql");
+                         if p_tauri.exists() {
+                             path = p_tauri;
+                         }
+                     }
+                 }
              }
         }
         
