@@ -94,8 +94,6 @@ Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan
 | Plataforma | Descarga |
 |------------|----------|
 | Windows (.exe) | [safeturn-1.0.0-setup.exe](https://github.com/JuanCamacho198/safereturn/releases/latest) |
-| macOS (.dmg) | [safeturn-1.0.0.dmg](https://github.com/JuanCamacho198/safereturn/releases/latest) |
-| Linux (.deb) | [safeturn-1.0.0.deb](https://github.com/JuanCamacho198/safereturn/releases/latest) |
 
 ### Requisitos Previos
 
