@@ -5,7 +5,7 @@
   import { invoke } from '@tauri-apps/api/core';
   import type { Patient, RiskAssessment } from '$lib/types/ipc';
   import { fade, fly } from 'svelte/transition';
-  import { t } from '$lib/i18n';
+  import { t, locale } from '$lib/i18n';
 
   let patient: Patient | null = null;
 
@@ -44,7 +44,7 @@
         console.warn('Failed to load API key from settings, using default/env:', e);
       }
       
-      assessment = await assessRisk(patient.id, apiKey);
+      assessment = await assessRisk(patient.id, apiKey, $locale);
     } catch (e) {
       console.error('Error assessing risk:', e);
       const errorMsg = String(e);
@@ -141,17 +141,17 @@
           {#if patient.medications && patient.medications.length > 0}
             <section>
               <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-slate-800">Medications</h2>
-                <span class="text-sm text-slate-500">{patient.medications.length} active</span>
+                <h2 class="text-xl font-bold text-slate-800">{$t('patient.extended.medications')}</h2>
+                <span class="text-sm text-slate-500">{patient.medications.length} {$t('patient.extended.med_active')}</span>
               </div>
               <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
                 <table class="w-full text-sm">
                   <thead class="bg-slate-50 border-b border-slate-200">
                     <tr>
-                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Medication</th>
-                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Dosage</th>
-                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Frequency</th>
-                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Route</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">{$t('patient.extended.med_name')}</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">{$t('patient.extended.dosage')}</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">{$t('patient.extended.frequency')}</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">{$t('patient.extended.route')}</th>
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-slate-100">
@@ -173,17 +173,17 @@
           {#if patient.lab_results && patient.lab_results.length > 0}
             <section>
               <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-slate-800">Lab Results</h2>
-                <span class="text-sm text-slate-500">{patient.lab_results.length} results</span>
+                <h2 class="text-xl font-bold text-slate-800">{$t('patient.extended.lab_results')}</h2>
+                <span class="text-sm text-slate-500">{patient.lab_results.length} {$t('patient.extended.lab_results_count')}</span>
               </div>
               <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
                 <table class="w-full text-sm">
                   <thead class="bg-slate-50 border-b border-slate-200">
                     <tr>
-                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Test</th>
-                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Value</th>
-                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Reference</th>
-                      <th class="text-left px-4 py-3 font-semibold text-slate-600">Status</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">{$t('patient.extended.test')}</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">{$t('patient.extended.value')}</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">{$t('patient.extended.reference')}</th>
+                      <th class="text-left px-4 py-3 font-semibold text-slate-600">{$t('patient.extended.status')}</th>
                     </tr>
                   </thead>
                   <tbody class="divide-y divide-slate-100">
@@ -210,25 +210,25 @@
           {#if patient.outcomes}
             <section>
               <div class="flex items-center justify-between mb-4">
-                <h2 class="text-xl font-bold text-slate-800">Outcomes</h2>
+                <h2 class="text-xl font-bold text-slate-800">{$t('patient.extended.outcomes')}</h2>
               </div>
               <div class="bg-white rounded-lg border border-slate-200 shadow-sm p-5">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div class="text-center p-4 bg-slate-50 rounded-lg">
-                    <div class="text-sm text-slate-500 mb-1">Readmitted</div>
+                    <div class="text-sm text-slate-500 mb-1">{$t('patient.extended.readmitted')}</div>
                     <div class="text-lg font-semibold {patient.outcomes.readmitted ? 'text-amber-600' : 'text-emerald-600'}">
-                      {patient.outcomes.readmitted ? 'Yes' : 'No'}
+                      {patient.outcomes.readmitted ? $t('patient.extended.yes') : $t('patient.extended.no')}
                     </div>
                   </div>
                   {#if patient.outcomes.days_to_readmission !== null}
                     <div class="text-center p-4 bg-slate-50 rounded-lg">
-                      <div class="text-sm text-slate-500 mb-1">Days to Readmission</div>
+                      <div class="text-sm text-slate-500 mb-1">{$t('patient.extended.days_to_readmission')}</div>
                       <div class="text-lg font-semibold text-slate-800">{patient.outcomes.days_to_readmission}</div>
                     </div>
                   {/if}
                   <div class="text-center p-4 bg-slate-50 rounded-lg">
-                    <div class="text-sm text-slate-500 mb-1">Discharge</div>
-                    <div class="text-lg font-semibold text-slate-800">{patient.outcomes.discharge_disposition || 'N/A'}</div>
+                    <div class="text-sm text-slate-500 mb-1">{$t('patient.extended.discharge')}</div>
+                    <div class="text-lg font-semibold text-slate-800">{patient.outcomes.discharge_disposition || $t('common.na')}</div>
                   </div>
                 </div>
               </div>
