@@ -96,7 +96,69 @@ export async function getPatient(id: string): Promise<Patient> {
     
     // Map synthetic data to Patient interface (matching dashboard/+page.svelte)
     const primaryDiagnosis = patient.diagnoses?.find((d: any) => d.primary) || patient.diagnoses?.[0];
-    
+    const conditionText = primaryDiagnosis?.description || 'General';
+
+    // --- MOCK INJECTIONS PARA PARIDAD CON SQLite --- //
+    // 1. Limitar medicaciones (Max 4)
+    let meds = patient.medications || [];
+    if (meds.length > 4) {
+       meds = meds.slice(0, 4);
+    }
+
+    // 2. Modificar laboratorios con variaciones High/Low
+    let labs = [...(patient.lab_results || [])];
+    labs = labs.map((l: any, i: number) => {
+       const isAbnormal = i % 3 === 0; // 1 every 3 is abnormal
+       if (isAbnormal) {
+           return { ...l, flag: i % 2 === 0 ? 'high' : 'low' };
+       }
+       return { ...l, flag: 'normal' };
+    });
+
+    // 3. Crear Historial Clínico (Encounters) Falsos y coherentes
+    let encounters = patient.encounters || [];
+    if (!encounters || encounters.length === 0) {
+       encounters = [];
+       const baseDate = new Date();
+       baseDate.setDate(baseDate.getDate() - 30);
+       
+       encounters.push({
+           id: `${id}-enc-0`, patient_id: id,
+           admission_date: new Date(baseDate.getTime()).toISOString(),
+           diagnosis: conditionText,
+           event_type: 'routine',
+           notes: `Routine checkup mapping to ${conditionText}. Symptoms mildly noticeable.`
+       });
+
+       encounters.push({
+           id: `${id}-enc-1`, patient_id: id,
+           admission_date: new Date(baseDate.getTime() + 7*24*60*60*1000).toISOString(),
+           diagnosis: conditionText + ' Flare-up',
+           event_type: 'medication',
+           notes: 'Adjusted medications after worsening of symptoms over the week.'
+       });
+
+       if (patientIndex % 3 === 0) {
+           encounters.push({
+               id: `${id}-enc-2`, patient_id: id,
+               admission_date: new Date(baseDate.getTime() + 15*24*60*60*1000).toISOString(),
+               diagnosis: 'Acute ' + conditionText,
+               event_type: 'emergency',
+               notes: 'ER admission due to severe complications.'
+           });
+       }
+
+       encounters.push({
+           id: `${id}-enc-3`, patient_id: id,
+           admission_date: new Date().toISOString(),
+           diagnosis: 'Resolved: ' + conditionText,
+           event_type: 'discharge',
+           notes: 'Patient stable and discharged.'
+       });
+       
+       encounters.reverse(); // Newest first
+    }
+
     return {
       id: patient.patient_id,
       mrn: `MRN${String(patientIndex + 1).padStart(3, '0')}`,
@@ -107,13 +169,13 @@ export async function getPatient(id: string): Promise<Patient> {
       gender: patient.demographics?.gender === 'M' ? 'Male' : 'Female',
       dob: new Date(2024 - (patient.demographics?.age || 70), 0, 1).toISOString().split('T')[0],
       age: patient.demographics?.age,
-      condition: primaryDiagnosis?.description || 'General',
+      condition: conditionText,
       riskScore: Math.random() * 0.5 + 0.3,
-      encounters: patient.encounters || [],
+      encounters: encounters,
       diagnoses: patient.diagnoses || [],
       // Extended clinical data
-      medications: patient.medications || [],
-      lab_results: patient.lab_results || [],
+      medications: meds,
+      lab_results: labs,
       outcomes: patient.outcomes || null
     };
   }
