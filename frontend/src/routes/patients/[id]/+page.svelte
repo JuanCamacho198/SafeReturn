@@ -245,11 +245,11 @@
             {#if patient.encounters && patient.encounters.length > 0}
               <div class="relative pl-6 ml-2 space-y-8 before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:bg-slate-200">
                 {#each patient.encounters as encounter}
+                  {@const typeColor = encounter.event_type === 'discharge' ? 'bg-emerald-500' :
+                                      encounter.event_type === 'medication' ? 'bg-amber-400' :
+                                      encounter.event_type === 'emergency' ? 'bg-rose-500' :
+                                      'bg-sky-500'}
                   <div class="relative">
-                    {@const typeColor = encounter.event_type === 'discharge' ? 'bg-emerald-500' :
-                                        encounter.event_type === 'medication' ? 'bg-amber-400' :
-                                        encounter.event_type === 'emergency' ? 'bg-rose-500' :
-                                        'bg-sky-500'}
                     <div class="absolute -left-[29px] mt-1.5 h-4 w-4 rounded-full border-2 border-white {typeColor} shadow-sm z-10 box-content"></div>
                     <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
                       <div class="absolute top-0 left-0 w-1 h-full {typeColor}"></div>
