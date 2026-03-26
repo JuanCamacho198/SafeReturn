@@ -83,6 +83,26 @@
       "gender": "Gender",
       "id": "ID"
     },
+    "extended": {
+      "medications": "Medications",
+      "med_active": "active",
+      "med_name": "Medication",
+      "dosage": "Dosage",
+      "frequency": "Frequency",
+      "route": "Route",
+      "lab_results": "Lab Results",
+      "lab_results_count": "results",
+      "test": "Test",
+      "value": "Value",
+      "reference": "Reference",
+      "status": "Status",
+      "outcomes": "Outcomes",
+      "readmitted": "Readmitted",
+      "yes": "Yes",
+      "no": "No",
+      "days_to_readmission": "Days to Readmission",
+      "discharge": "Discharge"
+    },
     "error_load": "Failed to load patient data. Please try again.",
     "not_found": "Patient not found",
     "return_dashboard": "Return to Dashboard"

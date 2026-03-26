@@ -83,6 +83,26 @@
       "gender": "Género",
       "id": "ID"
     },
+    "extended": {
+      "medications": "Medicaciones",
+      "med_active": "activas",
+      "med_name": "Medicamento",
+      "dosage": "Dosis",
+      "frequency": "Frecuencia",
+      "route": "Vía",
+      "lab_results": "Resultados de Laboratorio",
+      "lab_results_count": "resultados",
+      "test": "Prueba",
+      "value": "Valor",
+      "reference": "Referencia",
+      "status": "Estado",
+      "outcomes": "Resultados Médicos",
+      "readmitted": "Reingresado",
+      "yes": "Sí",
+      "no": "No",
+      "days_to_readmission": "Días hasta Reingreso",
+      "discharge": "Alta Médica"
+    },
     "error_load": "Error al cargar datos del paciente. Por favor intente de nuevo.",
     "not_found": "Paciente no encontrado",
     "return_dashboard": "Volver al Tablero"
