@@ -1,6 +1,7 @@
 <div align="center">
   <img src="Logo SafeReturn.png" alt="SafeReturn Logo" width="200" />
   <h1>SafeReturn 🏥</h1>
+  <p>Proyecto de Inteligencia Artificial - Universidad TDEA</p>
   <p>
     <a href="https://github.com/JuanCamacho198/SafeReturn/releases/latest">
       <img src="https://img.shields.io/github/v/release/JuanCamacho198/SafeReturn?include_prereleases&style=flat" alt="GitHub Release" />
@@ -49,10 +50,16 @@ Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan
 
 ## 📝 Changelog
 
-### v0.9.1 (2026-03-25)
+### v1.0.0 (2026-03-25)
 #### Nuevas Funciones
+- 🕐 **Timeline Visual**: Historial visual de encuentros clínicos del paciente con eventos diferenciados por tipo.
+- 👤 **Nombres Únicos**: Sistema de generación de nombres únicos para pacientes sintéticos.
+- 📊 **Dashboard Mejorado**: Gráficos de distribución y crecimiento, modal expandido para visualización de datos.
+- ♿ **Accesibilidad**: Navegación con teclado en modales, mejoras de accesibilidad UI.
+- 🌐 **i18n Extendido**: Traducciones completas para medicamentos, resultados de laboratorio y outcomes.
+- 💊 **Detalles de Medicación**: Indicación de ruta de medicación y etiquetas de chequeo rutinario.
 - 🌐 **Internacionalización (i18n)**: Español como idioma por defecto, Inglés como secundario. Selector de idioma en el navbar.
-- 📊 **Dashboard Mejorado**: Panel de control con métricas, gráficos y datos de pacientes sintéticos.
+- 📊 **Dashboard**: Panel de control con métricas, gráficos y datos de pacientes sintéticos.
 - 🎨 **Tema Medical Light**: Interfaz limpia y profesional con colores hospitalarios.
 - ⚙️ **Configuración de API Key**: Interfaz para configurar la API key de Groq desde la app.
 - 🤖 **Predicción de Reingreso**: Análisis de riesgo de reingreso hospitalario a 30 días con evidencia clínica.
@@ -86,9 +93,9 @@ Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan
 
 | Plataforma | Descarga |
 |------------|----------|
-| Windows (.exe) | [safeturn-0.9.1-setup.exe](https://github.com/JuanCamacho198/safereturn/releases/latest) |
-| macOS (.dmg) | [safeturn-0.9.1.dmg](https://github.com/JuanCamacho198/safereturn/releases/latest) |
-| Linux (.deb) | [safeturn-0.9.1.deb](https://github.com/JuanCamacho198/safereturn/releases/latest) |
+| Windows (.exe) | [safeturn-1.0.0-setup.exe](https://github.com/JuanCamacho198/safereturn/releases/latest) |
+| macOS (.dmg) | [safeturn-1.0.0.dmg](https://github.com/JuanCamacho198/safereturn/releases/latest) |
+| Linux (.deb) | [safeturn-1.0.0.deb](https://github.com/JuanCamacho198/safereturn/releases/latest) |
 
 ### Requisitos Previos
 
