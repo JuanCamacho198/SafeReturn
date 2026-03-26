@@ -7,6 +7,7 @@
   import PatientTable from '$lib/components/PatientTable.svelte';
   import syntheticData from '$lib/synthetic_patients.json';
   import { t } from '$lib/i18n';
+  import { fade } from 'svelte/transition';
 
   // Generate random names for patients
 
@@ -57,6 +58,8 @@
   let loadingPatients = true;
   let loadingMetrics = true;
   let search = '';
+  
+  let expandedChart: 'distribution' | 'growth' | null = null;
 
   // Fetch Data
   async function loadPatients(page = 1, searchQuery = '') {
@@ -220,6 +223,7 @@
             data={distributionData} 
             options={{ indexAxis: 'y' }}
             loading={loadingMetrics} 
+            on:enlarge={() => expandedChart = 'distribution'}
           />
       </div>
       <div class="min-h-87.5">
@@ -228,6 +232,7 @@
             title={$t('dashboard.charts.patient_growth')}
             data={growthData} 
             loading={loadingMetrics} 
+            on:enlarge={() => expandedChart = 'growth'}
           />
       </div>
     </div>
@@ -246,3 +251,41 @@
 
   </div>
 </div>
+
+<!-- Expanded Chart Modal -->
+{#if expandedChart}
+  <div class="fixed inset-0 bg-slate-900/40 z-50 p-4 md:p-12 flex items-center justify-center backdrop-blur-sm" transition:fade={{duration: 200}}>
+    <!-- Click backdrop to close -->
+    <div class="absolute inset-0" on:click={() => expandedChart = null}></div>
+    
+    <div class="bg-white rounded-2xl w-full max-w-7xl h-[85vh] shadow-2xl relative flex flex-col pt-12 pb-6 px-6 pointer-events-auto">
+      <button 
+        on:click={() => expandedChart = null}
+        class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-2 rounded-full transition-colors z-10"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
+      <div class="grow relative h-full w-full">
+         {#if expandedChart === 'distribution'}
+           <GlassChart 
+             type="bar" 
+             title={$t('dashboard.charts.condition_distribution')}
+             data={distributionData} 
+             options={{ indexAxis: 'y' }}
+             loading={loadingMetrics} 
+           />
+         {:else if expandedChart === 'growth'}
+           <GlassChart 
+             type="line" 
+             title={$t('dashboard.charts.patient_growth')}
+             data={growthData} 
+             loading={loadingMetrics} 
+           />
+         {/if}
+      </div>
+    </div>
+  </div>
+{/if}
