@@ -243,29 +243,46 @@
             </div>
 
             {#if patient.encounters && patient.encounters.length > 0}
-              <div class="space-y-4">
+              <div class="relative pl-6 ml-2 space-y-8 before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:bg-slate-200">
                 {#each patient.encounters as encounter}
-                  <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-sky-500"></div>
-                    <div class="ml-3">
-                      <div class="flex justify-between items-start mb-2">
-                        <div>
-                          <h3 class="font-semibold text-slate-800 text-lg">{encounter.diagnosis || 'General Checkup'}</h3>
-                          <p class="text-xs text-slate-500 font-medium uppercase tracking-wider mt-1">
-                            {formatDate(encounter.admission_date)}
-                            {#if encounter.discharge_date} - {formatDate(encounter.discharge_date)}{/if}
-                          </p>
+                  <div class="relative">
+                    {@const typeColor = encounter.event_type === 'discharge' ? 'bg-emerald-500' :
+                                        encounter.event_type === 'medication' ? 'bg-amber-400' :
+                                        encounter.event_type === 'emergency' ? 'bg-rose-500' :
+                                        'bg-sky-500'}
+                    <div class="absolute -left-[29px] mt-1.5 h-4 w-4 rounded-full border-2 border-white {typeColor} shadow-sm z-10 box-content"></div>
+                    <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                      <div class="absolute top-0 left-0 w-1 h-full {typeColor}"></div>
+                      <div class="ml-3">
+                        <div class="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2">
+                          <div>
+                            <div class="flex items-center gap-2">
+                              <h3 class="font-semibold text-slate-800 text-lg">{encounter.diagnosis || 'General Checkup'}</h3>
+                              {#if encounter.event_type}
+                                <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full border opacity-80
+                                  {encounter.event_type === 'discharge' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                                   encounter.event_type === 'medication' ? 'bg-amber-50 text-amber-700 border-amber-200' :
+                                   encounter.event_type === 'emergency' ? 'bg-rose-50 text-rose-700 border-rose-200' :
+                                   'bg-sky-50 text-sky-700 border-sky-200'}">
+                                  {encounter.event_type}
+                                </span>
+                              {/if}
+                            </div>
+                            <p class="text-xs text-slate-500 font-medium uppercase tracking-wider mt-1">
+                              {formatDate(encounter.admission_date)}
+                            </p>
+                          </div>
+                          <span class="text-xs bg-slate-50 text-slate-500 px-2 py-1 rounded font-medium border border-slate-100 flex-shrink-0">
+                            #{encounter.id.substring(0, 8)}
+                          </span>
                         </div>
-                        <span class="text-xs bg-sky-50 text-sky-700 px-2 py-1 rounded font-medium border border-sky-100">
-                          #{encounter.id.substring(0, 6)}
-                        </span>
+                        
+                        {#if encounter.notes}
+                          <div class="mt-3 text-slate-600 text-sm leading-relaxed bg-slate-50 p-3 rounded border border-slate-100 whitespace-pre-line">
+                            {encounter.notes}
+                          </div>
+                        {/if}
                       </div>
-                      
-                      {#if encounter.notes}
-                        <div class="mt-3 text-slate-600 text-sm leading-relaxed bg-slate-50 p-3 rounded border border-slate-100">
-                          {encounter.notes}
-                        </div>
-                      {/if}
                     </div>
                   </div>
                 {/each}

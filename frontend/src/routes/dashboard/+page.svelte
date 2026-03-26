@@ -218,6 +218,7 @@
             type="bar" 
             title={$t('dashboard.charts.condition_distribution')}
             data={distributionData} 
+            options={{ indexAxis: 'y' }}
             loading={loadingMetrics} 
           />
       </div>

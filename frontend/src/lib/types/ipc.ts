@@ -30,6 +30,7 @@ export interface Encounter {
   discharge_date?: string;
   notes?: string;
   diagnosis?: string;
+  event_type?: string;
 }
 
 export interface Medication {
