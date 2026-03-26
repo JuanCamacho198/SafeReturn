@@ -44,6 +44,8 @@ pub struct AssessRiskPayload {
     id: String,
     #[serde(default, rename = "apiKey")]
     api_key: Option<String>,
+    #[serde(default)]
+    locale: Option<String>,
 }
 
 /// Risk assessment result returned to frontend
@@ -78,7 +80,7 @@ async fn assess_risk(app: tauri::AppHandle, payload: AssessRiskPayload) -> Resul
     
     // Call sidecar for risk assessment
     // The sidecar handles loading patient data from the DB and running the RAG pipeline
-    match risk::assess_risk_with_sidecar(app, payload.id, Some(api_key)).await {
+    match risk::assess_risk_with_sidecar(app, payload.id, Some(api_key), payload.locale).await {
         Ok(assessment) => {
             Ok(RiskAssessmentResult {
                 risk_score: assessment.risk_score,

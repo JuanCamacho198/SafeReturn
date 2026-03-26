@@ -119,9 +119,9 @@ export async function getPatient(id: string): Promise<Patient> {
   }
 }
 
-export async function assessRisk(id: string, apiKey?: string): Promise<RiskAssessment> {
+export async function assessRisk(id: string, apiKey?: string, locale?: string): Promise<RiskAssessment> {
   try {
-    return await invoke('assess_risk', { payload: { id, apiKey } });
+    return await invoke('assess_risk', { payload: { id, apiKey, locale } });
   } catch (error) {
      const errorMsg = String(error);
 
