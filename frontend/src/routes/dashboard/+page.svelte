@@ -255,13 +255,22 @@
 <!-- Expanded Chart Modal -->
 {#if expandedChart}
   <div class="fixed inset-0 bg-slate-900/40 z-50 p-4 md:p-12 flex items-center justify-center backdrop-blur-sm" transition:fade={{duration: 200}}>
-    <!-- Click backdrop to close -->
-    <div class="absolute inset-0" on:click={() => expandedChart = null}></div>
+    <!-- Click or keyboard backdrop to close (accessible) -->
+    <div
+      class="absolute inset-0"
+      role="button"
+      tabindex="0"
+      aria-label="Close expanded chart"
+      on:click={() => expandedChart = null}
+      on:keydown={(e: KeyboardEvent) => { if (e.key === 'Enter' || e.code === 'Space') expandedChart = null; }}
+    ></div>
     
     <div class="bg-white rounded-2xl w-full max-w-7xl h-[85vh] shadow-2xl relative flex flex-col pt-12 pb-6 px-6 pointer-events-auto">
       <button 
+        aria-label="Close expanded chart"
         on:click={() => expandedChart = null}
         class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 hover:bg-slate-100 p-2 rounded-full transition-colors z-10"
+        type="button"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
