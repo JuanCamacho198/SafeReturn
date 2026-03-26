@@ -153,11 +153,6 @@
 </script>
 
 <div class="min-h-screen bg-slate-50 font-sans text-slate-900 pb-12">
-  <!-- Demo Mode Banner -->
-  <div class="bg-emerald-500 text-white text-center py-2 text-sm font-medium">
-    {$t('app.demo_mode')}
-  </div>
-  
   <!-- Navigation/Header Bar -->
   <div class="bg-white border-b border-slate-200 sticky top-0 z-10 px-8 py-4 mb-8">
     <div class="max-w-7xl mx-auto flex items-center justify-between">

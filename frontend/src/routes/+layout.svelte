@@ -5,18 +5,18 @@
 </script>
 
 <div class="min-h-screen flex flex-col">
-  <nav class="bg-blue-900 text-white p-4 shadow-md">
+  <nav class="bg-white text-slate-800 p-4 shadow border-b border-slate-200">
     <div class="container mx-auto flex justify-between items-center">
       <div class="flex items-center gap-8">
-        <a href="/" class="text-xl font-bold flex items-center gap-3">
-          <img src="/logo.png" alt="SafeReturn" class="h-10 w-auto" />
+        <a href="/" class="text-2xl font-bold flex items-center gap-3 text-sky-700">
+          <img src="/logo.png" alt="SafeReturn" class="h-16 w-auto drop-shadow-sm" />
           <span class="hidden sm:inline">{$t('app.title')}</span>
         </a>
-        <div class="flex gap-4">
-          <a href="/dashboard" class="hover:text-blue-200 transition px-3 py-1 rounded hover:bg-blue-800">
+        <div class="flex gap-4 font-medium">
+          <a href="/dashboard" class="hover:text-sky-600 transition px-3 py-2 rounded hover:bg-slate-100">
             {$t('nav.dashboard')}
           </a>
-          <a href="/settings" class="hover:text-blue-200 transition px-3 py-1 rounded hover:bg-blue-800">
+          <a href="/settings" class="hover:text-sky-600 transition px-3 py-2 rounded hover:bg-slate-100">
             {$t('nav.settings')}
           </a>
         </div>
