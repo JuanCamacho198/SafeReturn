@@ -40,7 +40,7 @@ for (const f of firstNames) {
 }
 for (let i = combos.length - 1; i > 0; i--) {
   const j = Math.floor(Math.random() * (i + 1));
-  [combos[i], combos[j]] = [combos[j], combos[i]];
+  [combos[i]!, combos[j]!] = [combos[j]!, combos[i]!];
 }
 
 if (combos.length === 0) {
