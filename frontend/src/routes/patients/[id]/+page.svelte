@@ -160,7 +160,7 @@
                         <td class="px-4 py-3 font-medium text-slate-800">{med.name}</td>
                         <td class="px-4 py-3 text-slate-600">{med.dosage}</td>
                         <td class="px-4 py-3 text-slate-600">{med.frequency}</td>
-                        <td class="px-4 py-3 text-slate-600">{med.route}</td>
+                        <td class="px-4 py-3 text-slate-600">(vía: {med.route})</td>
                       </tr>
                     {/each}
                   </tbody>
@@ -240,6 +240,13 @@
             <div class="flex items-center justify-between mb-4">
               <h2 class="text-xl font-bold text-slate-800">{$t('patient.history.title')}</h2>
               <span class="text-sm text-slate-500">{patient.encounters?.length || 0} {$t('patient.history.encounters')}</span>
+            </div>
+            
+            <div class="flex flex-wrap gap-3 mb-6 bg-slate-50 p-3 rounded-lg border border-slate-100 italic text-xs">
+              <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-sky-500"></div> Chequeo de rutina</span>
+              <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-amber-400"></div> Ajustes a medicación</span>
+              <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-rose-500"></div> Emergencias médicas</span>
+              <span class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-emerald-500"></div> Alta (Discharge)</span>
             </div>
 
             {#if patient.encounters && patient.encounters.length > 0}
