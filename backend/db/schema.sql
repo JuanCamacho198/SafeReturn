@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS Encounters (
     discharge_date DATETIME,
     notes TEXT,
     diagnosis TEXT,
+    event_type TEXT DEFAULT 'routine',
     FOREIGN KEY(patient_id) REFERENCES Patients(id)
 );
 
