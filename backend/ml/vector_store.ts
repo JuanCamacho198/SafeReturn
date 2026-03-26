@@ -42,14 +42,18 @@ export class VectorStore {
 
   constructor(db: Database, storageDir: string = 'storage/faiss') {
     this.db = db;
-    this.indexPath = join(import.meta.dir, '..', '..', storageDir, 'index.bin');
-    this.metaPath = join(import.meta.dir, '..', '..', storageDir, 'metadata.json');
-    this.ensureDir(storageDir);
+    // Use process.cwd() instead of import.meta.dir which breaks in Bun single-file executables
+    const baseDir = process.cwd();
+    const dir = join(baseDir, storageDir);
+    this.indexPath = join(dir, 'index.bin');
+    this.metaPath = join(dir, 'metadata.json');
+    this.ensureDir(dir);
   }
 
-  private ensureDir(storageDir: string): void {
-    const dir = join(import.meta.dir, '..', '..', storageDir);
-    if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
+  private ensureDir(dir: string): void {
+    if (!existsSync(dir)) {
+      mkdirSync(dir, { recursive: true });
+    }
   }
 
   async loadIndex(): Promise<void> {
