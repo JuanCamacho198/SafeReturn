@@ -43,6 +43,10 @@ for (let i = combos.length - 1; i > 0; i--) {
   [combos[i], combos[j]] = [combos[j], combos[i]];
 }
 
+if (combos.length === 0) {
+  throw new Error('No name combinations available to seed patients');
+}
+
 // Clear old extended data just in case re-running
 db.exec('DELETE FROM Encounters');
 db.exec('DELETE FROM Patients');
@@ -56,7 +60,7 @@ for (let i = 0; i < syntheticData.length; i++) {
   const patientId = p.patient_id;
   const mrn = `MRN${String(i + 1).padStart(3, '0')}`;
   
-  const nameCombo = combos[i % combos.length];
+  const nameCombo = combos[i % combos.length]!;
   const firstName = nameCombo.first;
   const lastName = nameCombo.last;
   
@@ -162,6 +166,7 @@ for (let i = 0; i < syntheticData.length; i++) {
 
     for (let k = 0; k < eventTypesAndNotes.length; k++) {
       const evt = eventTypesAndNotes[k];
+      if (!evt) continue;
       const encounterId = `${patientId}-enc-${k}`;
       const encounterDate = new Date(baseTime.getTime() + evt.daysOffset * 24 * 60 * 60 * 1000);
       
