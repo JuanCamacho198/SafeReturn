@@ -6,7 +6,7 @@
   "build": {
     "beforeDevCommand": "bun run dev --port 1420",
     "devUrl": "http://localhost:1420",
-    "beforeBuildCommand": "npm run build",
+    "beforeBuildCommand": "node -e \"require('fs').cpSync('../../../backend/db/schema.sql','resources/schema.sql')\" && npm run build",
     "frontendDist": "../build"
   },
   "app": {
