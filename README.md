@@ -23,7 +23,7 @@
 
 SafeReturn es una aplicación de escritorio de salud **100% local** que utiliza una arquitectura de Generación Aumentada por Recuperación (RAG) para predecir la probabilidad de reingreso hospitalario a 30 días basándose en notas clínicas no estructuradas.
 
-Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan **sin conexión** en la máquina local sin depender de APIs externas en la nube.
+Construida para privacidad y cumplimiento, todos los datos y modelos RAG se ejecutan en local.
 
 ## Tabla de Contenidos
 
@@ -94,8 +94,6 @@ Construida para privacidad y cumplimiento, todos los datos y modelos se ejecutan
 | Plataforma | Descarga |
 |------------|----------|
 | Windows (.exe) | [safeturn-1.0.0-setup.exe](https://github.com/JuanCamacho198/safereturn/releases/latest) |
-| macOS (.dmg) | [safeturn-1.0.0.dmg](https://github.com/JuanCamacho198/safereturn/releases/latest) |
-| Linux (.deb) | [safeturn-1.0.0.deb](https://github.com/JuanCamacho198/safereturn/releases/latest) |
 
 ### Requisitos Previos
 
