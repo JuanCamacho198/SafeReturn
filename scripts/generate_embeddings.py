@@ -203,6 +203,12 @@ def main():
         action="store_true",
         help="Rebuild FAISS index from existing embeddings in database",
     )
+    parser.add_argument(
+        "--text",
+        type=str,
+        default=None,
+        help="Generate embedding for a single text input (outputs JSON to stdout)",
+    )
 
     args = parser.parse_args()
 
@@ -227,6 +233,16 @@ def main():
 
         print(f"Loading embedding model: {EMBEDDING_MODEL}")
         model = get_embeddings_model()
+
+        if args.text:
+            embedding = model.encode([args.text], convert_to_numpy=True)[0]
+            result = {
+                "embedding": embedding.tolist(),
+                "dimension": len(embedding),
+                "model": EMBEDDING_MODEL,
+            }
+            print(json.dumps(result))
+            return
 
         conn = get_connection(args.db)
 
