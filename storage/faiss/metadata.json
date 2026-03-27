@@ -1,3 +1,1966 @@
 {
-  "metadata": []
+  "metadata": [
+    {
+      "id": "40dbd51b-f31a-4675-b02c-ffb7d1486cc1",
+      "encounter_id": "1b6b959a-d31f-4a15-9e71-4d08f53632f8-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "758b2ca7-6f18-44be-b851-0cf7b040c1cb",
+      "encounter_id": "1b6b959a-d31f-4a15-9e71-4d08f53632f8-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "71241f68-aef8-40e5-87c5-56ecd8fcfbed",
+      "encounter_id": "0a26cbb8-1871-4f0a-8545-981c01ac3afb-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "a1c911e7-0442-4346-a7a1-b5c082b82cc8",
+      "encounter_id": "0a26cbb8-1871-4f0a-8545-981c01ac3afb-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "08f5a118-2d79-4b07-a4b6-e4603ab00b3e",
+      "encounter_id": "0a26cbb8-1871-4f0a-8545-981c01ac3afb-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "99c6a680-798a-4b5b-a2df-6f730aa83a83",
+      "encounter_id": "3a227c02-fd62-4257-b5d5-160f9512d145-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "7886a159-ea91-40a4-811b-d355074c69d6",
+      "encounter_id": "3a227c02-fd62-4257-b5d5-160f9512d145-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3ae1d24c-e8fe-449a-8488-3b35e8310120",
+      "encounter_id": "3a227c02-fd62-4257-b5d5-160f9512d145-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "99d12bc3-8661-42ad-9a5d-171222de6519",
+      "encounter_id": "3a227c02-fd62-4257-b5d5-160f9512d145-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1563fd9d-e813-4014-9e61-65e2b60c83bf",
+      "encounter_id": "3a227c02-fd62-4257-b5d5-160f9512d145-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "cbebe255-5352-4f29-9a20-36d5a823813e",
+      "encounter_id": "43e04b09-d55e-45ea-a7e5-2ca37cbbcb5e-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b1471628-5922-4c21-aca0-dc6a2c4c84f0",
+      "encounter_id": "43e04b09-d55e-45ea-a7e5-2ca37cbbcb5e-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "200db64f-1e05-4aba-a539-ce996fb42910",
+      "encounter_id": "12dc4017-693b-4487-b86d-dac5ad3d585e-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "a48c3d22-00fd-4ab9-a610-9302343048d9",
+      "encounter_id": "12dc4017-693b-4487-b86d-dac5ad3d585e-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "fe89f513-750f-4cb4-a21c-813190e6f181",
+      "encounter_id": "12dc4017-693b-4487-b86d-dac5ad3d585e-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "03eab048-56c5-4dc4-b39d-0e504b453db6",
+      "encounter_id": "405cd651-83b5-4967-a756-3bdfd1905d9d-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "d2229be1-3d03-4c0a-bd30-8d47abaee3a4",
+      "encounter_id": "405cd651-83b5-4967-a756-3bdfd1905d9d-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "fded4edf-d9b6-4529-b848-b043829d3aed",
+      "encounter_id": "405cd651-83b5-4967-a756-3bdfd1905d9d-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3968527a-4c57-426b-a384-e37ce5477f67",
+      "encounter_id": "b9165241-2406-4bae-bf51-9a0f5e26ff4c-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "8d416a1b-3f7c-4a21-ad8a-46a21c6053a8",
+      "encounter_id": "b9165241-2406-4bae-bf51-9a0f5e26ff4c-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b44d4300-a687-4bf0-bfca-9d374f1dd3a8",
+      "encounter_id": "b9165241-2406-4bae-bf51-9a0f5e26ff4c-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "6fad3fe7-65d0-4cfc-a3a1-21383eb97c81",
+      "encounter_id": "b9165241-2406-4bae-bf51-9a0f5e26ff4c-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "bf3a62af-9e19-4979-93c6-6e555dedb2eb",
+      "encounter_id": "072b1dc9-0be7-4ec5-a567-7f96d9ca4d83-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c4211265-a285-4911-a382-1f7ebf53cd9f",
+      "encounter_id": "072b1dc9-0be7-4ec5-a567-7f96d9ca4d83-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c905d157-8a07-4c72-9e21-4e546c72366f",
+      "encounter_id": "072b1dc9-0be7-4ec5-a567-7f96d9ca4d83-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "4812ca5f-64c6-42ff-a0bd-2a7cb6508907",
+      "encounter_id": "c8240b58-1100-48cd-97b9-86a200b5abf4-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "9ff58f5e-e357-4b5c-849f-3a5089c716ea",
+      "encounter_id": "c8240b58-1100-48cd-97b9-86a200b5abf4-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "6d6da6a9-1392-41c0-8b0c-e11af526cc91",
+      "encounter_id": "c8240b58-1100-48cd-97b9-86a200b5abf4-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "6e0fc418-7e65-40fc-bd4e-f86e17504c62",
+      "encounter_id": "c8240b58-1100-48cd-97b9-86a200b5abf4-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ba0519da-8c59-4e4d-b17e-a3bb536fea68",
+      "encounter_id": "d389bc69-017c-464a-8c60-e2fb1601cbf3-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "7d3de3ed-7e5f-47da-82ef-6ca158db567d",
+      "encounter_id": "d389bc69-017c-464a-8c60-e2fb1601cbf3-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "297f3c69-edc3-48bf-a654-56418d487ef4",
+      "encounter_id": "d389bc69-017c-464a-8c60-e2fb1601cbf3-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ed00d059-25e9-4020-9452-8beb60e1ebc0",
+      "encounter_id": "d389bc69-017c-464a-8c60-e2fb1601cbf3-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f8d7a15d-3368-4bce-bc3b-ac80783ff154",
+      "encounter_id": "41274ffa-9775-4c78-9ac0-2a9d156386bf-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3406fa23-79b1-4df9-a7f9-9ab695e80ad1",
+      "encounter_id": "41274ffa-9775-4c78-9ac0-2a9d156386bf-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e96e3fd7-0664-4f10-961b-de504bff841d",
+      "encounter_id": "41274ffa-9775-4c78-9ac0-2a9d156386bf-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "8cd6b41d-c316-45e2-9636-448c06eaa449",
+      "encounter_id": "7880f57c-257f-40d7-9242-e6cc0af0aa51-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "a6b507ee-35bb-42fa-ac67-b600593402b6",
+      "encounter_id": "7880f57c-257f-40d7-9242-e6cc0af0aa51-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "01fdd3ce-4761-45da-8410-92e3e66f5215",
+      "encounter_id": "02cf2f1f-1e1b-4fd7-b447-2f2faf28a542-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "6efcb02b-783a-48ea-8a54-3b2782b368b3",
+      "encounter_id": "02cf2f1f-1e1b-4fd7-b447-2f2faf28a542-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "befcaf9e-cb73-413d-b631-542a8425287f",
+      "encounter_id": "02cf2f1f-1e1b-4fd7-b447-2f2faf28a542-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "7c33ea19-4eba-4980-9c73-98fe33e2ab59",
+      "encounter_id": "68eb86a6-04dc-4d14-98e8-62f11e6e970e-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c87e9efc-e51a-4d5e-9bea-b332742cfcf4",
+      "encounter_id": "68eb86a6-04dc-4d14-98e8-62f11e6e970e-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "04aaf2b8-1133-4616-9c84-367428e9c970",
+      "encounter_id": "68eb86a6-04dc-4d14-98e8-62f11e6e970e-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "732ada3f-dc06-410d-8047-0f36fdebf9c2",
+      "encounter_id": "95e444fa-6057-4b5c-90bb-6fefb8c6b0cd-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c6163ebb-cebe-49f7-ab93-73dcea951631",
+      "encounter_id": "95e444fa-6057-4b5c-90bb-6fefb8c6b0cd-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ef9c1395-cb17-4437-a11b-861948a2a34f",
+      "encounter_id": "95e444fa-6057-4b5c-90bb-6fefb8c6b0cd-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "0e3d4830-a22e-44e3-b3be-9d635a361cdd",
+      "encounter_id": "95e444fa-6057-4b5c-90bb-6fefb8c6b0cd-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3acc7a38-7267-4d18-8da5-d761d40bc6f3",
+      "encounter_id": "efb27020-f091-4309-9b4f-d362be6fb1ad-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b5933674-8b89-4986-87e1-3587df478edc",
+      "encounter_id": "efb27020-f091-4309-9b4f-d362be6fb1ad-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "31a6eb99-60c5-436d-ac0a-7abfb2047ea8",
+      "encounter_id": "efb27020-f091-4309-9b4f-d362be6fb1ad-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "50b41dd4-d021-4686-8323-8cd751482e45",
+      "encounter_id": "457d9b33-5990-4219-92df-13c9a7b3fe03-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "345102a5-fb4b-4dd7-8923-4139078576a9",
+      "encounter_id": "457d9b33-5990-4219-92df-13c9a7b3fe03-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c12ce912-9a4a-4149-b1d7-9acd8cacf354",
+      "encounter_id": "457d9b33-5990-4219-92df-13c9a7b3fe03-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "0578f649-717f-40bb-a625-bd250f8be957",
+      "encounter_id": "457d9b33-5990-4219-92df-13c9a7b3fe03-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "42a81ec3-d8d6-401e-8add-ab899cf13bdb",
+      "encounter_id": "457d9b33-5990-4219-92df-13c9a7b3fe03-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "459339a8-ebe9-4236-9930-a457a0b2493a",
+      "encounter_id": "457d9b33-5990-4219-92df-13c9a7b3fe03-enc-5",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "9c1bee7a-aa8b-479f-ac6e-02aff38d9454",
+      "encounter_id": "4b41b38b-f95f-43ed-92d9-75133af7d438-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ad2be8c7-de71-42e8-a120-b935d51955e6",
+      "encounter_id": "4b41b38b-f95f-43ed-92d9-75133af7d438-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b3c9c1a9-95ed-4d15-836c-0ec79dc61c59",
+      "encounter_id": "4b41b38b-f95f-43ed-92d9-75133af7d438-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "cf1bc09e-7b1f-487b-af87-c32e8c9a9cf5",
+      "encounter_id": "e5418b4a-a55c-4c3d-80de-352fab8c82b8-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1807ae48-377e-472d-963a-fc7c05e2de1a",
+      "encounter_id": "e5418b4a-a55c-4c3d-80de-352fab8c82b8-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "cb18107b-cab6-4ec6-9e1b-92afb9183b02",
+      "encounter_id": "fcd231fd-1a51-4946-a0f0-39a9d59100c4-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "805ec984-20df-46c5-80f8-56547156b82c",
+      "encounter_id": "fcd231fd-1a51-4946-a0f0-39a9d59100c4-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3ab1f29a-4471-48c0-bee9-2277f7258b11",
+      "encounter_id": "fcd231fd-1a51-4946-a0f0-39a9d59100c4-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "206479aa-13a9-4b18-ae2e-ed6d4f0b1cc9",
+      "encounter_id": "d732056e-ed18-4a8b-b386-f0efa47d1c45-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "70d11269-48e3-4c21-9df6-afd4614a011e",
+      "encounter_id": "d732056e-ed18-4a8b-b386-f0efa47d1c45-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1334c839-951b-445b-a12b-aaf101dbdd47",
+      "encounter_id": "d732056e-ed18-4a8b-b386-f0efa47d1c45-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "d10bcc05-36a4-4608-8781-11308b3e94a4",
+      "encounter_id": "d732056e-ed18-4a8b-b386-f0efa47d1c45-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3556a356-2cc1-4a34-bcb6-b9100f22cc9c",
+      "encounter_id": "d732056e-ed18-4a8b-b386-f0efa47d1c45-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f20352a9-a041-4e07-aab1-b694a700b8f6",
+      "encounter_id": "d732056e-ed18-4a8b-b386-f0efa47d1c45-enc-5",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "a90e5051-77ae-4fcb-a3f2-2bd73e4a5386",
+      "encounter_id": "2e246f9b-3d09-4e8c-b6b1-bed02e38bcc2-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "990f5f50-e7d8-4be1-9cbe-bfda05c5a1d2",
+      "encounter_id": "2e246f9b-3d09-4e8c-b6b1-bed02e38bcc2-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "bb0bd338-40ce-4adc-8c06-917d8661e10e",
+      "encounter_id": "2e246f9b-3d09-4e8c-b6b1-bed02e38bcc2-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b019f5eb-fa3e-4db2-9ce9-25b9a421b2bb",
+      "encounter_id": "2e246f9b-3d09-4e8c-b6b1-bed02e38bcc2-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "abbf8c1c-1697-40e1-a17a-c39c0e6aa7d9",
+      "encounter_id": "91af0571-949f-481f-9140-662806cdbe5b-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b9f72b5c-ca97-4e4a-b765-c212b45a915d",
+      "encounter_id": "91af0571-949f-481f-9140-662806cdbe5b-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "097db76f-fa88-4987-8231-dbf866751ef6",
+      "encounter_id": "91af0571-949f-481f-9140-662806cdbe5b-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "a1476977-61f9-45a1-9a84-674d158e5cbb",
+      "encounter_id": "91af0571-949f-481f-9140-662806cdbe5b-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b695e3f3-ba42-4949-a4ad-7639a820e313",
+      "encounter_id": "4a9dce7d-6cd6-4831-811e-bddf4bded7bd-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "05385cf4-d5f2-47ba-8473-944058c0b3e0",
+      "encounter_id": "4a9dce7d-6cd6-4831-811e-bddf4bded7bd-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "25877ec1-d86e-4b69-a6d5-501dbbc2de19",
+      "encounter_id": "4a9dce7d-6cd6-4831-811e-bddf4bded7bd-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "21442bf4-fde3-4e95-b0ea-126ea2606b63",
+      "encounter_id": "4a9dce7d-6cd6-4831-811e-bddf4bded7bd-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f23ad0f2-a205-4543-98ba-6b6abef510e3",
+      "encounter_id": "6001f6d8-add2-4649-8536-01b12e33229b-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "343d2165-b6aa-4842-9c8e-17357cd7c009",
+      "encounter_id": "6001f6d8-add2-4649-8536-01b12e33229b-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ae35c6ad-1f28-4436-a08f-3b16b5457b24",
+      "encounter_id": "6001f6d8-add2-4649-8536-01b12e33229b-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "43d9ac5f-6876-4fdd-adac-b719725682da",
+      "encounter_id": "e7fd0656-f644-412d-8a0e-b0df653dd90a-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e3ae836f-4f1b-42d9-8853-23ce3fe6313d",
+      "encounter_id": "e7fd0656-f644-412d-8a0e-b0df653dd90a-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "2de77d0d-2921-42a7-bfed-b7d27e8889fe",
+      "encounter_id": "52505e69-22ae-4e0a-9a1d-b6cde11302c7-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "a3e699ea-8291-4bb0-8c7e-ca1c84f5e103",
+      "encounter_id": "52505e69-22ae-4e0a-9a1d-b6cde11302c7-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e4c4508d-0457-47ad-844f-800b42d0e206",
+      "encounter_id": "210b12b4-1cf4-422a-9402-9f6ad4dbd01d-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c7066bcd-c689-4c3c-a158-298599b37d39",
+      "encounter_id": "210b12b4-1cf4-422a-9402-9f6ad4dbd01d-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c1d4c591-6131-4ce5-be6e-92d05417bf05",
+      "encounter_id": "210b12b4-1cf4-422a-9402-9f6ad4dbd01d-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "991dd0e6-2ca7-468c-88fd-aacc545ae621",
+      "encounter_id": "1787a3e9-7cb2-421d-8786-fad86fb72a37-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "8d206e6e-a629-48f2-8d5a-b5978763c4f1",
+      "encounter_id": "1787a3e9-7cb2-421d-8786-fad86fb72a37-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "5571587d-7ca4-4edd-8093-3176b039d110",
+      "encounter_id": "1787a3e9-7cb2-421d-8786-fad86fb72a37-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "953c130f-7416-48ec-b712-8798de9b76c3",
+      "encounter_id": "53b21e4e-2f77-4f9c-add7-e8730244e9d5-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "cac41445-95a1-430b-839c-30f06996634c",
+      "encounter_id": "53b21e4e-2f77-4f9c-add7-e8730244e9d5-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "8dfe51ff-a76b-45b0-b399-18ae702d8c76",
+      "encounter_id": "53b21e4e-2f77-4f9c-add7-e8730244e9d5-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "fd6b5f8d-f57a-444d-9a54-326eb5454209",
+      "encounter_id": "53b21e4e-2f77-4f9c-add7-e8730244e9d5-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e81dcb74-94da-4876-be01-97e122db1f6c",
+      "encounter_id": "53b21e4e-2f77-4f9c-add7-e8730244e9d5-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "8dfc1513-c6a6-4fc8-94bc-e237dcb95257",
+      "encounter_id": "53b21e4e-2f77-4f9c-add7-e8730244e9d5-enc-5",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "69ec7788-93e9-42be-8bc2-acb10b727c00",
+      "encounter_id": "e7903f9c-c2e7-4167-a153-f41f0f7c94be-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b6e25407-d400-4d8f-875d-9e774f2185c8",
+      "encounter_id": "e7903f9c-c2e7-4167-a153-f41f0f7c94be-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e295cf8f-23bc-4c49-a74b-04fa0510ccba",
+      "encounter_id": "7ce6b70c-a565-4cd1-964c-c35a478e2d78-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "321feb3c-64ad-4dc8-a2af-54ab562b7a9c",
+      "encounter_id": "7ce6b70c-a565-4cd1-964c-c35a478e2d78-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "736a9c4d-0c30-4242-9650-bf7974e307de",
+      "encounter_id": "7ce6b70c-a565-4cd1-964c-c35a478e2d78-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "2f52d3b2-ce53-4b90-8b07-55a3cbbdbf52",
+      "encounter_id": "7ce6b70c-a565-4cd1-964c-c35a478e2d78-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "aa57f6ee-dcc5-42e7-b801-3c2fda47a515",
+      "encounter_id": "3785e279-3781-4406-a76f-157d1187e41f-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "495c9fad-65ca-4e81-b20e-45d6e169cd79",
+      "encounter_id": "3785e279-3781-4406-a76f-157d1187e41f-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "964ee5c3-958f-4e9a-8305-e4ad04e075ed",
+      "encounter_id": "f6b33705-d7a3-4ede-aaa2-bdd15a520679-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "8704904f-e917-4f5d-b4a8-87de704e018f",
+      "encounter_id": "f6b33705-d7a3-4ede-aaa2-bdd15a520679-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "5ec81a42-5f59-496c-b3cd-9bcf1a18aca0",
+      "encounter_id": "c31d1afe-777e-43ad-a30e-39d77f7ab70b-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "14577b39-fca6-427b-9905-dcc06d59b9e5",
+      "encounter_id": "c31d1afe-777e-43ad-a30e-39d77f7ab70b-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "114bb4b5-1d86-4da9-8f6c-b8cf092cc5c1",
+      "encounter_id": "c31d1afe-777e-43ad-a30e-39d77f7ab70b-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1ad39d33-b2fa-4669-86f6-736f1c1ea83c",
+      "encounter_id": "3da11eaa-18b3-40d8-bd04-5d5e64360c13-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e79db534-0daa-47b1-b774-eadc8a6214e7",
+      "encounter_id": "3da11eaa-18b3-40d8-bd04-5d5e64360c13-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e1a3a394-ace8-4ce3-a4dc-6249c3888ea2",
+      "encounter_id": "93d83c35-3dc2-449b-87f2-a7a8d04bfa64-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "08c93aab-8f9f-405f-828e-a6dd7707872b",
+      "encounter_id": "93d83c35-3dc2-449b-87f2-a7a8d04bfa64-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "19a748a6-c7f1-4724-9119-454aae317ebe",
+      "encounter_id": "93d83c35-3dc2-449b-87f2-a7a8d04bfa64-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "80c62404-b767-45df-a897-9ea476c6f073",
+      "encounter_id": "d199aaeb-e805-442d-8dc6-00fb6fb2a942-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ce439350-4e88-41cc-b5e0-05db633c0f2b",
+      "encounter_id": "d199aaeb-e805-442d-8dc6-00fb6fb2a942-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "08fbda44-56cd-4255-b28e-da8eaab92b93",
+      "encounter_id": "5e6bd39e-bf2c-4e80-ab22-ac823f022b66-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e5b1d093-5f79-4801-8daf-805f25c01e5d",
+      "encounter_id": "5e6bd39e-bf2c-4e80-ab22-ac823f022b66-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "0aa33de7-6750-4809-a046-66e31c06cffd",
+      "encounter_id": "5e6bd39e-bf2c-4e80-ab22-ac823f022b66-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "94bfc48f-59a3-4f10-9127-70b3886ed65a",
+      "encounter_id": "5e6bd39e-bf2c-4e80-ab22-ac823f022b66-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b3f4b428-65f7-4e0a-9598-8611730af637",
+      "encounter_id": "5e6bd39e-bf2c-4e80-ab22-ac823f022b66-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "55e0fc28-10bf-4ba2-b06e-21d7c0f600aa",
+      "encounter_id": "50df5f49-ff30-4fa4-ad97-3b242242e528-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c492874c-9358-48f8-b568-902ea340d23d",
+      "encounter_id": "50df5f49-ff30-4fa4-ad97-3b242242e528-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1502f00c-0270-4560-a1ef-378eadb638ea",
+      "encounter_id": "50df5f49-ff30-4fa4-ad97-3b242242e528-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "a7a7b2ce-ecb6-4992-aafe-23b0908ba2dd",
+      "encounter_id": "05672940-03b0-4cf7-842b-69fa76249902-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "7e3bbb04-2661-478a-92db-5388bc30a774",
+      "encounter_id": "05672940-03b0-4cf7-842b-69fa76249902-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c7118b15-44d7-4098-a6d5-d8c03e273478",
+      "encounter_id": "2df1de01-21fd-4bef-9e7d-f9420030cc10-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "a951f822-e492-46a4-bee1-6ca8ac0d2fb5",
+      "encounter_id": "2df1de01-21fd-4bef-9e7d-f9420030cc10-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "aa138dc8-08d6-4e13-8cf4-5d50370d8c74",
+      "encounter_id": "f7c27fbb-0278-473d-9864-c8f3752c31cb-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "06152b69-bf78-4755-8026-1643ad65c22a",
+      "encounter_id": "f7c27fbb-0278-473d-9864-c8f3752c31cb-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "74ae9b53-00bc-4c78-a2a3-1cf5f3de86cd",
+      "encounter_id": "f7c27fbb-0278-473d-9864-c8f3752c31cb-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b5b04208-6482-48b9-9c6c-8481e526ed03",
+      "encounter_id": "f7c27fbb-0278-473d-9864-c8f3752c31cb-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c6afd8ca-43c6-4add-86c9-fd9a9b060a12",
+      "encounter_id": "f7c27fbb-0278-473d-9864-c8f3752c31cb-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "0ea4ec14-74f1-4981-b444-05978407c1a8",
+      "encounter_id": "ef414797-bf8c-410a-a701-df6f966d47d5-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "994fb3d8-5e63-431f-aa22-4ffaf91f65a4",
+      "encounter_id": "ef414797-bf8c-410a-a701-df6f966d47d5-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "87bd467c-cc6e-4a18-93ba-69c13342055d",
+      "encounter_id": "fe068e5a-3521-4b81-99ad-bd3a63842e0e-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "5886e3f0-cc31-463f-99cd-63ac738bef43",
+      "encounter_id": "fe068e5a-3521-4b81-99ad-bd3a63842e0e-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "329d196f-5185-467d-8414-7f2d38fd9e13",
+      "encounter_id": "fe068e5a-3521-4b81-99ad-bd3a63842e0e-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "73322296-0683-42e4-9ba5-6f930046b7a6",
+      "encounter_id": "fe068e5a-3521-4b81-99ad-bd3a63842e0e-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "170c940a-6cd7-4a39-a77f-9c7aa6224968",
+      "encounter_id": "fe068e5a-3521-4b81-99ad-bd3a63842e0e-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ce45376f-2980-4054-9d9a-c0d9f5eab912",
+      "encounter_id": "2fe981e6-badf-47e9-a9dc-d7d00b063e6b-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "4cedeab7-8dd2-4eb1-9425-179350df1225",
+      "encounter_id": "2fe981e6-badf-47e9-a9dc-d7d00b063e6b-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "cda98cf1-b9e2-4687-b46b-3b5d960a00b1",
+      "encounter_id": "2fe981e6-badf-47e9-a9dc-d7d00b063e6b-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ae2fb4e5-3859-480a-852b-875edbd1c5fc",
+      "encounter_id": "2fe981e6-badf-47e9-a9dc-d7d00b063e6b-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f11cb923-e776-4f1a-a118-7f234d620ed4",
+      "encounter_id": "9b793cf7-0c87-454a-bf01-5f37e6eff936-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1fd72c42-a1e3-498d-8c0c-68d38787acd6",
+      "encounter_id": "9b793cf7-0c87-454a-bf01-5f37e6eff936-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1403d570-5af7-4982-abf2-1d75eb99f4fa",
+      "encounter_id": "9b793cf7-0c87-454a-bf01-5f37e6eff936-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "27743f71-93d4-48f5-8cbd-953a58d1539c",
+      "encounter_id": "aef104a8-3844-4630-8a13-c1b7512b86a2-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "9c1198ea-0e64-48c7-bce1-8d0c0ee1eb37",
+      "encounter_id": "aef104a8-3844-4630-8a13-c1b7512b86a2-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "0daf0ac7-d5fe-48e1-9aa6-062dc993fc23",
+      "encounter_id": "aef104a8-3844-4630-8a13-c1b7512b86a2-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "72f96066-cafd-481d-8684-8b14e7b76dea",
+      "encounter_id": "13b5a7e1-b022-49c6-bba0-3827242f3afa-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "40a31814-1c05-481c-b3c5-2688a22618a2",
+      "encounter_id": "13b5a7e1-b022-49c6-bba0-3827242f3afa-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "5b752b9c-9e23-4e2c-a1f3-e2345571bea1",
+      "encounter_id": "13b5a7e1-b022-49c6-bba0-3827242f3afa-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b792ebfd-724b-4b2c-8a45-45a1ba0ce46d",
+      "encounter_id": "62885a80-9b9f-4d36-a807-922a9c019064-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "44542c3f-1120-42b3-a71a-604102d70cff",
+      "encounter_id": "c7a147e1-0775-416e-b91e-f13a7076b8ea-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "97989015-5aaa-4f00-93e6-92725fd00f14",
+      "encounter_id": "c7a147e1-0775-416e-b91e-f13a7076b8ea-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e4b097e0-2c6c-4dd7-a3f5-b290da84ed8c",
+      "encounter_id": "c7a147e1-0775-416e-b91e-f13a7076b8ea-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ae25f0dc-b070-4127-ba80-9808947ae9bb",
+      "encounter_id": "65d36580-21f3-49e6-98c7-5ab28f99316b-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1d543797-8a94-445c-9612-fca17a1a748d",
+      "encounter_id": "65d36580-21f3-49e6-98c7-5ab28f99316b-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "6c788627-8811-4b64-baf7-c0e8e5b5f359",
+      "encounter_id": "65d36580-21f3-49e6-98c7-5ab28f99316b-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "600318f1-b469-40e6-b876-681f1d7cac53",
+      "encounter_id": "65d36580-21f3-49e6-98c7-5ab28f99316b-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1555a49a-3ab7-44dc-9d0e-2a397b3d9bbd",
+      "encounter_id": "65d36580-21f3-49e6-98c7-5ab28f99316b-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f40ef96d-0e0e-4071-bcb5-9dd439dbb84b",
+      "encounter_id": "cbb68f9a-0bb5-4473-a55f-13e0daa0374d-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e74a5048-4213-4f64-9d91-924fde1dda84",
+      "encounter_id": "cbb68f9a-0bb5-4473-a55f-13e0daa0374d-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "2ddad33d-62ee-497e-a8f9-4190a560e5f8",
+      "encounter_id": "cbb68f9a-0bb5-4473-a55f-13e0daa0374d-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "74836dd8-b28d-4efb-b9b0-299c83fba0b9",
+      "encounter_id": "a2145683-c470-4f41-a714-2f2780089de8-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3031f773-8080-4e7f-8cc0-275edc852caa",
+      "encounter_id": "a2145683-c470-4f41-a714-2f2780089de8-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "a9bba953-c5e2-43b1-9004-9a72ba0cd40a",
+      "encounter_id": "b3a78eae-32a3-46cc-9f4c-15db63358f6d-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "5d049c5c-17d3-4910-aa18-4faca77583c9",
+      "encounter_id": "b3a78eae-32a3-46cc-9f4c-15db63358f6d-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "accbd007-febc-40d6-a1ad-f4c31dbea6a1",
+      "encounter_id": "fe3e78a5-1a0a-4e49-8d72-ef0f0498d8d5-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "33de10a5-007c-4a56-8d97-30440edeebd9",
+      "encounter_id": "fe3e78a5-1a0a-4e49-8d72-ef0f0498d8d5-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "65c2646d-a3d9-440a-a7fe-8794e7608aca",
+      "encounter_id": "fe3e78a5-1a0a-4e49-8d72-ef0f0498d8d5-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "71f7339d-8127-41a5-a1f8-f5ea52f033ee",
+      "encounter_id": "9b1162e3-40c5-4fff-ab28-0d7ffd66888e-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "47d59f4f-4b2d-4666-8d78-b7274dd84189",
+      "encounter_id": "9b1162e3-40c5-4fff-ab28-0d7ffd66888e-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "5eb2e1b8-b354-4fd7-91ba-9931d4caf5ab",
+      "encounter_id": "9b1162e3-40c5-4fff-ab28-0d7ffd66888e-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "437cc0e9-71d0-48a8-aabb-17c92f76cf41",
+      "encounter_id": "b9c8d480-c0bd-431d-bb01-36c6db027771-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "efbeb279-0bb7-4586-9e0b-f02bbffd7959",
+      "encounter_id": "b9c8d480-c0bd-431d-bb01-36c6db027771-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "828131b6-30da-46be-af75-24bbc4f9b0d5",
+      "encounter_id": "b9c8d480-c0bd-431d-bb01-36c6db027771-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "87bc5f79-e216-4144-aa76-fa52a886d392",
+      "encounter_id": "4829e17a-69bd-465e-90ad-034760df5b25-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ecf263c4-a8a0-437a-a0e2-2e767b74f090",
+      "encounter_id": "4829e17a-69bd-465e-90ad-034760df5b25-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "8a90c15d-efd9-44fb-be52-fcf02aec5251",
+      "encounter_id": "4829e17a-69bd-465e-90ad-034760df5b25-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b9fec3b4-d477-405a-8b97-ece122bd796f",
+      "encounter_id": "4829e17a-69bd-465e-90ad-034760df5b25-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1bbfcc28-94ca-42ef-b4f3-358840f87584",
+      "encounter_id": "4829e17a-69bd-465e-90ad-034760df5b25-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "04c383ae-cbaa-45de-acb3-d730d0dbd74a",
+      "encounter_id": "016f2b57-a0b9-4a41-a3ba-fe314b1a5ad8-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "31f154c0-5012-4a54-ab5d-3d1966f8366b",
+      "encounter_id": "016f2b57-a0b9-4a41-a3ba-fe314b1a5ad8-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1fcb14fe-1c64-4ac6-b218-f21959c9c09c",
+      "encounter_id": "016f2b57-a0b9-4a41-a3ba-fe314b1a5ad8-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "8ab66e20-efdb-4f21-a0a5-2cafed6c3f34",
+      "encounter_id": "016f2b57-a0b9-4a41-a3ba-fe314b1a5ad8-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "d04acdd2-d023-4fb4-b823-e07f176c9786",
+      "encounter_id": "969b9fcb-0446-49f5-b7ce-88511f0a198a-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "16ca8738-454c-4507-926b-910eeacaa5d6",
+      "encounter_id": "969b9fcb-0446-49f5-b7ce-88511f0a198a-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "d837c16e-9478-4cdb-923b-d2a98349b053",
+      "encounter_id": "969b9fcb-0446-49f5-b7ce-88511f0a198a-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "90d501f1-df66-464d-a3f9-65d1d1c2c0d4",
+      "encounter_id": "969b9fcb-0446-49f5-b7ce-88511f0a198a-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ff54315d-7d97-44e1-885f-ed6c73057557",
+      "encounter_id": "969b9fcb-0446-49f5-b7ce-88511f0a198a-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "5746048d-41db-452b-a477-a37a855caf20",
+      "encounter_id": "969b9fcb-0446-49f5-b7ce-88511f0a198a-enc-5",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1d3acecf-a15b-42a1-818b-97ebad6a721c",
+      "encounter_id": "7e78f4a3-efb4-46a9-829a-bc382b240577-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "accdf61a-f737-446b-9156-2f14ae11fce8",
+      "encounter_id": "7e78f4a3-efb4-46a9-829a-bc382b240577-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "0f9b6b67-7e7e-4b6e-96f1-26bb45a54fcd",
+      "encounter_id": "68705238-5f41-4add-9938-6188385e1ad6-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "755caa5e-46a5-49c3-8c14-1dfeed18b8dc",
+      "encounter_id": "68705238-5f41-4add-9938-6188385e1ad6-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "372bcde3-9145-4bbb-a757-f8a1ab4057ce",
+      "encounter_id": "68705238-5f41-4add-9938-6188385e1ad6-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "76744043-c991-40cc-974f-884f56db7cb7",
+      "encounter_id": "68705238-5f41-4add-9938-6188385e1ad6-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "2ca9acc2-3b0e-4076-88eb-58b8563c3af8",
+      "encounter_id": "3587a196-76bc-4a04-bb32-d5eb43aa1923-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "9ace1060-5d47-4e21-a8de-79a9f6fe16fe",
+      "encounter_id": "3587a196-76bc-4a04-bb32-d5eb43aa1923-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "be172a26-b07f-438c-ac2b-d127fc4f0d5e",
+      "encounter_id": "3901a7ee-03b9-4bca-83a3-92743f5bfc6d-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "d8b1434d-f3c3-4f9f-9029-8e9234d95d00",
+      "encounter_id": "3901a7ee-03b9-4bca-83a3-92743f5bfc6d-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "92a81ad1-2cd2-4935-869f-48952600b05f",
+      "encounter_id": "3bef0fc2-ac85-4ea9-b754-b4c7244fc546-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f47c4bf2-238e-4630-8602-b5429a959911",
+      "encounter_id": "3bef0fc2-ac85-4ea9-b754-b4c7244fc546-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "2f18532d-c4f3-4862-8fa2-284a3c243d71",
+      "encounter_id": "bdcfaff7-7b69-4140-91ae-6eeb60f6cdca-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c0d61cc9-84a4-47ca-b373-2fa94ee90eb6",
+      "encounter_id": "bdcfaff7-7b69-4140-91ae-6eeb60f6cdca-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "90eda2a8-b765-4e0b-bb65-1cadf377dd77",
+      "encounter_id": "a1326155-69dd-40f7-afc6-3fba3a389089-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "714fbb70-4288-490f-98c3-83b8176c4820",
+      "encounter_id": "a1326155-69dd-40f7-afc6-3fba3a389089-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ac215a75-1207-4d85-b61b-90255766e1e3",
+      "encounter_id": "a1326155-69dd-40f7-afc6-3fba3a389089-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b87fdcbe-f6f2-443e-add1-83bb7d62eb5c",
+      "encounter_id": "6ae21b4e-d555-4325-8f16-66a4343ab6fc-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "5b288f43-d968-4226-a88e-6ae3d89fe5dd",
+      "encounter_id": "6ae21b4e-d555-4325-8f16-66a4343ab6fc-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "fdedc565-3add-4d46-83fd-36a923079d49",
+      "encounter_id": "6ae21b4e-d555-4325-8f16-66a4343ab6fc-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "33dabcca-e78a-4246-9aa8-0cfb3f5fbacd",
+      "encounter_id": "6ae21b4e-d555-4325-8f16-66a4343ab6fc-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "677f1f83-75d3-4695-962d-4e25806e0364",
+      "encounter_id": "6ae21b4e-d555-4325-8f16-66a4343ab6fc-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e2aa40f2-704d-4e9e-b696-b297f2cef49d",
+      "encounter_id": "737f70e6-b34f-441f-9974-7913ce8e5c95-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e552abc5-4335-40c2-ae90-f75258fd407a",
+      "encounter_id": "737f70e6-b34f-441f-9974-7913ce8e5c95-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "88fa1d68-a628-4226-b0bc-ffe9cdc00939",
+      "encounter_id": "737f70e6-b34f-441f-9974-7913ce8e5c95-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "da327d7d-753a-4344-a090-808aff7b9a0b",
+      "encounter_id": "5dea133c-4aa7-44de-9f87-ba4efefbf115-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "9b0aab8c-e526-426f-ba70-df5b114780fc",
+      "encounter_id": "5dea133c-4aa7-44de-9f87-ba4efefbf115-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "2b305023-ab71-4b12-86ae-fac148334518",
+      "encounter_id": "5dea133c-4aa7-44de-9f87-ba4efefbf115-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "39375685-6ebe-48b0-b1d2-3bf80900886c",
+      "encounter_id": "5dea133c-4aa7-44de-9f87-ba4efefbf115-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "fb773b53-05d2-4d4c-a253-cb425f2aa9b5",
+      "encounter_id": "ded93a9d-7bc1-4947-8b54-48a7afd818b2-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "5cfbdee4-4960-4548-8c92-fa159654bce3",
+      "encounter_id": "ded93a9d-7bc1-4947-8b54-48a7afd818b2-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "01ae3ddb-010d-43ee-8405-1de9adcea69f",
+      "encounter_id": "ded93a9d-7bc1-4947-8b54-48a7afd818b2-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "bba2c075-dd9e-43c3-be0f-189d4d381fdd",
+      "encounter_id": "5f1c7ec9-d339-4e84-93a8-556f5e277ec1-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f6036ed9-7dac-43ae-9c24-1ffebd57c0e7",
+      "encounter_id": "5f1c7ec9-d339-4e84-93a8-556f5e277ec1-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "db6f08b5-6040-426c-8292-4b810c8120d4",
+      "encounter_id": "6e02cac2-abd4-4719-8d87-93b4d934351c-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "46a71e7b-0460-4d35-9256-c0e2fd96a6ea",
+      "encounter_id": "6e02cac2-abd4-4719-8d87-93b4d934351c-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c8da6753-0c95-44c0-9483-95d34f320ff9",
+      "encounter_id": "6e02cac2-abd4-4719-8d87-93b4d934351c-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e9505679-3826-44b7-b5bc-cef02020b87a",
+      "encounter_id": "35b08a8d-b32c-452f-b57b-4e8e46c87d33-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f4eec6c4-dba8-44e1-8185-aaeda70bbc7e",
+      "encounter_id": "35b08a8d-b32c-452f-b57b-4e8e46c87d33-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "da00ac28-5c01-460a-8c48-13fb09726868",
+      "encounter_id": "35b08a8d-b32c-452f-b57b-4e8e46c87d33-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c7b890a1-752c-460d-ad79-4aeaaf8a0cc9",
+      "encounter_id": "35b08a8d-b32c-452f-b57b-4e8e46c87d33-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "6e00215d-d04c-4727-84b8-6d0021a20bbd",
+      "encounter_id": "7ee61d63-e84e-401f-9069-a32c490a5962-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "561670b6-ee58-4562-bae3-01402bc784e7",
+      "encounter_id": "7ee61d63-e84e-401f-9069-a32c490a5962-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b0c2cb63-b0aa-4c53-9b57-5abbdcdd370e",
+      "encounter_id": "7ee61d63-e84e-401f-9069-a32c490a5962-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e0f4abad-c32e-40ca-8b01-2ace1b81bad5",
+      "encounter_id": "09625a85-62ea-4341-9b9f-67d157bd78f6-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "88b6e04b-0976-4db2-ad1c-4e83ca53c99f",
+      "encounter_id": "09625a85-62ea-4341-9b9f-67d157bd78f6-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "8b5d6c83-241b-4fd7-b3db-9320c2d8a4ef",
+      "encounter_id": "09625a85-62ea-4341-9b9f-67d157bd78f6-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "6ba68e33-ce1e-4105-9533-643d929451fc",
+      "encounter_id": "09625a85-62ea-4341-9b9f-67d157bd78f6-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b3f4c047-c55a-4714-9d4e-13770e36ced6",
+      "encounter_id": "7242d44e-fe31-435c-8c0d-ed8fbad25a57-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "605e5a61-b977-4d10-b76c-fe006829fe35",
+      "encounter_id": "7242d44e-fe31-435c-8c0d-ed8fbad25a57-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "745b2036-b527-43a8-b81e-a4f0fe8af7cd",
+      "encounter_id": "7242d44e-fe31-435c-8c0d-ed8fbad25a57-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c390985b-d1f5-4921-a489-0eb75f5cc310",
+      "encounter_id": "7ae2bd00-3628-40bd-957c-ea737033ca77-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "127c8c16-9666-4291-ac2d-f8af760ffacd",
+      "encounter_id": "7ae2bd00-3628-40bd-957c-ea737033ca77-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "d77828ed-57e3-4eea-a0ab-c758ba9695d1",
+      "encounter_id": "7ae2bd00-3628-40bd-957c-ea737033ca77-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "914ccd54-7d92-48e6-b0d0-1b96b23be048",
+      "encounter_id": "27489f39-f930-4aa8-8c52-57c8dd76b3e9-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "bab5fd3a-8b7a-4b9c-b3cf-6cd3c23bdb70",
+      "encounter_id": "27489f39-f930-4aa8-8c52-57c8dd76b3e9-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "64d3367a-db02-4692-8cb3-1c9033a26342",
+      "encounter_id": "27489f39-f930-4aa8-8c52-57c8dd76b3e9-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "9db6049a-55d4-4e32-86f0-6008a9bac19c",
+      "encounter_id": "fa63daa6-4013-4f65-b228-23c6284f6156-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "50d0093c-168d-4aa3-a8c5-39da5430c805",
+      "encounter_id": "fa63daa6-4013-4f65-b228-23c6284f6156-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "99754487-b537-4b71-bf79-74c0960df61e",
+      "encounter_id": "fa63daa6-4013-4f65-b228-23c6284f6156-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "9581bc79-1e1d-4277-bb72-3d4855b08672",
+      "encounter_id": "918a03f6-0b8b-499c-a60a-66bc23d71acd-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "ffd78f8c-42ba-40b6-93d6-ab49da34d966",
+      "encounter_id": "918a03f6-0b8b-499c-a60a-66bc23d71acd-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "9425a0d0-7268-442d-93d7-704bf6a4beb7",
+      "encounter_id": "40015d7a-3642-44e0-b980-35187376cc3d-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "18859b7e-59e3-4b0b-9cab-c8bcc1fcb466",
+      "encounter_id": "40015d7a-3642-44e0-b980-35187376cc3d-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "81654f8d-af12-44ea-b4ee-ca624e3e0e4b",
+      "encounter_id": "40015d7a-3642-44e0-b980-35187376cc3d-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "4e9fe9ea-d9e6-446b-b6eb-08509f6cb088",
+      "encounter_id": "943b6061-8cfb-4b85-9d3f-c473477afe4d-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "33ee0f58-87e0-4a30-8915-65965d2bd2ce",
+      "encounter_id": "943b6061-8cfb-4b85-9d3f-c473477afe4d-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "723b8932-5917-4b6f-8276-5fb59272d42d",
+      "encounter_id": "38ccc5d3-f7b6-404b-8b58-53eacba8be11-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "fc4b0622-b4df-4c0a-8402-4c4a794c12f5",
+      "encounter_id": "38ccc5d3-f7b6-404b-8b58-53eacba8be11-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "7d9f15c5-99c8-4599-b0f5-d0fd9658a088",
+      "encounter_id": "38ccc5d3-f7b6-404b-8b58-53eacba8be11-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "25e2a877-e669-44b3-87b2-9d558c64ae20",
+      "encounter_id": "38ccc5d3-f7b6-404b-8b58-53eacba8be11-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c1e9b01e-6978-4163-a06d-9a1fae55d297",
+      "encounter_id": "38ccc5d3-f7b6-404b-8b58-53eacba8be11-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3c9f987b-5368-4f69-b226-48458cd06b62",
+      "encounter_id": "38ccc5d3-f7b6-404b-8b58-53eacba8be11-enc-5",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "90a3383b-2179-49e8-85ed-7bf1f8996345",
+      "encounter_id": "e091e409-4c2a-44d0-93d3-f5c7deb2b111-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "caaa3be4-f73d-4bf4-934e-b8b3852a98ce",
+      "encounter_id": "e091e409-4c2a-44d0-93d3-f5c7deb2b111-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "a602cc92-bc2c-4bf3-baea-1841c5568a35",
+      "encounter_id": "9f6a9341-423e-4cbe-9db3-43fc3aef67af-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "fce17a8b-b4a6-45d3-bd3b-239f72042057",
+      "encounter_id": "9f6a9341-423e-4cbe-9db3-43fc3aef67af-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "220d5859-74d3-4c0e-8c30-883de7970319",
+      "encounter_id": "9f6a9341-423e-4cbe-9db3-43fc3aef67af-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "dcd8e04e-e9c4-4ce3-872b-1af28712e8ef",
+      "encounter_id": "9f6a9341-423e-4cbe-9db3-43fc3aef67af-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "bf3f4120-be20-4c3a-a32c-d7ca87206732",
+      "encounter_id": "9f6a9341-423e-4cbe-9db3-43fc3aef67af-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "36e65af8-a327-4ab7-80bb-824c40a9481a",
+      "encounter_id": "9f6a9341-423e-4cbe-9db3-43fc3aef67af-enc-5",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e407893c-7049-4b8b-8d04-25246b5c03b9",
+      "encounter_id": "e3d8185d-ec37-4ebb-88c3-147ea572e180-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "739c73b9-3a71-4024-9d2b-38a022333c0c",
+      "encounter_id": "e3d8185d-ec37-4ebb-88c3-147ea572e180-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f7b71c5e-96d9-416e-8414-099c93358f49",
+      "encounter_id": "af52b95b-3ae8-40a5-9193-e5227b829623-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "47fbe7d9-47a0-43c1-ac51-b0008a353335",
+      "encounter_id": "af52b95b-3ae8-40a5-9193-e5227b829623-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "2415f9d9-7a7f-4c4e-858f-9690b057fa2d",
+      "encounter_id": "af52b95b-3ae8-40a5-9193-e5227b829623-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e7c5d3da-5320-4627-b6f5-98d042f6e9ab",
+      "encounter_id": "af52b95b-3ae8-40a5-9193-e5227b829623-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "865ed32f-61a7-44ab-b876-fd8cb50b2467",
+      "encounter_id": "af52b95b-3ae8-40a5-9193-e5227b829623-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e4b26e99-0289-40eb-9831-a9bac0055888",
+      "encounter_id": "af52b95b-3ae8-40a5-9193-e5227b829623-enc-5",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "315dad62-02ae-4253-9dbd-2f068b33b4f0",
+      "encounter_id": "6a0f0aa8-371c-4297-83de-59b2c341ae01-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3aee08ac-5ec0-4d0e-9c56-534139ba9bd2",
+      "encounter_id": "6a0f0aa8-371c-4297-83de-59b2c341ae01-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "88fed0aa-41e5-4b81-8e2c-2da26db84347",
+      "encounter_id": "6a0f0aa8-371c-4297-83de-59b2c341ae01-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e6aef7a3-6c60-4d9d-a304-f6dffce14864",
+      "encounter_id": "6a0f0aa8-371c-4297-83de-59b2c341ae01-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "55b5b8e2-c887-48a0-bb9f-67e78bf29076",
+      "encounter_id": "9e4039fd-10b3-49da-8a98-123de835e7b6-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "281284f2-31e9-4420-8d61-4ba8e7a548c8",
+      "encounter_id": "9e4039fd-10b3-49da-8a98-123de835e7b6-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3a2d1001-82f3-49b9-b3d7-1c6bd75567b9",
+      "encounter_id": "d04030c2-bdb7-43fd-b9f9-3f832726b9f1-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "13accba7-448c-499c-9ed7-b33971061085",
+      "encounter_id": "d04030c2-bdb7-43fd-b9f9-3f832726b9f1-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "fca6fb08-15ff-4475-a758-309c593f9798",
+      "encounter_id": "d04030c2-bdb7-43fd-b9f9-3f832726b9f1-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "5b912f9d-fad1-4884-a0f7-0a7bd9ebc7a5",
+      "encounter_id": "d04030c2-bdb7-43fd-b9f9-3f832726b9f1-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "577eef14-2e07-4c9f-8b1f-4ab9ac0b2550",
+      "encounter_id": "5718528c-94ad-4107-97e4-e6b047eec90f-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "35e49932-5c38-49cc-83a7-af53a4426d55",
+      "encounter_id": "5718528c-94ad-4107-97e4-e6b047eec90f-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "772fac20-6cd5-422e-8682-25a90eb15cc6",
+      "encounter_id": "5718528c-94ad-4107-97e4-e6b047eec90f-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f1b01dda-198c-4622-9f3f-010aaf220149",
+      "encounter_id": "5718528c-94ad-4107-97e4-e6b047eec90f-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "6766f153-c783-4a90-829c-8ac8dd100871",
+      "encounter_id": "5718528c-94ad-4107-97e4-e6b047eec90f-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "7d260e08-cad4-4fc2-b99d-9c9f9cc5b8cc",
+      "encounter_id": "5718528c-94ad-4107-97e4-e6b047eec90f-enc-5",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "751c9084-e8e2-4844-8eb6-a347ee5084d3",
+      "encounter_id": "41d87281-d385-460a-b74e-d4a97181d7e5-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "d9d55003-0230-4c5f-9a66-4d23ce5f75e2",
+      "encounter_id": "41d87281-d385-460a-b74e-d4a97181d7e5-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e7c66122-f4f6-4256-95eb-99fbcbb729dc",
+      "encounter_id": "41d87281-d385-460a-b74e-d4a97181d7e5-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "17e46476-bfec-4adf-9517-35e30636fff5",
+      "encounter_id": "3c62df28-7187-4b45-ab00-752980e5e67a-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "287b430a-d9f6-41a4-a025-048272f475a9",
+      "encounter_id": "3c62df28-7187-4b45-ab00-752980e5e67a-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "00fbb9f6-f834-48f1-8813-d49c02946ff3",
+      "encounter_id": "3c62df28-7187-4b45-ab00-752980e5e67a-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "c2bebd1c-6b44-41ce-8104-3e5b5f26dbe6",
+      "encounter_id": "f9a7a92b-d09d-4e56-b597-2e64c3cf487b-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "238ed992-0f17-4222-a1c4-3ada8702a895",
+      "encounter_id": "f9a7a92b-d09d-4e56-b597-2e64c3cf487b-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "3427e08d-f2c2-44df-adb3-e951340e0389",
+      "encounter_id": "f9a7a92b-d09d-4e56-b597-2e64c3cf487b-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "9a0e4ecd-426f-449e-a699-6db36c4a04ef",
+      "encounter_id": "d8c9ed29-8021-4eaa-bbda-6f210c35466c-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f841a318-a614-4496-9104-ab11c50e11e1",
+      "encounter_id": "d8c9ed29-8021-4eaa-bbda-6f210c35466c-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "92eda9ef-7876-4895-84d9-23ab5da1d23f",
+      "encounter_id": "d8c9ed29-8021-4eaa-bbda-6f210c35466c-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "1707be88-63f4-4f7e-91d9-d2cdc2146f4b",
+      "encounter_id": "0d945d27-937e-4f1d-a15a-634949dd658a-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "2eef5b65-b479-49d1-86ea-cb990c8bbdc4",
+      "encounter_id": "0d945d27-937e-4f1d-a15a-634949dd658a-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "60f3dc49-4a82-4b8b-95a9-f232a19b32ef",
+      "encounter_id": "0d945d27-937e-4f1d-a15a-634949dd658a-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "bbd554a5-6ae3-4bad-bca1-a805da80f596",
+      "encounter_id": "5a0f0821-0714-4260-8960-d46103ced36f-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "6eaf68dc-443e-4c83-b268-bc8986414a9e",
+      "encounter_id": "5a0f0821-0714-4260-8960-d46103ced36f-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "b7ec89da-5ef3-40f7-ab45-6c0647a7884d",
+      "encounter_id": "5a0f0821-0714-4260-8960-d46103ced36f-enc-2",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "9f5a6ebd-65bc-41ba-bf2e-284078b5d729",
+      "encounter_id": "5a0f0821-0714-4260-8960-d46103ced36f-enc-3",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "faf2a714-0719-43c8-84f6-6766b0966f4e",
+      "encounter_id": "5a0f0821-0714-4260-8960-d46103ced36f-enc-4",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f2799bf6-a8d6-484b-b6b1-dc8160bda191",
+      "encounter_id": "5a0f0821-0714-4260-8960-d46103ced36f-enc-5",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "f2672064-6fa4-4d83-b1a3-1ed6656ac799",
+      "encounter_id": "1cea83e5-c292-4e07-bece-abd9ccd74eac-enc-0",
+      "chunk_index": 0,
+      "text_chunk": ""
+    },
+    {
+      "id": "e07278de-9658-4f66-8072-198930809364",
+      "encounter_id": "1cea83e5-c292-4e07-bece-abd9ccd74eac-enc-1",
+      "chunk_index": 0,
+      "text_chunk": ""
+    }
+  ]
 }

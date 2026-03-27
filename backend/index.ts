@@ -1,6 +1,9 @@
 import { initDb } from './db';
 import { createInterface } from 'readline';
 import { getPatients, getMetrics, getPatientById, assessPatientRisk } from './services/patient';
+import { generateEmbeddings } from './ml/embeddings';
+import { FaissStore } from './ml/faiss';
+import { RagOrchestrator } from './rag/orchestrator';
 
 // Initialize the database
 const dbPath = process.env.DB_PATH || 'storage.sqlite';
@@ -60,6 +63,50 @@ rl.on('line', async (line) => {
           sendResponse(id, result);
         } catch (e) {
           sendError(id, `Error assessing risk: ${e}`);
+        }
+        break;
+      case 'generate_embedding':
+        try {
+          const result = await generateEmbeddings(payload.text);
+          sendResponse(id, { embedding: result, dimension: result.length });
+        } catch (e) {
+          sendError(id, `Error generating embedding: ${e}`);
+        }
+        break;
+      case 'ingest_document':
+        try {
+          const faissStore = new FaissStore();
+          await faissStore.addDocument(payload.id, payload.text);
+          sendResponse(id, { status: 'ingested', documentId: payload.id });
+        } catch (e) {
+          sendError(id, `Error ingesting document: ${e}`);
+        }
+        break;
+      case 'search_similar':
+        try {
+          const faissStore = new FaissStore();
+          const results = await faissStore.search(payload.query, payload.k || 5);
+          sendResponse(id, { results });
+        } catch (e) {
+          sendError(id, `Error searching: ${e}`);
+        }
+        break;
+      case 'rag_assess':
+        try {
+          const orchestrator = new RagOrchestrator(db, payload.apiKey);
+          const result = await orchestrator.assessRisk(payload.notes, payload.locale || 'en');
+          sendResponse(id, result);
+        } catch (e) {
+          sendError(id, `Error in RAG assessment: ${e}`);
+        }
+        break;
+      case 'get_index_info':
+        try {
+          const faissStore = new FaissStore();
+          const info = await faissStore.getIndexInfo();
+          sendResponse(id, info);
+        } catch (e) {
+          sendError(id, `Error getting index info: ${e}`);
         }
         break;
       default:
