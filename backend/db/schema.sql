@@ -69,3 +69,14 @@ CREATE TABLE IF NOT EXISTS AuditLogs (
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(user_id) REFERENCES Users(id)
 );
+
+CREATE TABLE IF NOT EXISTS AnalysisHistory (
+    id TEXT PRIMARY KEY,
+    patient_id TEXT,
+    encounter_id TEXT,
+    input_data_hash TEXT,
+    risk_score REAL,
+    explanation TEXT,
+    evidence TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
