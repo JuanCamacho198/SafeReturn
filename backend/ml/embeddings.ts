@@ -1,11 +1,64 @@
 import { spawn } from "child_process";
 import { promisify } from "util";
 import path from "path";
+import fs from "fs";
 
 const execFile = promisify(require("child_process").execFile);
 
-const SCRIPT_DIR = path.join(process.cwd(), "scripts");
+// Find project root by looking for the scripts folder
+function findProjectRoot(startPath: string): string | null {
+  let current = startPath;
+  const maxDepth = 5;
+  
+  for (let i = 0; i < maxDepth; i++) {
+    const scriptsPath = path.join(current, "scripts");
+    const backendPath = path.join(current, "backend");
+    
+    // Check if this looks like our project root
+    if (fs.existsSync(scriptsPath) && fs.existsSync(backendPath)) {
+      return current;
+    }
+    
+    const parent = path.dirname(current);
+    if (parent === current) break; // Reached root
+    current = parent;
+  }
+  
+  return null;
+}
+
+// Try multiple methods to find project root
+let PROJECT_ROOT: string;
+
+// Method 1: From executable directory (for production builds)
+const exeDir = path.dirname(process.execPath);
+let foundRoot = findProjectRoot(exeDir);
+
+// Method 2: From current working directory (for dev)
+if (!foundRoot) {
+  foundRoot = findProjectRoot(process.cwd());
+}
+
+// Method 3: From environment variable (Tauri sets this)
+if (!foundRoot && process.env.INIT_CWD) {
+  foundRoot = findProjectRoot(process.env.INIT_CWD);
+}
+
+// Fallback - use cwd and hope for the best
+if (!foundRoot) {
+  PROJECT_ROOT = process.cwd();
+} else {
+  PROJECT_ROOT = foundRoot;
+}
+
+const SCRIPT_DIR = path.join(PROJECT_ROOT, "scripts");
 const GENERATE_EMBEDDINGS_SCRIPT = path.join(SCRIPT_DIR, "generate_embeddings.py");
+const DB_PATH = path.join(PROJECT_ROOT, "storage.sqlite");
+
+console.log("PROJECT_ROOT (auto-detected):", PROJECT_ROOT);
+console.log("SCRIPT_DIR:", SCRIPT_DIR);
+console.log("SCRIPT exists:", fs.existsSync(SCRIPT_DIR));
+console.log("GENERATE_EMBEDDINGS_SCRIPT:", GENERATE_EMBEDDINGS_SCRIPT);
 
 interface EmbeddingResult {
   embedding: number[];
@@ -25,7 +78,7 @@ export async function generateEmbeddings(text: string): Promise<number[]> {
       "--text",
       text,
       "--db",
-      "storage.sqlite"
+      DB_PATH
     ];
 
     const proc = spawn(python, args, {

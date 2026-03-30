@@ -37,7 +37,13 @@ except ImportError:
 CHUNK_SIZE = 500
 OVERLAP = 50
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"
-FAISS_INDEX_DIR = Path("storage/faiss")
+
+# Get project root (parent of scripts/)
+PROJECT_ROOT = Path(__file__).parent.parent.resolve()
+FAISS_INDEX_DIR = PROJECT_ROOT / "storage" / "faiss"
+
+print(f"PROJECT_ROOT: {PROJECT_ROOT}")
+print(f"FAISS_INDEX_DIR: {FAISS_INDEX_DIR}")
 
 
 def chunk_text(
@@ -183,8 +189,8 @@ def main():
     parser.add_argument(
         "--db",
         type=str,
-        default="storage.sqlite",
-        help="Path to SQLite database (default: storage.sqlite)",
+        default=str(PROJECT_ROOT / "storage.sqlite"),
+        help="Path to SQLite database (default: storage.sqlite in project root)",
     )
     parser.add_argument(
         "--patient-id",
