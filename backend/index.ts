@@ -4,9 +4,36 @@ import { getPatients, getMetrics, getPatientById, assessPatientRisk } from './se
 import { generateEmbeddings } from './ml/embeddings';
 import { FaissStore } from './ml/faiss';
 import { RagOrchestrator } from './rag/orchestrator';
+import path from 'path';
+import { existsSync } from 'fs';
+
+// Find project root
+function findProjectRoot(startPath: string): string | null {
+  let current = startPath;
+  const maxDepth = 5;
+  for (let i = 0; i < maxDepth; i++) {
+    const scriptsPath = path.join(current, "scripts");
+    const backendPath = path.join(current, "backend");
+    if (existsSync(scriptsPath) && existsSync(backendPath)) {
+      return current;
+    }
+    const parent = path.dirname(current);
+    if (parent === current) break;
+    current = parent;
+  }
+  return null;
+}
+
+// Get project root and set absolute database path
+const execDir = path.dirname(process.execPath);
+let projectRoot = findProjectRoot(execDir);
+if (!projectRoot) projectRoot = findProjectRoot(process.cwd());
+if (!projectRoot && process.env.INIT_CWD) projectRoot = findProjectRoot(process.env.INIT_CWD);
+if (!projectRoot) projectRoot = process.cwd();
+
+const dbPath = path.join(projectRoot, 'storage.sqlite');
 
 // Initialize the database
-const dbPath = process.env.DB_PATH || 'storage.sqlite';
 const db = initDb(dbPath);
 
 console.log(JSON.stringify({ type: 'log', message: `Sidecar initialized with DB: ${dbPath}` }));
@@ -59,10 +86,59 @@ rl.on('line', async (line) => {
         break;
       case 'assess_risk':
         try {
+          // Check if we should use cached analysis or run new one
+          const forceNew = payload.forceNew === true;
+          
+          if (!forceNew) {
+            // Check for existing analysis in history
+            const latestAnalysis = db.prepare(`
+              SELECT risk_score, explanation, evidence, created_at 
+              FROM AnalysisHistory 
+              WHERE patient_id = ?
+              ORDER BY created_at DESC
+              LIMIT 1
+            `).get(payload.id) as { risk_score: number; explanation: string; evidence: string; created_at: string } | undefined;
+
+            if (latestAnalysis) {
+              // Return cached analysis
+              sendResponse(id, {
+                riskScore: latestAnalysis.risk_score,
+                explanation: latestAnalysis.explanation,
+                fragments: JSON.parse(latestAnalysis.evidence || '[]'),
+                cached: true,
+                createdAt: latestAnalysis.created_at
+              });
+              break;
+            }
+          }
+          
+          // Run new assessment
           const result = await assessPatientRisk(db, payload.id, payload.apiKey, payload.locale);
           sendResponse(id, result);
         } catch (e) {
           sendError(id, `Error assessing risk: ${e}`);
+        }
+        break;
+      case 'get_analysis_history':
+        try {
+          const history = db.prepare(`
+            SELECT risk_score, explanation, evidence, created_at 
+            FROM AnalysisHistory 
+            WHERE patient_id = ?
+            ORDER BY created_at DESC
+            LIMIT ?
+          `).all(payload.id, payload.limit || 10);
+          
+          const formatted = history.map((h: any) => ({
+            riskScore: h.risk_score,
+            explanation: h.explanation,
+            fragments: JSON.parse(h.evidence || '[]'),
+            createdAt: h.created_at
+          }));
+          
+          sendResponse(id, formatted);
+        } catch (e) {
+          sendError(id, `Error getting analysis history: ${e}`);
         }
         break;
       case 'generate_embedding':

@@ -10,6 +10,7 @@ This script provides a CLI for:
 import argparse
 import json
 import sys
+import os
 from pathlib import Path
 
 import numpy as np
@@ -22,9 +23,14 @@ except ImportError:
     FAISS_AVAILABLE = False
 
 
-FAISS_INDEX_DIR = Path("storage/faiss")
+# Get project root (parent of scripts/)
+PROJECT_ROOT = Path(__file__).parent.parent.resolve()
+FAISS_INDEX_DIR = PROJECT_ROOT / "storage" / "faiss"
 INDEX_FILE = FAISS_INDEX_DIR / "clinical_notes.index"
 METADATA_FILE = FAISS_INDEX_DIR / "metadata.json"
+
+print(f"FAISS_INDEX_DIR: {FAISS_INDEX_DIR}")
+print(f"INDEX_FILE: {INDEX_FILE}")
 
 
 def load_index(index_path: Path = INDEX_FILE):

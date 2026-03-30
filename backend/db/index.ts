@@ -2,6 +2,28 @@ import { Database } from 'bun:sqlite';
 import { readFileSync, existsSync } from 'fs';
 import { join, dirname, isAbsolute, resolve } from 'path';
 
+// Find project root by looking for known directories
+function findProjectRoot(startPath: string): string | null {
+  let current = startPath;
+  const maxDepth = 5;
+  
+  for (let i = 0; i < maxDepth; i++) {
+    const scriptsPath = join(current, "scripts");
+    const backendPath = join(current, "backend");
+    const schemaPath = join(current, "backend", "db", "schema.sql");
+    
+    if (existsSync(scriptsPath) && existsSync(schemaPath)) {
+      return current;
+    }
+    
+    const parent = dirname(current);
+    if (parent === current) break;
+    current = parent;
+  }
+  
+  return null;
+}
+
 const findSchema = (): string => {
   // 0. Environment variable override (Passed from Rust sidecar)
   if (process.env.SCHEMA_PATH && existsSync(process.env.SCHEMA_PATH)) {
@@ -9,28 +31,41 @@ const findSchema = (): string => {
   }
 
   const execDir = dirname(process.execPath);
+  
+  // Auto-detect project root
+  let projectRoot = findProjectRoot(execDir);
+  if (!projectRoot) {
+    projectRoot = findProjectRoot(process.cwd());
+  }
+  if (!projectRoot && process.env.INIT_CWD) {
+    projectRoot = findProjectRoot(process.env.INIT_CWD);
+  }
+  if (!projectRoot) {
+    projectRoot = process.cwd();
+  }
 
   const possiblePaths = [
-    // 1. Next to the executable (Tauri sidecar packaged)
+    // 1. Auto-detected project root paths
+    join(projectRoot, 'backend', 'db', 'schema.sql'),
+    join(projectRoot, 'schema.sql'),
+    
+    // 2. Next to the executable (Tauri sidecar packaged)
     join(execDir, 'schema.sql'),
-    // 2. In a resources folder next to executable (common convention)
+    // 3. In a resources folder next to executable
     join(execDir, 'resources', 'schema.sql'),
-    // 3. Up one level (e.g. from binaries/ folder to sidecar root)
+    // 4. Up one level
     join(execDir, '..', 'schema.sql'),
-    // 4. Up one level into resources (e.g. from binaries/ to resources/)
+    // 5. Up one level into resources
     join(execDir, '..', 'resources', 'schema.sql'),
 
     // Dev/Source paths
-    // 5. Current directory (relative to this file, for dev)
+    // 6. Current directory (relative to this file, for dev)
     join(import.meta.dir, 'schema.sql'),
-    // 6. Project root fallback (useful for dev/monorepo)
-    // Assuming we are in backend/db, go up two levels
-    join(process.cwd(), 'backend', 'db', 'schema.sql'),
-    join(process.cwd(), 'schema.sql'),
   ];
 
   for (const path of possiblePaths) {
     if (existsSync(path)) {
+        console.log("Found schema at:", path);
         return path;
     }
   }

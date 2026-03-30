@@ -1,9 +1,56 @@
 import { spawn } from "child_process";
 import path from "path";
+import fs from "fs";
 import { generateEmbeddings } from "./embeddings.js";
 
-const SCRIPT_DIR = path.join(process.cwd(), "scripts");
+// Find project root by looking for the scripts folder
+function findProjectRoot(startPath: string): string | null {
+  let current = startPath;
+  const maxDepth = 5;
+  
+  for (let i = 0; i < maxDepth; i++) {
+    const scriptsPath = path.join(current, "scripts");
+    const backendPath = path.join(current, "backend");
+    
+    if (fs.existsSync(scriptsPath) && fs.existsSync(backendPath)) {
+      return current;
+    }
+    
+    const parent = path.dirname(current);
+    if (parent === current) break;
+    current = parent;
+  }
+  
+  return null;
+}
+
+// Try multiple methods to find project root
+let PROJECT_ROOT: string;
+
+const exeDir = path.dirname(process.execPath);
+let foundRoot = findProjectRoot(exeDir);
+
+if (!foundRoot) {
+  foundRoot = findProjectRoot(process.cwd());
+}
+
+if (!foundRoot && process.env.INIT_CWD) {
+  foundRoot = findProjectRoot(process.env.INIT_CWD);
+}
+
+if (!foundRoot) {
+  PROJECT_ROOT = process.cwd();
+} else {
+  PROJECT_ROOT = foundRoot;
+}
+
+const SCRIPT_DIR = path.join(PROJECT_ROOT, "scripts");
 const FAISS_OPS_SCRIPT = path.join(SCRIPT_DIR, "faiss_ops.py");
+const STORAGE_DIR = path.join(PROJECT_ROOT, "storage");
+const FAISS_INDEX_PATH = path.join(STORAGE_DIR, "faiss/clinical_notes.index");
+
+console.log("FAISS PROJECT_ROOT:", PROJECT_ROOT);
+console.log("FAISS SCRIPT_DIR:", SCRIPT_DIR);
 
 interface SearchResult {
   index: number;
@@ -22,7 +69,7 @@ export class FaissStore {
   private indexPath: string;
 
   constructor(indexPath?: string) {
-    this.indexPath = indexPath || path.join(process.cwd(), "storage/faiss/clinical_notes.index");
+    this.indexPath = indexPath || FAISS_INDEX_PATH;
   }
 
   private async runPythonCommand(args: string[]): Promise<any> {

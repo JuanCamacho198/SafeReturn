@@ -273,7 +273,16 @@ Task:
 2. Consider demographics, comorbidities, medications, lab results, vital signs, and previous readmissions.
 3. Compare with outcomes in similar cases.
 4. Determine a risk score from 0.0 (low risk) to 1.0 (high risk).
-5. Select key fragments from the text that support your decision.
+
+IMPORTANT - Generate DIVERSE risk scores based on clinical factors:
+- LOW RISK (0.1-0.3): Routine checkup, wellness visit, healthy patient, no complaints
+- MEDIUM RISK (0.4-0.6): Single chronic condition, mild symptoms, stable on medication
+- HIGH RISK (0.7-0.9): Acute symptoms, multiple comorbidities, critical labs, poor compliance
+
+Look for these specific indicators in the notes:
+- "routine", "wellness", "feeling well", "normal" → LOW RISK
+- "diabetes", "hypertension", "controlled", "stable" → MEDIUM RISK
+- "uncontrolled", "exacerbation", "elevated", "critical", "multiple comorbidities" → HIGH RISK
 
 Output MUST be a valid JSON object with this exact structure:
 {
